@@ -4,7 +4,7 @@
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://nextcommit.github.io/feed.xml" />
 <link rel="alternate" type="text/html" href="http://nextcommit.github.io" />
-<updated>2015-12-05T23:45:17+00:00</updated>
+<updated>2015-12-13T20:37:35+00:00</updated>
 <id>http://nextcommit.github.io/</id>
 <author>
   <name>Next Commit</name>
@@ -40,11 +40,11 @@ Este panorama parece contra-intuitivo, principalmente quando a &lt;a href=&quot;
 
 &lt;h2 id=&quot;printfol-mundon&quot;&gt;printf(“Olá Mundo!\n”);&lt;/h2&gt;
 
-&lt;p&gt;Não podia deixar de aproveitar esta formalidade informática para dar a conhecer a todos os amantes de &lt;em&gt;python&lt;/em&gt; este &lt;a href=&quot;https://benkurtovic.com/2014/06/01/obfuscating-hello-world.html&quot;&gt;fantástico-código&lt;/a&gt; de obfuscação.&lt;/p&gt;
+&lt;p&gt;Não podia deixar de aproveitar esta formalidade informática para dar a conhecer a todos os amantes de &lt;em&gt;python&lt;/em&gt; este &lt;a href=&quot;https://benkurtovic.com/2014/06/01/obfuscating-hello-world.html&quot;&gt;fantástico código&lt;/a&gt; de obfuscação.&lt;/p&gt;
 
 &lt;h2 id=&quot;return-0&quot;&gt;return 0;&lt;/h2&gt;
 
-&lt;p&gt;Vêmo-nos do próximo &lt;em&gt;commit&lt;/em&gt;!&lt;/p&gt;
+&lt;p&gt;Vêmo-nos no próximo &lt;em&gt;commit&lt;/em&gt;!&lt;/p&gt;
 
 
     &lt;p&gt;&lt;a href=&quot;http://nextcommit.github.io/blog/ola-mundo/&quot;&gt;Olá Mundo&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;http://nextcommit.github.io&quot;&gt;Next Commit&lt;/a&gt; on  5 dezembro 2015.&lt;/p&gt;
