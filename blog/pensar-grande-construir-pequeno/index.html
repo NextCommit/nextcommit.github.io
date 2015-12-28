@@ -1,0 +1,364 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Pensar Grande, Construir Pequeno &#8211; Next Commit</title>
+<meta name="description" content="Como um projeto pode falhar mesmo antes de começar">
+<meta name="keywords" content="gestao projeto, scrum, agile">
+
+  
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Pensar Grande, Construir Pequeno">
+<meta name="twitter:description" content="Como um projeto pode falhar mesmo antes de começar">
+<meta name="twitter:site" content="@promgamer">
+<meta name="twitter:creator" content="@promgamer">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://nextcommit.github.io/images/gestao-projeto.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="pt-PT">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Pensar Grande, Construir Pequeno">
+<meta property="og:description" content="Como um projeto pode falhar mesmo antes de começar">
+<meta property="og:url" content="http://nextcommit.github.io/blog/pensar-grande-construir-pequeno/">
+<meta property="og:site_name" content="Next Commit">
+
+
+
+
+
+<link rel="canonical" href="http://nextcommit.github.io/blog/pensar-grande-construir-pequeno/">
+<link href="http://nextcommit.github.io/feed.xml" type="application/atom+xml" rel="alternate" title="Next Commit Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://nextcommit.github.io/assets/css/main.css">
+<!-- Webfonts -->
+<script src="https://use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+  <script src="http://nextcommit.github.io/assets/js/vendor/html5shiv.min.js"></script>
+  <script src="http://nextcommit.github.io/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="http://nextcommit.github.io/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+
+<!-- MathJax -->
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+<!-- Icons -->
+<link rel="apple-touch-icon" sizes="57x57" href="http://nextcommit.github.io/images/icons/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="http://nextcommit.github.io/images/icons/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="http://nextcommit.github.io/images/icons/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="http://nextcommit.github.io/images/icons/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="http://nextcommit.github.io/images/icons/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="http://nextcommit.github.io/images/icons/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="http://nextcommit.github.io/images/icons/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="http://nextcommit.github.io/images/icons/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="http://nextcommit.github.io/images/icons/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="http://nextcommit.github.io/images/icons/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://nextcommit.github.io/images/icons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="http://nextcommit.github.io/images/icons/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="http://nextcommit.github.io/images/icons/favicon-16x16.png">
+
+</head>
+
+<body id="post">
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+      
+		    
+		        
+		    
+		    <li><a href="http://nextcommit.github.io/" >Início</a></li>
+		  
+		    
+		        
+		    
+		    <li><a href="http://nextcommit.github.io/indice" >Índice</a></li>
+		  
+		    
+		        
+		    
+		    <li><a href="http://nextcommit.github.io/arquivo" >Arquivo</a></li>
+		  
+		    
+		        
+		    
+		    <li><a href="http://nextcommit.github.io/sobre" >Sobre</a></li>
+		  
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<header class="masthead">
+	
+		<div class="wrap">
+			<a href="http://nextcommit.github.io/" class="site-logo" rel="home" title="Next Commit"><img src="http://nextcommit.github.io/images/logo.png" width="200" height="200" alt="Next Commit logo" class="animated fadeInDown"></a>
+		</div>
+	
+</header><!-- /.masthead -->
+
+
+<div class="js-menu-screen menu-screen"></div>
+
+
+<div id="main" role="main">
+  <article class="hentry">
+    <div class="feature-img"><img src="http://nextcommit.github.io/images/gestao-projeto.png" class="entry-feature-image" alt="Pensar Grande, Construir Pequeno" ></div>
+    <div class="entry-wrapper">
+      <header class="entry-header">
+        <ul class="entry-tags">
+          <i class="fa fa-tags"></i><li><a href="http://nextcommit.github.io/assuntos/#gestao projeto" title="Assunto gestao projeto">gestao projeto</a></li><li><a href="http://nextcommit.github.io/assuntos/#scrum" title="Assunto scrum">scrum</a></li><li><a href="http://nextcommit.github.io/assuntos/#agile" title="Assunto agile">agile</a></li>
+        </ul>
+        
+          <h1 class="entry-title post-title">Pensar Grande, Construir Pequeno </h1>
+        
+      </header>
+      <footer class="entry-meta">
+        
+          
+        
+          <img src="http://scontent-mad1-1.xx.fbcdn.net/hphotos-xpa1/v/t1.0-9/11181849_984802091532539_3862292596095526118_n.jpg?oh=d12a651f7a18fe2d0ad9d4608bd30bef&oe=56B6B1C9" class="bio-photo" alt="Miguel Cunha bio photo"></a>
+        
+        <span class="author vcard">por <a href="mailto:miguelfcunha@gmail.com"><span class="fn">Miguel Cunha</span></a></span>
+        <span>
+        <a href="https://twitter.com/promgamer" title="Next Commit on Twitter" target="_blank"><i class="fa fa-twitter-square fa-2x"></i></a>
+        <a href="https://linkedin.com/in/miguelpoeira" title="Miguel Cunha on LinkedIn" target="_blank"><i class="fa fa-linkedin-square fa-2x"></i></a>
+        <a href="http://stackoverflow.com/users/2267779/miguel-cunha" title="Miguel Cunha on StackExchange" target="_blank"><i class="fa fa-stack-exchange fa-2x"></i></a>
+        <a href="https://github.com/promgamer" title="Miguel Cunha on Github" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>
+        </span>
+        <span class="entry-date date published"><time datetime="2015-12-28"><i class="fa fa-calendar-o"></i> 28 dezembro 2015</time></span>
+        
+        <span class="entry-comments"><i class="fa fa-comment-o"></i> <a href="#disqus_thread">Comentar</a></span>
+        
+      </footer>
+      <div class="entry-content">
+        <p>Da mesma forma que um jogador de futebol quer pôr em prática nos jogos aquilo que aprende ao longo dos treinos, também o
+típico estudante de informática tem a vontade de mostrar que é capaz de pôr o conhecimento que adquiriu ao longo dos anos
+em prática. Eu não sou exceção.</p>
+
+<p>Esta é a história de como (mais) um projeto para os tempos livres ficou pelo caminho. Os ingleses gostam de lhe chamar
+<em>Post-mortem</em>.</p>
+
+<h1 id="a-ideia">A Ideia</h1>
+
+<p>Como é normal, todo este projeto começa por uma ideia. Por mais simples que ela seja, a ideia é o ponto de partida para
+o <em>brainstorming</em> e, portanto, ter a ideia clara e concisa é essencial para a conseguir transmitir a outras pessoas.</p>
+
+<p>A ideia não necessita de ser original, mas deve acrescentar valor a soluções já existentes, até porque ter uma ideia original não é,
+obviamente, fácil. Mas nem esse foi o objetivo inicial. O objetivo inicial sempre foi construir algo que pudesse pôr em
+prática os conhecimentos aprendidos ao longo dos anos. E isso significa que este projeto não nasceu de uma ideia, mas, ao contrário,
+a ideia nasceu da necessidade de desenvolver um projeto.</p>
+
+<p>Usando uma metáfora da biologia, tal como <em>Lamark</em> explicava que determinados caracteres eram adquiridos por necessidade, também a ideia
+para este projeto surgiu pela necessidade de ter haver uma ideia para se poder desenvolver um projeto. E começar um projeto sem
+uma ideia é como marcar um casamento sem primeiro saber a opinião do parceiro: é bem provável que esteja destinado ao fracasso.</p>
+
+<p>Terminando a metáfora: a ideia deve aparecer, assim como Darwin explicou para a biologia através da seleção natural, de uma
+forma natural e espotânea. A ideia pode aparecer enquanto falamos com um amigo (foi assim que surgiu este <a href="/sobre">blog</a>), enquanto
+utilizamos um determinado serviço e nos deparamos com a falta da funcionalidade <em>X</em> ou quando damos por nós a pensar a
+mítica frase “era tão fixe se aqui se pudesse fazer X” (não esqueci que muitas das ideias aparecem enquanto relaxamos a tomar banho,
+as chamadas <em>shower thoughts</em>).</p>
+
+<h1 id="a-viso">A Visão</h1>
+
+<p>Ter uma ideia é o primeiro passo, mas para a partir da ideia se conseguir construir uma visão, simples e concisa, é necessário
+conseguir delinear o âmbito (<em>scope</em>) do nosso projeto.</p>
+
+<p>Se a ideia é o ponto de partida para o <em>brainstorming</em> de funcionalidades, a visão demonstra que o resultado desse
+<em>brainstorming</em> foi digerido, pelo que algumas ideias daí resultantes foram aproveitadas, outras reajustadas e, a maioria
+delas, descartadas.</p>
+
+<p>Construir a visão de um projeto não deve ser só uma formalidade. Deve sim ser um passo que é dado e que permite à equipa
+estar sincronizada sobre as prioridades desse projeto e como se vai acrescentar valor à solução a ser desenvolvida.</p>
+
+<p>Idealmente a visão é o alicerce de um projeto e a pedra angular sobre a qual este é construído. Se determinada <em>feature</em>
+faz, ou não, sentido na nossa aplicação, é uma pergunta que apareceu ao longo desta experiência e que poderia ser respondida
+caso existisse uma visão clara, sólida e concisa do projeto.</p>
+
+<p>A visão permite, ainda, que a equipa consiga estabelecer o chamado <em><a href="http://www.allaboutagile.com/definition-of-done-10-point-checklist/">Definition of Done</a></em> (<em>DoD</em>), permitindo manter, com
+consistência, a qualidade ao longo de toda a aplicação.</p>
+
+<h1 id="a-equipa">A Equipa</h1>
+
+<p>Tratando-se de um projeto para ser desenvolvido nos tempos livres, o projeto passou rapidamente de algo pessoal para uma
+equipa de 3 pessoas. Desenvolver um projeto em equipa envolve, antes de tudo, conseguir explicar a ideia do projeto. A visão,
+portanto. E isso implica ter uma ideia muito concreta, desenvolvida e matura.</p>
+
+<p>Trabalhar em equipa fornece a um projeto uma visão mais alargada, permitindo que a ideia original seja iterada várias vezes,
+criando várias vezes a discussão de se determinada funcionalidade deve, ou não, ser incluída.</p>
+
+<h1 id="a-stack-tecnolgica">A <em>Stack</em> Tecnológica</h1>
+
+<p>Encontrar uma <em>stack</em> tecnológica para desenvolver o projeto significou balancear três grandes variaveis:</p>
+
+<ul>
+  <li>As tecnologias que são necessárias/ideais para desenvolver o projeto.</li>
+  <li>As tecnologias que cada membro da equipa sabe/tem experiência.</li>
+  <li>O quanto cada pessoa está disposta a sair da sua zona de conforto e aprender uma tecnologia nova.</li>
+</ul>
+
+<p>Conseguir conjugar estas três variáveis foi, na verdade, algo mais simples do que estava à espera. Muitas das vezes esta <em>stack</em>
+é imposta ao <em>developer</em>, mas nos projetos pessoais temos sempre a liberdade de nos podermos aventurar em novas tecnologias.</p>
+
+<h1 id="a-comunicao">A Comunicação</h1>
+
+<p>A comunicação entre a equipa deve ser algo que permita a várias pessoas trabalharem à distância e com horários diferentes,
+tal como um projeto deste tipo obriga. Apesar do <em>Skype</em> ser a ferramenta mais utilizada para conversação por áudio, o <em><a href="https://slack.com/">Slack</a></em>
+é, sem dúvida, uma ferramenta muito boa e que funcionou bastante bem entre nós. As integrações do <em><a href="https://slack.com/">Slack</a></em> com as diversas plataformas,
+como por exemplo <em>GitHub</em> e <em><a href="http://www.pivotaltracker.com/">PivotalTracker</a></em>, permitem que todas as pessoas estejam <em>up-to-date</em> com o estado atual do projeto.</p>
+
+<h1 id="a-gesto-de-expectativas">A Gestão de Expectativas</h1>
+
+<p>Quando se desenvolve um projeto nos tempos livres (“na brincadeira”, como se diz na gíria) é normal não existir uma data limite para
+lançar o projeto. Neste caso tal não era verdade: devido ao mercado e à situação a que se destinada, era necessário ter uma
+primeira versão funcional em pouco mais de um mês.</p>
+
+<p>Levou algum tempo a configurar o ambiente de desenvolvimento e até configuramos <em>bots</em> de <em>deploy</em> automático para os <em>droplets</em> do
+<em>DigitalOcean</em> (o que veio a revelar-se tempo “perdido”); configuramos várias integrações entre os vários serviços
+(repositório <em>Git</em>, <em><a href="https://slack.com/">Slack</a></em>, <em><a href="https://www.visualstudio.com/en-us/products/visual-studio-team-services-vs.aspx">VSOnline</a></em>, <em>Git Flow</em>, etc). Não queríamos só fazer o projeto, queríamos ter um bom processo por
+detrás do projeto, configurar serviços, automatizar ações. E isso levou a que a margem da manobra para cumprir o prazo
+ficasse ainda mais curta.</p>
+
+<p>À medida que a data limite se aproximava e “arranjar” tempo livre para o projeto se tornava complicado, era psicologicamente
+desgastante e desmoralizante ter que cortar funcionalidades de forma a conseguir terminar a tempo. E há medida que se foi cortando
+funcionalidades, perdia-se valor da solução, e perder valor era mais uma “facada” psicológica. E repete-se o ciclo.</p>
+
+<h1 id="think-it-big-build-it-small"><em>Think it big, build it small</em></h1>
+
+<p>Esta é a grande lição que aprendi e, por conseguinte, a mensagem que quero passar. Pensamos o sistema bastante completo e tentamos
+implementar essa grande complexidade de uma só vez. Para o conseguir (dentro da data limite), era necessário dispender mais tempo
+do que aquele que, efetivamente, tínhamos disponível. E a falta de progresso à medida que o prazo se aproxima é demasiado
+desmoralizante. Ao fim de alguns “cortes”, acabamos por desistir.</p>
+
+<p>Não podia haver melhor maneira de aprender o porquê do <em>scrum</em> propôr <em>sprints</em> de 1 a 2 semanas e de se investir na integração
+contínua. Humanamente, é bastante moralizante ver um projeto a avançar sem ter que contar linhas de código, mas vendo pequenas <em>features</em>
+a serem integradas, aos poucos, no produto.</p>
+
+<p>É importante pensar em grande, pensar como a aplicação vai escalar, como se comporta com 10 e com 10 000 pessoas, mas principalmente
+pensar em pequenas <em>features</em> com funcionalidades básicas e, a partir daí, iterá-las (quantas vezes necessárias), de forma a que
+a cada iteração a sua funcionalidade se aproxime cada vez mais da visão do projeto. Primeiro o rascunho e só depois a obra de arte.</p>
+
+<p>Resumindo: arquitetar a solução em grande plano é importante, mas começar a construí-la com pequenos passos incrementais é fundamental.
+Não só para validação da ideia/conceito, mas porque ter resultados visíveis permite-nos ganhar força e motivação para continuar.
+Atenção: isto não significa construir a aplicação mal. Que seja clara a diferença entre uma má arquitetura e uma
+prova de conceito com potencialidade para crescer.</p>
+
+<h1 id="o-sentido-pedaggico">O Sentido Pedagógico</h1>
+
+<p>Como é claro, nem tudo foi em vão! Para além da forte componente pedagógica de aprender com os erros, fazer <em>deploy</em> de uma
+aplicação é muito mais do implementar funcionalidades. A experiência ganha ao arquitetar a solução e pensar como encaixar as várias
+“peças do <em>puzzle</em>” é um dos elementos que distingue um Engenheiro Informático.</p>
+
+<p>Quanto à componente de gestão de projeto, principalmente ao nível da visão e da definição de prioridades, fiquei rendido ao chamado
+<em><a href="https://en.wikipedia.org/wiki/Elevator_pitch">pitch de elevador</a></em>.</p>
+
+<p>Costuma-se dizer que se demora 10% do tempo a fazer 90% do código e 90% do tempo a terminar os restantes 10%. É importante, até mesmo num
+projeto menos sério (como este desenvolvido nos tempos livres) traçar metas e objetivos, sob pena de ser mais um projeto que ficará,
+inevitavelmente, a meio. Mas também é importante não ter datas tão restritivas e inflexíveis. Aproveitemos os projetos pessoais para aplicar
+a máxima “<em>done when it’s done</em>”.</p>
+
+
+        
+          <div id="disqus_thread"></div><!-- /#disqus_thread -->
+          
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'nextcommit'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'https://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+        
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo" class="entry-wrapper">
+    
+
+<span>&copy; 2015 Next Commit.</span>
+<!-- <div class="social-icons">
+	<a href="https://twitter.com/promgamer" title="Next Commit on Twitter" target="_blank"><i class="fa fa-twitter-square fa-2x"></i></a>
+	
+	
+	
+	
+	
+	
+	<a href="https://github.com/promgamer" title="Next Commit on Github" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>
+	
+  
+	
+  <a href="http://nextcommit.github.io/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a>
+</div> --> <!-- /.social-icons -->
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script type="text/javascript">
+  var BASE_URL = 'http://nextcommit.github.io';
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://nextcommit.github.io/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://nextcommit.github.io/assets/js/scripts.min.js"></script>
+
+
+<!-- Asynchronous Google Analytics snippet -->
+<script>
+  var _gaq = _gaq || [];
+  var pluginUrl =
+ 'https://www.google-analytics.com/plugins/ga/inpage_linkid.js';
+  _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+  _gaq.push(['_setAccount', 'UA-71051399-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = 'https://stats.g.doubleclick.net/dc.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+</body>
+</html>

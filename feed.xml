@@ -4,13 +4,159 @@
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://nextcommit.github.io/feed.xml" />
 <link rel="alternate" type="text/html" href="http://nextcommit.github.io" />
-<updated>2015-12-13T20:37:35+00:00</updated>
+<updated>2015-12-28T21:32:00+00:00</updated>
 <id>http://nextcommit.github.io/</id>
 <author>
   <name>Next Commit</name>
   <uri>http://nextcommit.github.io/</uri>
   <email>miguelfcunha@gmail.com</email>
 </author>
+
+
+  
+
+<entry>
+  <title type="html"><![CDATA[Pensar Grande, Construir Pequeno]]></title>
+  <link rel="alternate" type="text/html" href="http://nextcommit.github.io/blog/pensar-grande-construir-pequeno/" />
+  <id>http://nextcommit.github.io/blog/pensar-grande-construir-pequeno</id>
+  <published>2015-12-28 16:50:21 +0000</published>
+  <updated>2015-12-28 16:50:21 +0000</updated>
+  <author>
+    <name>Miguel Cunha</name>
+    <uri>http://nextcommit.github.io</uri>
+    <email>miguelfcunha@gmail.com</email>
+  </author>
+  <content type="html">
+    &lt;p&gt;Da mesma forma que um jogador de futebol quer pôr em prática nos jogos aquilo que aprende ao longo dos treinos, também o
+típico estudante de informática tem a vontade de mostrar que é capaz de pôr o conhecimento que adquiriu ao longo dos anos
+em prática. Eu não sou exceção.&lt;/p&gt;
+
+&lt;p&gt;Esta é a história de como (mais) um projeto para os tempos livres ficou pelo caminho. Os ingleses gostam de lhe chamar
+&lt;em&gt;Post-mortem&lt;/em&gt;.&lt;/p&gt;
+
+&lt;h1 id=&quot;a-ideia&quot;&gt;A Ideia&lt;/h1&gt;
+
+&lt;p&gt;Como é normal, todo este projeto começa por uma ideia. Por mais simples que ela seja, a ideia é o ponto de partida para
+o &lt;em&gt;brainstorming&lt;/em&gt; e, portanto, ter a ideia clara e concisa é essencial para a conseguir transmitir a outras pessoas.&lt;/p&gt;
+
+&lt;p&gt;A ideia não necessita de ser original, mas deve acrescentar valor a soluções já existentes, até porque ter uma ideia original não é,
+obviamente, fácil. Mas nem esse foi o objetivo inicial. O objetivo inicial sempre foi construir algo que pudesse pôr em
+prática os conhecimentos aprendidos ao longo dos anos. E isso significa que este projeto não nasceu de uma ideia, mas, ao contrário,
+a ideia nasceu da necessidade de desenvolver um projeto.&lt;/p&gt;
+
+&lt;p&gt;Usando uma metáfora da biologia, tal como &lt;em&gt;Lamark&lt;/em&gt; explicava que determinados caracteres eram adquiridos por necessidade, também a ideia
+para este projeto surgiu pela necessidade de ter haver uma ideia para se poder desenvolver um projeto. E começar um projeto sem
+uma ideia é como marcar um casamento sem primeiro saber a opinião do parceiro: é bem provável que esteja destinado ao fracasso.&lt;/p&gt;
+
+&lt;p&gt;Terminando a metáfora: a ideia deve aparecer, assim como Darwin explicou para a biologia através da seleção natural, de uma
+forma natural e espotânea. A ideia pode aparecer enquanto falamos com um amigo (foi assim que surgiu este &lt;a href=&quot;/sobre&quot;&gt;blog&lt;/a&gt;), enquanto
+utilizamos um determinado serviço e nos deparamos com a falta da funcionalidade &lt;em&gt;X&lt;/em&gt; ou quando damos por nós a pensar a
+mítica frase “era tão fixe se aqui se pudesse fazer X” (não esqueci que muitas das ideias aparecem enquanto relaxamos a tomar banho,
+as chamadas &lt;em&gt;shower thoughts&lt;/em&gt;).&lt;/p&gt;
+
+&lt;h1 id=&quot;a-viso&quot;&gt;A Visão&lt;/h1&gt;
+
+&lt;p&gt;Ter uma ideia é o primeiro passo, mas para a partir da ideia se conseguir construir uma visão, simples e concisa, é necessário
+conseguir delinear o âmbito (&lt;em&gt;scope&lt;/em&gt;) do nosso projeto.&lt;/p&gt;
+
+&lt;p&gt;Se a ideia é o ponto de partida para o &lt;em&gt;brainstorming&lt;/em&gt; de funcionalidades, a visão demonstra que o resultado desse
+&lt;em&gt;brainstorming&lt;/em&gt; foi digerido, pelo que algumas ideias daí resultantes foram aproveitadas, outras reajustadas e, a maioria
+delas, descartadas.&lt;/p&gt;
+
+&lt;p&gt;Construir a visão de um projeto não deve ser só uma formalidade. Deve sim ser um passo que é dado e que permite à equipa
+estar sincronizada sobre as prioridades desse projeto e como se vai acrescentar valor à solução a ser desenvolvida.&lt;/p&gt;
+
+&lt;p&gt;Idealmente a visão é o alicerce de um projeto e a pedra angular sobre a qual este é construído. Se determinada &lt;em&gt;feature&lt;/em&gt;
+faz, ou não, sentido na nossa aplicação, é uma pergunta que apareceu ao longo desta experiência e que poderia ser respondida
+caso existisse uma visão clara, sólida e concisa do projeto.&lt;/p&gt;
+
+&lt;p&gt;A visão permite, ainda, que a equipa consiga estabelecer o chamado &lt;em&gt;&lt;a href=&quot;http://www.allaboutagile.com/definition-of-done-10-point-checklist/&quot;&gt;Definition of Done&lt;/a&gt;&lt;/em&gt; (&lt;em&gt;DoD&lt;/em&gt;), permitindo manter, com
+consistência, a qualidade ao longo de toda a aplicação.&lt;/p&gt;
+
+&lt;h1 id=&quot;a-equipa&quot;&gt;A Equipa&lt;/h1&gt;
+
+&lt;p&gt;Tratando-se de um projeto para ser desenvolvido nos tempos livres, o projeto passou rapidamente de algo pessoal para uma
+equipa de 3 pessoas. Desenvolver um projeto em equipa envolve, antes de tudo, conseguir explicar a ideia do projeto. A visão,
+portanto. E isso implica ter uma ideia muito concreta, desenvolvida e matura.&lt;/p&gt;
+
+&lt;p&gt;Trabalhar em equipa fornece a um projeto uma visão mais alargada, permitindo que a ideia original seja iterada várias vezes,
+criando várias vezes a discussão de se determinada funcionalidade deve, ou não, ser incluída.&lt;/p&gt;
+
+&lt;h1 id=&quot;a-stack-tecnolgica&quot;&gt;A &lt;em&gt;Stack&lt;/em&gt; Tecnológica&lt;/h1&gt;
+
+&lt;p&gt;Encontrar uma &lt;em&gt;stack&lt;/em&gt; tecnológica para desenvolver o projeto significou balancear três grandes variaveis:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;As tecnologias que são necessárias/ideais para desenvolver o projeto.&lt;/li&gt;
+  &lt;li&gt;As tecnologias que cada membro da equipa sabe/tem experiência.&lt;/li&gt;
+  &lt;li&gt;O quanto cada pessoa está disposta a sair da sua zona de conforto e aprender uma tecnologia nova.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Conseguir conjugar estas três variáveis foi, na verdade, algo mais simples do que estava à espera. Muitas das vezes esta &lt;em&gt;stack&lt;/em&gt;
+é imposta ao &lt;em&gt;developer&lt;/em&gt;, mas nos projetos pessoais temos sempre a liberdade de nos podermos aventurar em novas tecnologias.&lt;/p&gt;
+
+&lt;h1 id=&quot;a-comunicao&quot;&gt;A Comunicação&lt;/h1&gt;
+
+&lt;p&gt;A comunicação entre a equipa deve ser algo que permita a várias pessoas trabalharem à distância e com horários diferentes,
+tal como um projeto deste tipo obriga. Apesar do &lt;em&gt;Skype&lt;/em&gt; ser a ferramenta mais utilizada para conversação por áudio, o &lt;em&gt;&lt;a href=&quot;https://slack.com/&quot;&gt;Slack&lt;/a&gt;&lt;/em&gt;
+é, sem dúvida, uma ferramenta muito boa e que funcionou bastante bem entre nós. As integrações do &lt;em&gt;&lt;a href=&quot;https://slack.com/&quot;&gt;Slack&lt;/a&gt;&lt;/em&gt; com as diversas plataformas,
+como por exemplo &lt;em&gt;GitHub&lt;/em&gt; e &lt;em&gt;&lt;a href=&quot;http://www.pivotaltracker.com/&quot;&gt;PivotalTracker&lt;/a&gt;&lt;/em&gt;, permitem que todas as pessoas estejam &lt;em&gt;up-to-date&lt;/em&gt; com o estado atual do projeto.&lt;/p&gt;
+
+&lt;h1 id=&quot;a-gesto-de-expectativas&quot;&gt;A Gestão de Expectativas&lt;/h1&gt;
+
+&lt;p&gt;Quando se desenvolve um projeto nos tempos livres (“na brincadeira”, como se diz na gíria) é normal não existir uma data limite para
+lançar o projeto. Neste caso tal não era verdade: devido ao mercado e à situação a que se destinada, era necessário ter uma
+primeira versão funcional em pouco mais de um mês.&lt;/p&gt;
+
+&lt;p&gt;Levou algum tempo a configurar o ambiente de desenvolvimento e até configuramos &lt;em&gt;bots&lt;/em&gt; de &lt;em&gt;deploy&lt;/em&gt; automático para os &lt;em&gt;droplets&lt;/em&gt; do
+&lt;em&gt;DigitalOcean&lt;/em&gt; (o que veio a revelar-se tempo “perdido”); configuramos várias integrações entre os vários serviços
+(repositório &lt;em&gt;Git&lt;/em&gt;, &lt;em&gt;&lt;a href=&quot;https://slack.com/&quot;&gt;Slack&lt;/a&gt;&lt;/em&gt;, &lt;em&gt;&lt;a href=&quot;https://www.visualstudio.com/en-us/products/visual-studio-team-services-vs.aspx&quot;&gt;VSOnline&lt;/a&gt;&lt;/em&gt;, &lt;em&gt;Git Flow&lt;/em&gt;, etc). Não queríamos só fazer o projeto, queríamos ter um bom processo por
+detrás do projeto, configurar serviços, automatizar ações. E isso levou a que a margem da manobra para cumprir o prazo
+ficasse ainda mais curta.&lt;/p&gt;
+
+&lt;p&gt;À medida que a data limite se aproximava e “arranjar” tempo livre para o projeto se tornava complicado, era psicologicamente
+desgastante e desmoralizante ter que cortar funcionalidades de forma a conseguir terminar a tempo. E há medida que se foi cortando
+funcionalidades, perdia-se valor da solução, e perder valor era mais uma “facada” psicológica. E repete-se o ciclo.&lt;/p&gt;
+
+&lt;h1 id=&quot;think-it-big-build-it-small&quot;&gt;&lt;em&gt;Think it big, build it small&lt;/em&gt;&lt;/h1&gt;
+
+&lt;p&gt;Esta é a grande lição que aprendi e, por conseguinte, a mensagem que quero passar. Pensamos o sistema bastante completo e tentamos
+implementar essa grande complexidade de uma só vez. Para o conseguir (dentro da data limite), era necessário dispender mais tempo
+do que aquele que, efetivamente, tínhamos disponível. E a falta de progresso à medida que o prazo se aproxima é demasiado
+desmoralizante. Ao fim de alguns “cortes”, acabamos por desistir.&lt;/p&gt;
+
+&lt;p&gt;Não podia haver melhor maneira de aprender o porquê do &lt;em&gt;scrum&lt;/em&gt; propôr &lt;em&gt;sprints&lt;/em&gt; de 1 a 2 semanas e de se investir na integração
+contínua. Humanamente, é bastante moralizante ver um projeto a avançar sem ter que contar linhas de código, mas vendo pequenas &lt;em&gt;features&lt;/em&gt;
+a serem integradas, aos poucos, no produto.&lt;/p&gt;
+
+&lt;p&gt;É importante pensar em grande, pensar como a aplicação vai escalar, como se comporta com 10 e com 10 000 pessoas, mas principalmente
+pensar em pequenas &lt;em&gt;features&lt;/em&gt; com funcionalidades básicas e, a partir daí, iterá-las (quantas vezes necessárias), de forma a que
+a cada iteração a sua funcionalidade se aproxime cada vez mais da visão do projeto. Primeiro o rascunho e só depois a obra de arte.&lt;/p&gt;
+
+&lt;p&gt;Resumindo: arquitetar a solução em grande plano é importante, mas começar a construí-la com pequenos passos incrementais é fundamental.
+Não só para validação da ideia/conceito, mas porque ter resultados visíveis permite-nos ganhar força e motivação para continuar.
+Atenção: isto não significa construir a aplicação mal. Que seja clara a diferença entre uma má arquitetura e uma
+prova de conceito com potencialidade para crescer.&lt;/p&gt;
+
+&lt;h1 id=&quot;o-sentido-pedaggico&quot;&gt;O Sentido Pedagógico&lt;/h1&gt;
+
+&lt;p&gt;Como é claro, nem tudo foi em vão! Para além da forte componente pedagógica de aprender com os erros, fazer &lt;em&gt;deploy&lt;/em&gt; de uma
+aplicação é muito mais do implementar funcionalidades. A experiência ganha ao arquitetar a solução e pensar como encaixar as várias
+“peças do &lt;em&gt;puzzle&lt;/em&gt;” é um dos elementos que distingue um Engenheiro Informático.&lt;/p&gt;
+
+&lt;p&gt;Quanto à componente de gestão de projeto, principalmente ao nível da visão e da definição de prioridades, fiquei rendido ao chamado
+&lt;em&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Elevator_pitch&quot;&gt;pitch de elevador&lt;/a&gt;&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;Costuma-se dizer que se demora 10% do tempo a fazer 90% do código e 90% do tempo a terminar os restantes 10%. É importante, até mesmo num
+projeto menos sério (como este desenvolvido nos tempos livres) traçar metas e objetivos, sob pena de ser mais um projeto que ficará,
+inevitavelmente, a meio. Mas também é importante não ter datas tão restritivas e inflexíveis. Aproveitemos os projetos pessoais para aplicar
+a máxima “&lt;em&gt;done when it’s done&lt;/em&gt;”.&lt;/p&gt;
+
+
+    &lt;p&gt;&lt;a href=&quot;http://nextcommit.github.io/blog/pensar-grande-construir-pequeno/&quot;&gt;Pensar Grande, Construir Pequeno&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;http://nextcommit.github.io&quot;&gt;Next Commit&lt;/a&gt; on 28 dezembro 2015.&lt;/p&gt;
+
+  </content>
+</entry>
 
 
   
