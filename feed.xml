@@ -4,100 +4,13 @@
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://nextcommit.github.io/feed.xml" />
 <link rel="alternate" type="text/html" href="http://nextcommit.github.io" />
-<updated>2016-01-09T02:07:38+00:00</updated>
+<updated>2016-01-06T16:01:48+00:00</updated>
 <id>http://nextcommit.github.io/</id>
 <author>
   <name>Next Commit</name>
   <uri>http://nextcommit.github.io/</uri>
   <email>miguelfcunha@gmail.com</email>
 </author>
-
-
-  
-
-<entry>
-  <title type="html"><![CDATA[Os 8 Mandamentos Dos Projetos Académicos]]></title>
-  <link rel="alternate" type="text/html" href="http://nextcommit.github.io/blog/os-8-mandamentos-dos-projetos-academicos/" />
-  <id>http://nextcommit.github.io/blog/os-8-mandamentos-dos-projetos-academicos</id>
-  <published>2016-01-09 00:09:43 +0000</published>
-  <updated>2016-01-09 00:09:43 +0000</updated>
-  <author>
-    <name>Next Commit</name>
-    <uri>http://nextcommit.github.io</uri>
-    <email>miguelfcunha@gmail.com</email>
-  </author>
-  <content type="html">
-    &lt;h1 id=&quot;amar-o-nosso-cdigo-sobre-todas-as-coisas&quot;&gt;1. Amar o nosso código sobre todas as coisas&lt;/h1&gt;
-
-&lt;p&gt;O nosso colega de grupo não sabe o (pouco) que faz. O nosso código é muito melhor, mais conciso e auto-explicativo que o dele.
-Isto porque nós fomos a mais duas aulas teóricas do que ele (e as que faltamos, demos um relance sobre os &lt;em&gt;slides&lt;/em&gt; enquanto estávamos
-na fila para a cantina).&lt;/p&gt;
-
-&lt;p&gt;Quando temos (e tentamos evitar ao máximo!) que mexer no código feito por ele, primeiro há que ultrapassar as dificuldades
-da formatação do código (que não estão ao nosso gosto), ao mesmo tempo que se perdem horas a fio a fazer &lt;em&gt;refactoring&lt;/em&gt; ao código
-dele. Quem, no seu perfeito juízo, tem coragem de produzir código sem deixar a linha final do ficheiro em branco?&lt;/p&gt;
-
-&lt;p&gt;Quando ele descobre um &lt;em&gt;bug&lt;/em&gt; no nosso código, ou sugere uma pequena alteração que permite facilitar-nos a vida, garantir que
-ficou claro que levamos isso como um ataque pessoal. Afinal, temos a certeza que ele passou horas a testar todos os casos-limite!
-Depois, seguir os passos:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Perder horas a discutir pormenores desnecessários, utilizando expressões como “&lt;em&gt;eu não percebo muito disto, mas acho que…&lt;/em&gt;”
-e “&lt;em&gt;eu fiz assim porque… e da forma que tu dizes só fica mais otimizado, o output é o mesmo&lt;/em&gt;”.&lt;/li&gt;
-  &lt;li&gt;Não se chegar a conclusão nenhuma, apesar de ninguém ceder (e nós já percebemos que ele tem razão).&lt;/li&gt;
-  &lt;li&gt;Continuar a desenvolver o projeto, cada um para seu lado.&lt;/li&gt;
-  &lt;li&gt;Aproveitar um &lt;em&gt;commit&lt;/em&gt; grande para, no meio de tanta alteração, corrigir o tal &lt;em&gt;bug&lt;/em&gt; ou implementar a pequena otimização.&lt;/li&gt;
-  &lt;li&gt;Guardar a &lt;em&gt;hash&lt;/em&gt; do &lt;em&gt;commit&lt;/em&gt; e, se necessário, recuperar este assunto no próximo projeto e de como “&lt;em&gt;da outra vez fui eu
-que cedi&lt;/em&gt;”.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h1 id=&quot;no-usar-o-santo-nome-da-framework-em-vo&quot;&gt;2. Não usar o santo nome da &lt;em&gt;framework&lt;/em&gt; em vão&lt;/h1&gt;
-
-&lt;p&gt;“&lt;em&gt;Não gosto desta framework. Nunca gostei.&lt;/em&gt;” Só a estamos a usar porque o nosso colega foi o primeiro a tomar a iniciativa.
-É muito grande, cheia de pastas, separado em muitos ficheiros com nomes complicados e nada sugestivos. Preferia a &lt;em&gt;nossa&lt;/em&gt;
-estrutura do projeto anterior, que só tinha dois ficheiros (um nosso e um dele). O nosso colega queixava-se que o &lt;em&gt;IDE&lt;/em&gt; dele ficava lento a abrir
-aqueles ficheiros com 2000 linhas, mas isso é porque ele é pobre, tem um computador fraco e não usa o &lt;em&gt;IntelliJ&lt;/em&gt;.&lt;/p&gt;
-
-&lt;p&gt;Era só vantagens: estava tudo à mão, não tínhamos que estar à procura de nada, sabíamos exatamente onde estavam as coisas. Ou estava
-num ficheiro, ou estava noutro. E até já sabíamos que a função &lt;code&gt;print_posts_from_db_on_screen2&lt;/code&gt; (que por alguma razão imprimia
-em duplicado) estava entre as linhas 825 e 1132!&lt;/p&gt;
-
-&lt;h1 id=&quot;no-cobiar-os-projetos-alheios&quot;&gt;3. Não cobiçar os projetos alheios&lt;/h1&gt;
-
-&lt;p&gt;A comunidade científica sempre apelou à partilha de conhecimento. Aliás, a participação em projetos &lt;em&gt;open-source&lt;/em&gt; é algo que
-está na nossa &lt;em&gt;to-do list&lt;/em&gt; já há muito tempo. Esses sim, são projetos bem feitos, arquitetados e documentados.&lt;/p&gt;
-
-&lt;p&gt;O outro grupo nosso amigo (sim, aquele que tem sempre 18) já fez o projeto há muito tempo. Até implementaram funcionalidades extra
-que não eram pedidas (mas que eles acharam relevantes), como se o professor valorizasse isso. Otários.&lt;/p&gt;
-
-&lt;p&gt;De certeza que não há problema em lhes pedir o projeto deles para “comparar pequenos detalhes”. Além disso, sempre nos disseram
-que ler o código de outras pessoas é uma atividade lúdica.&lt;/p&gt;
-
-&lt;p&gt;Agora que percebemos a estratégia que o outro grupo utilizou, basta esperar pela intervenção divina (ver mandamento #5) e o nosso
-projeto está feito! Olha, esta função aposto que vai ser igual em todos os trabalhos, mais vale não perder tempo e usá-la no nosso.
-Copiemos o código e os comentários, para se mais tarde precisarmos de rever aquele código, não termos de ir ver ao projeto deles de novo.
-Concerteza que antes de entregarmos o nosso trabalho nos vamos lembrar de retirar os comentários. Otários.&lt;/p&gt;
-
-&lt;h1 id=&quot;no-testar-nem-causar-semelhante-transtorno-no-server-ou-no-client-neste-projeto-ou-no-prximo&quot;&gt;4. Não testar (nem causar semelhante transtorno, no &lt;em&gt;server&lt;/em&gt; ou no &lt;em&gt;client&lt;/em&gt;, neste projeto ou no próximo)&lt;/h1&gt;
-
-&lt;p&gt;TEXTO&lt;/p&gt;
-
-&lt;h1 id=&quot;a-grande-expanso-ou-o-big-bang&quot;&gt;5. A Grande Expansão (ou o Big Bang)&lt;/h1&gt;
-
-&lt;p&gt;O código está em expansão. Disso nenhum de nós tem dúvidas. Mas para evitar contrariar as leis da física, também esta
-expansão deve ser lenta e gradual, possivelmente infinita. Quando a data de entrega se aproxima, de tão pequeno e condensado
-que o projeto de encontra, dá-se o &lt;em&gt;Big Bang&lt;/em&gt;, a grande explosão, numa corrida contra-relógio para se evitar o &lt;em&gt;Big Crush&lt;/em&gt;.&lt;/p&gt;
-
-&lt;h1 id=&quot;copypaste-de-cdigo&quot;&gt;6. Copy/Paste de código&lt;/h1&gt;
-
-&lt;h1 id=&quot;guardar-o-cdigo-na-dropbox-e-no-google-drive&quot;&gt;7. Guardar o código na &lt;em&gt;Dropbox&lt;/em&gt; e no &lt;em&gt;Google Drive&lt;/em&gt;&lt;/h1&gt;
-
-&lt;h1 id=&quot;escrita-do-relatrio&quot;&gt;8. Escrita do Relatório&lt;/h1&gt;
-
-    &lt;p&gt;&lt;a href=&quot;http://nextcommit.github.io/blog/os-8-mandamentos-dos-projetos-academicos/&quot;&gt;Os 8 Mandamentos Dos Projetos Académicos&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;http://nextcommit.github.io&quot;&gt;Next Commit&lt;/a&gt; on  9 janeiro 2016.&lt;/p&gt;
-
-  </content>
-</entry>
 
 
   
