@@ -2,28 +2,26 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
 <title type="text">Next Commit</title>
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
-<link rel="self" type="application/atom+xml" href="http://nextcommit.github.io/feed.xml" />
-<link rel="alternate" type="text/html" href="http://nextcommit.github.io" />
-<updated>2016-02-28T14:04:40+00:00</updated>
-<id>http://nextcommit.github.io/</id>
+<link rel="self" type="application/atom+xml" href="http://localhost:4000/feed.xml" />
+<link rel="alternate" type="text/html" href="http://localhost:4000" />
+<updated>2016-03-06T15:13:40+00:00</updated>
+<id>http://localhost:4000/</id>
 <author>
   <name>Next Commit</name>
-  <uri>http://nextcommit.github.io/</uri>
+  <uri>http://localhost:4000/</uri>
   <email>miguelfcunha@gmail.com</email>
 </author>
 
 
-  
-
 <entry>
   <title type="html"><![CDATA[Diz-me Como Geres e Dir-te-ei Quem És]]></title>
-  <link rel="alternate" type="text/html" href="http://nextcommit.github.io/blog/diz-me-como-geres-e-dir-te-ei-quem-es/" />
-  <id>http://nextcommit.github.io/blog/diz-me-como-geres-e-dir-te-ei-quem-es</id>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/blog/diz-me-como-geres-e-dir-te-ei-quem-es/" />
+  <id>http://localhost:4000/blog/diz-me-como-geres-e-dir-te-ei-quem-es</id>
   <published>2016-02-27 16:00:48 +0000</published>
   <updated>2016-02-27 16:00:48 +0000</updated>
   <author>
     <name>Miguel Cunha</name>
-    <uri>http://nextcommit.github.io</uri>
+    <uri>http://localhost:4000</uri>
     <email>miguelfcunha@gmail.com</email>
   </author>
   <content type="html">
@@ -82,23 +80,21 @@ bem o teu trabalho.&lt;/p&gt;
 porra do documento!&lt;/em&gt;&lt;/p&gt;
 
 
-    &lt;p&gt;&lt;a href=&quot;http://nextcommit.github.io/blog/diz-me-como-geres-e-dir-te-ei-quem-es/&quot;&gt;Diz-me Como Geres e Dir-te-ei Quem És&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;http://nextcommit.github.io&quot;&gt;Next Commit&lt;/a&gt; on 27 fevereiro 2016.&lt;/p&gt;
+    &lt;p&gt;&lt;a href=&quot;http://localhost:4000/blog/diz-me-como-geres-e-dir-te-ei-quem-es/&quot;&gt;Diz-me Como Geres e Dir-te-ei Quem És&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;http://localhost:4000&quot;&gt;Next Commit&lt;/a&gt; on 27 fevereiro 2016.&lt;/p&gt;
 
   </content>
 </entry>
 
 
-  
-
 <entry>
   <title type="html"><![CDATA[Os 5 Mandamentos Dos Projetos Académicos]]></title>
-  <link rel="alternate" type="text/html" href="http://nextcommit.github.io/blog/os-5-mandamentos-dos-projetos-academicos/" />
-  <id>http://nextcommit.github.io/blog/os-5-mandamentos-dos-projetos-academicos</id>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/blog/os-5-mandamentos-dos-projetos-academicos/" />
+  <id>http://localhost:4000/blog/os-5-mandamentos-dos-projetos-academicos</id>
   <published>2016-01-09 00:09:43 +0000</published>
   <updated>2016-01-09 00:09:43 +0000</updated>
   <author>
     <name>Miguel Cunha</name>
-    <uri>http://nextcommit.github.io</uri>
+    <uri>http://localhost:4000</uri>
     <email>miguelfcunha@gmail.com</email>
   </author>
   <content type="html">
@@ -180,23 +176,21 @@ Mais vale dar &lt;code&gt;ctrl+z&lt;/code&gt; até funcionar de novo.&lt;/p&gt;
 expansão deve ser lenta e gradual, possivelmente infinita. Quando a data de entrega se aproxima, de tão pequeno e condensado
 que o projeto se encontra, dá-se o &lt;em&gt;Big Bang&lt;/em&gt;, a grande explosão, numa corrida contra-relógio para se evitar o &lt;em&gt;Big Crush&lt;/em&gt;.&lt;/p&gt;
 
-    &lt;p&gt;&lt;a href=&quot;http://nextcommit.github.io/blog/os-5-mandamentos-dos-projetos-academicos/&quot;&gt;Os 5 Mandamentos Dos Projetos Académicos&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;http://nextcommit.github.io&quot;&gt;Next Commit&lt;/a&gt; on  9 janeiro 2016.&lt;/p&gt;
+    &lt;p&gt;&lt;a href=&quot;http://localhost:4000/blog/os-5-mandamentos-dos-projetos-academicos/&quot;&gt;Os 5 Mandamentos Dos Projetos Académicos&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;http://localhost:4000&quot;&gt;Next Commit&lt;/a&gt; on  9 janeiro 2016.&lt;/p&gt;
 
   </content>
 </entry>
 
 
-  
-
 <entry>
   <title type="html"><![CDATA[Pensar Grande, Construir Pequeno]]></title>
-  <link rel="alternate" type="text/html" href="http://nextcommit.github.io/blog/pensar-grande-construir-pequeno/" />
-  <id>http://nextcommit.github.io/blog/pensar-grande-construir-pequeno</id>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/blog/pensar-grande-construir-pequeno/" />
+  <id>http://localhost:4000/blog/pensar-grande-construir-pequeno</id>
   <published>2015-12-28 16:50:21 +0000</published>
   <updated>2015-12-28 16:50:21 +0000</updated>
   <author>
     <name>Miguel Cunha</name>
-    <uri>http://nextcommit.github.io</uri>
+    <uri>http://localhost:4000</uri>
     <email>miguelfcunha@gmail.com</email>
   </author>
   <content type="html">
@@ -326,23 +320,21 @@ inevitavelmente, a meio. Mas também é importante não ter datas tão restritiv
 a máxima “&lt;em&gt;done when it’s done&lt;/em&gt;”.&lt;/p&gt;
 
 
-    &lt;p&gt;&lt;a href=&quot;http://nextcommit.github.io/blog/pensar-grande-construir-pequeno/&quot;&gt;Pensar Grande, Construir Pequeno&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;http://nextcommit.github.io&quot;&gt;Next Commit&lt;/a&gt; on 28 dezembro 2015.&lt;/p&gt;
+    &lt;p&gt;&lt;a href=&quot;http://localhost:4000/blog/pensar-grande-construir-pequeno/&quot;&gt;Pensar Grande, Construir Pequeno&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;http://localhost:4000&quot;&gt;Next Commit&lt;/a&gt; on 28 dezembro 2015.&lt;/p&gt;
 
   </content>
 </entry>
 
 
-  
-
 <entry>
   <title type="html"><![CDATA[Olá Mundo]]></title>
-  <link rel="alternate" type="text/html" href="http://nextcommit.github.io/blog/ola-mundo/" />
-  <id>http://nextcommit.github.io/blog/ola-mundo</id>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/blog/ola-mundo/" />
+  <id>http://localhost:4000/blog/ola-mundo</id>
   <published>2015-12-05 20:53:44 +0000</published>
   <updated>2015-12-05 20:53:44 +0000</updated>
   <author>
     <name>Miguel Cunha</name>
-    <uri>http://nextcommit.github.io</uri>
+    <uri>http://localhost:4000</uri>
     <email>miguelfcunha@gmail.com</email>
   </author>
   <content type="html">
@@ -366,7 +358,83 @@ Este panorama parece contra-intuitivo, principalmente quando a &lt;a href=&quot;
 &lt;p&gt;Vêmo-nos no próximo &lt;em&gt;commit&lt;/em&gt;!&lt;/p&gt;
 
 
-    &lt;p&gt;&lt;a href=&quot;http://nextcommit.github.io/blog/ola-mundo/&quot;&gt;Olá Mundo&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;http://nextcommit.github.io&quot;&gt;Next Commit&lt;/a&gt; on  5 dezembro 2015.&lt;/p&gt;
+    &lt;p&gt;&lt;a href=&quot;http://localhost:4000/blog/ola-mundo/&quot;&gt;Olá Mundo&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;http://localhost:4000&quot;&gt;Next Commit&lt;/a&gt; on  5 dezembro 2015.&lt;/p&gt;
+
+  </content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[git checkout -b candal]]></title>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/blog/git-checkout-gcandal/" />
+  <id>http://localhost:4000/blog/git-checkout-gcandal</id>
+  <published>2015-02-06 00:00:00 +0000</published>
+  <updated>2015-02-06 00:00:00 +0000</updated>
+  <author>
+    <name>Gabriel Candal</name>
+    <uri>http://localhost:4000</uri>
+    <email>gabrielcandal@gmail.com</email>
+  </author>
+  <content type="html">
+    &lt;p&gt;Para o meu primeiro post queria, antes de continuar, pedir que tivesses alguma paciência e tentasses ler o máximo possível sem fechar a tab
+ou os olhos. Mesmo que no fim fiques a pensar “Ok, mais valia ter tido ler um tutorial de GraphQL, não aprendi nada” não desistas do
+&lt;em&gt;Next Commit&lt;/em&gt;, prometo que vamos melhorar…&lt;/p&gt;
+
+&lt;p&gt;Passando ao que interessa, neste post vou falar um bocado da &lt;strong&gt;importância de automatizar tarefas&lt;/strong&gt; (pessoal de design/gestão/marketing/…, isto
+também é para vocês!), que serve de introdução a uma série de posts mais técnicos sobre como temos tirado proveito disso na &lt;a href=&quot;http://ripe.tech&quot;&gt;Ripe&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Porque é que automatizamos tarefas? A resposta parece ser óbvia: para poupar tempo. Mas então, porque é que não automatizamos &lt;strong&gt;todos&lt;/strong&gt;
+os processos manuais? Toda a gente gosta de ter mais tempo livre. Também parece mais ou menos óbvio: o esforço pode não compensar.&lt;/p&gt;
+
+&lt;p&gt;A verdade é que, muitas vezes, automatizar acaba por demorar mais tempo do que aquilo que tínhamos previsto.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://imgs.xkcd.com/comics/automation.png&quot; alt=&quot;automation xkcd&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Aquilo de que te queria convencer é que… isto é mentira! 😄&lt;/p&gt;
+
+&lt;p&gt;Ou melhor, não é toda a verdade. A automação deve ser vista como um investimento e por isso normalmente quando eu penso em gastar 1 hora
+a escrever um programa para me poupar de um trabalho manual qualquer é porque repito esse trabalho vezes suficientes para, antes de chegar
+à reforma, recuperar essa hora perdida. Esta visão é simplista e deixa de lado uma parte importante: a energia mental que poupamos em
+não estar sempre a fazer a mesma tarefa rotineira.&lt;/p&gt;
+
+&lt;p&gt;Podes pensar nisto como uma espécia de &lt;a href=&quot;http://cdn.igeeksblog.com/wp-content/uploads/Vinsic-Tulip-iPhone-Power-Bank.jpg&quot;&gt;powerbank&lt;/a&gt;:
+mesmo que não tenha um rendimento de 100% (ou seja, nunca consegues tirar de lá tanta energia como a que meteste), podes guardar
+energia quando tens oportunidade para isso para quando te fizer falta está disponível. O princípio para a automação é o mesmo,
+podes nunca recuperar aquela hora que perdeste a transformar uma tarefa de 5 minutos numa de 1 clique, mas se calhar evitaste
+ter que interromper um trabalho qualquer que estavas a fazer e que exigia concentração por causa desses 5 minutos e aí o ganho
+de produtividade compensa a hora que investiste.&lt;/p&gt;
+
+&lt;p&gt;Isto também aumenta o tempo de resposta das empresas. Se estás num período mais calmo e te sentes com energia e motivação para dedicar
+a este tipo de exercício, ou simplesmente queres procrastinar sem peso na consciência, podes aproveitar para guardar energia no powerbank
+para, durante uma altura crítica, não teres que fazer um esforço mental para te desviar da tarefa importante em que estavas a trabalhar,
+o que ia prejudicar a tua produtividade.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Concretamente&lt;/strong&gt;, que automações são essas? Pode ser usar um serviço externo como o &lt;a href=&quot;http://mailchimp.com/&quot;&gt;mailchimp&lt;/a&gt; para campanhas
+de marketing digital ou o &lt;a href=&quot;https://ifttt.com&quot;&gt;IFTTT&lt;/a&gt; para coisas mais pessoais
+(&lt;a href=&quot;https://ifttt.com/recipes/99068-save-new-email-attachments-to-google-drive&quot;&gt;automaticamente gravar todos os anexos de email que recebes na Drive&lt;/a&gt;
+ou &lt;a href=&quot;https://ifttt.com/recipes/191854-share-a-message-and-your-location-with-a-group&quot;&gt;com 1 clique enviar a tua localização para um grupo de amigos&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;No outro dia a minha namorada, que está a escrever uma dissertação em ortodontia, tinha que saber quantos anos, meses e dias
+se tinham passado entre a data de nascimento de um paciente e a última radiografia. Estando eu em informática, sempre pensei que ela estivesse a fazer
+isso com algumas fórmulas de Excel, mas não fiquei chocado quando vi que estava a fazer tudo à mão, já que ela nunca teve grande formação nesse assunto
+e a base de dados tinha as datas num formato esquisito. O que me chocou foi quando descobri que a base de dados tinha &lt;strong&gt;centenas&lt;/strong&gt; de entradas.
+Uma coisa que à mão ia demorar HORAS, passado 15 minutos e algumas pesquisas no Google ficou totalmente automática (obrigado Métodos Numéricos 💙).&lt;/p&gt;
+
+&lt;p&gt;No caso de alguém de saúde é natural que isto aconteça, já que não têm um &lt;em&gt;mindset&lt;/em&gt; de constante melhoria de processo, muito menos de programação, por
+isso é compreensível. O problema é que isto também acontece em muitas áreas de engenharia, mesmo em informática.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://s-media-cache-ak0.pinimg.com/564x/71/27/68/712768b8edde95f6c128aa9a3f7d8865.jpg&quot; alt=&quot;common sense is not so common&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Amigo, é só estares atento! Se durante o teu dia há alguma coisa que achas que podia ser feita por um macaco com treino suficiente (i.e.: é repetitivo)
+então muito provavelmente podes automatizar isso! É só estares atento. Se achas que isso acontece, mas não sabes exatamente como resolver, podes
+enviar e-mail ao Miguel Cunha (é só veres os contactos num dos posts dele) e ele terá todo o gosto em ajudar-te &lt;em&gt;pro bono&lt;/em&gt; 😄.&lt;/p&gt;
+
+&lt;p&gt;Termino com uma resolução de ano novo atrasada: escrever 1 post de 15 em 15 dias. É essa a meta e por cada dia que me atrase como uma bolacha maria sem
+usar os dentes. O próximo post será sobre como temos adotado filosofia na &lt;a href=&quot;ripe&quot;&gt;Ripe&lt;/a&gt; sob a forma de DevOps: porque o fizemos, o que fizemos
+e como fizemos.&lt;/p&gt;
+
+
+    &lt;p&gt;&lt;a href=&quot;http://localhost:4000/blog/git-checkout-gcandal/&quot;&gt;git checkout -b candal&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;http://localhost:4000&quot;&gt;Next Commit&lt;/a&gt; on  6 fevereiro 2015.&lt;/p&gt;
 
   </content>
 </entry>
