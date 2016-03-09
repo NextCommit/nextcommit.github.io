@@ -2,26 +2,26 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
 <title type="text">Next Commit</title>
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
-<link rel="self" type="application/atom+xml" href="http://nextcommit.github.io/feed.xml" />
-<link rel="alternate" type="text/html" href="http://nextcommit.github.io" />
-<updated>2016-03-06T15:57:17+00:00</updated>
-<id>http://nextcommit.github.io/</id>
+<link rel="self" type="application/atom+xml" href="https://nextcommit.github.io/feed.xml" />
+<link rel="alternate" type="text/html" href="https://nextcommit.github.io" />
+<updated>2016-03-09T20:44:39+00:00</updated>
+<id>https://nextcommit.github.io/</id>
 <author>
   <name>Next Commit</name>
-  <uri>http://nextcommit.github.io/</uri>
+  <uri>https://nextcommit.github.io/</uri>
   <email>miguelfcunha@gmail.com</email>
 </author>
 
 
 <entry>
   <title type="html"><![CDATA[git checkout -b gcandal]]></title>
-  <link rel="alternate" type="text/html" href="http://nextcommit.github.io/blog/git-checkout-gcandal/" />
-  <id>http://nextcommit.github.io/blog/git-checkout-gcandal</id>
+  <link rel="alternate" type="text/html" href="https://nextcommit.github.io/blog/git-checkout-gcandal/" />
+  <id>https://nextcommit.github.io/blog/git-checkout-gcandal</id>
   <published>2016-03-06 00:00:00 +0000</published>
   <updated>2016-03-06 00:00:00 +0000</updated>
   <author>
     <name>Gabriel Candal</name>
-    <uri>http://nextcommit.github.io</uri>
+    <uri>https://nextcommit.github.io</uri>
     <email>gabrielcandal@gmail.com</email>
   </author>
   <content type="html">
@@ -83,7 +83,7 @@ usar os dentes. O próximo post será sobre como temos adotado filosofia na &lt;
 e como fizemos.&lt;/p&gt;
 
 
-    &lt;p&gt;&lt;a href=&quot;http://nextcommit.github.io/blog/git-checkout-gcandal/&quot;&gt;git checkout -b gcandal&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;http://nextcommit.github.io&quot;&gt;Next Commit&lt;/a&gt; on  6 março 2016.&lt;/p&gt;
+    &lt;p&gt;&lt;a href=&quot;https://nextcommit.github.io/blog/git-checkout-gcandal/&quot;&gt;git checkout -b gcandal&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;https://nextcommit.github.io&quot;&gt;Next Commit&lt;/a&gt; on  6 março 2016.&lt;/p&gt;
 
   </content>
 </entry>
@@ -91,13 +91,13 @@ e como fizemos.&lt;/p&gt;
 
 <entry>
   <title type="html"><![CDATA[Diz-me Como Geres e Dir-te-ei Quem És]]></title>
-  <link rel="alternate" type="text/html" href="http://nextcommit.github.io/blog/diz-me-como-geres-e-dir-te-ei-quem-es/" />
-  <id>http://nextcommit.github.io/blog/diz-me-como-geres-e-dir-te-ei-quem-es</id>
+  <link rel="alternate" type="text/html" href="https://nextcommit.github.io/blog/diz-me-como-geres-e-dir-te-ei-quem-es/" />
+  <id>https://nextcommit.github.io/blog/diz-me-como-geres-e-dir-te-ei-quem-es</id>
   <published>2016-02-27 16:00:48 +0000</published>
   <updated>2016-02-27 16:00:48 +0000</updated>
   <author>
     <name>Miguel Cunha</name>
-    <uri>http://nextcommit.github.io</uri>
+    <uri>https://nextcommit.github.io</uri>
     <email>miguelfcunha@gmail.com</email>
   </author>
   <content type="html">
@@ -156,7 +156,7 @@ bem o teu trabalho.&lt;/p&gt;
 porra do documento!&lt;/em&gt;&lt;/p&gt;
 
 
-    &lt;p&gt;&lt;a href=&quot;http://nextcommit.github.io/blog/diz-me-como-geres-e-dir-te-ei-quem-es/&quot;&gt;Diz-me Como Geres e Dir-te-ei Quem És&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;http://nextcommit.github.io&quot;&gt;Next Commit&lt;/a&gt; on 27 fevereiro 2016.&lt;/p&gt;
+    &lt;p&gt;&lt;a href=&quot;https://nextcommit.github.io/blog/diz-me-como-geres-e-dir-te-ei-quem-es/&quot;&gt;Diz-me Como Geres e Dir-te-ei Quem És&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;https://nextcommit.github.io&quot;&gt;Next Commit&lt;/a&gt; on 27 fevereiro 2016.&lt;/p&gt;
 
   </content>
 </entry>
@@ -164,13 +164,13 @@ porra do documento!&lt;/em&gt;&lt;/p&gt;
 
 <entry>
   <title type="html"><![CDATA[Os 5 Mandamentos Dos Projetos Académicos]]></title>
-  <link rel="alternate" type="text/html" href="http://nextcommit.github.io/blog/os-5-mandamentos-dos-projetos-academicos/" />
-  <id>http://nextcommit.github.io/blog/os-5-mandamentos-dos-projetos-academicos</id>
+  <link rel="alternate" type="text/html" href="https://nextcommit.github.io/blog/os-5-mandamentos-dos-projetos-academicos/" />
+  <id>https://nextcommit.github.io/blog/os-5-mandamentos-dos-projetos-academicos</id>
   <published>2016-01-09 00:09:43 +0000</published>
   <updated>2016-01-09 00:09:43 +0000</updated>
   <author>
     <name>Miguel Cunha</name>
-    <uri>http://nextcommit.github.io</uri>
+    <uri>https://nextcommit.github.io</uri>
     <email>miguelfcunha@gmail.com</email>
   </author>
   <content type="html">
@@ -252,7 +252,7 @@ Mais vale dar &lt;code&gt;ctrl+z&lt;/code&gt; até funcionar de novo.&lt;/p&gt;
 expansão deve ser lenta e gradual, possivelmente infinita. Quando a data de entrega se aproxima, de tão pequeno e condensado
 que o projeto se encontra, dá-se o &lt;em&gt;Big Bang&lt;/em&gt;, a grande explosão, numa corrida contra-relógio para se evitar o &lt;em&gt;Big Crush&lt;/em&gt;.&lt;/p&gt;
 
-    &lt;p&gt;&lt;a href=&quot;http://nextcommit.github.io/blog/os-5-mandamentos-dos-projetos-academicos/&quot;&gt;Os 5 Mandamentos Dos Projetos Académicos&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;http://nextcommit.github.io&quot;&gt;Next Commit&lt;/a&gt; on  9 janeiro 2016.&lt;/p&gt;
+    &lt;p&gt;&lt;a href=&quot;https://nextcommit.github.io/blog/os-5-mandamentos-dos-projetos-academicos/&quot;&gt;Os 5 Mandamentos Dos Projetos Académicos&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;https://nextcommit.github.io&quot;&gt;Next Commit&lt;/a&gt; on  9 janeiro 2016.&lt;/p&gt;
 
   </content>
 </entry>
@@ -260,13 +260,13 @@ que o projeto se encontra, dá-se o &lt;em&gt;Big Bang&lt;/em&gt;, a grande expl
 
 <entry>
   <title type="html"><![CDATA[Pensar Grande, Construir Pequeno]]></title>
-  <link rel="alternate" type="text/html" href="http://nextcommit.github.io/blog/pensar-grande-construir-pequeno/" />
-  <id>http://nextcommit.github.io/blog/pensar-grande-construir-pequeno</id>
+  <link rel="alternate" type="text/html" href="https://nextcommit.github.io/blog/pensar-grande-construir-pequeno/" />
+  <id>https://nextcommit.github.io/blog/pensar-grande-construir-pequeno</id>
   <published>2015-12-28 16:50:21 +0000</published>
   <updated>2015-12-28 16:50:21 +0000</updated>
   <author>
     <name>Miguel Cunha</name>
-    <uri>http://nextcommit.github.io</uri>
+    <uri>https://nextcommit.github.io</uri>
     <email>miguelfcunha@gmail.com</email>
   </author>
   <content type="html">
@@ -396,7 +396,7 @@ inevitavelmente, a meio. Mas também é importante não ter datas tão restritiv
 a máxima “&lt;em&gt;done when it’s done&lt;/em&gt;”.&lt;/p&gt;
 
 
-    &lt;p&gt;&lt;a href=&quot;http://nextcommit.github.io/blog/pensar-grande-construir-pequeno/&quot;&gt;Pensar Grande, Construir Pequeno&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;http://nextcommit.github.io&quot;&gt;Next Commit&lt;/a&gt; on 28 dezembro 2015.&lt;/p&gt;
+    &lt;p&gt;&lt;a href=&quot;https://nextcommit.github.io/blog/pensar-grande-construir-pequeno/&quot;&gt;Pensar Grande, Construir Pequeno&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;https://nextcommit.github.io&quot;&gt;Next Commit&lt;/a&gt; on 28 dezembro 2015.&lt;/p&gt;
 
   </content>
 </entry>
@@ -404,13 +404,13 @@ a máxima “&lt;em&gt;done when it’s done&lt;/em&gt;”.&lt;/p&gt;
 
 <entry>
   <title type="html"><![CDATA[Olá Mundo]]></title>
-  <link rel="alternate" type="text/html" href="http://nextcommit.github.io/blog/ola-mundo/" />
-  <id>http://nextcommit.github.io/blog/ola-mundo</id>
+  <link rel="alternate" type="text/html" href="https://nextcommit.github.io/blog/ola-mundo/" />
+  <id>https://nextcommit.github.io/blog/ola-mundo</id>
   <published>2015-12-05 20:53:44 +0000</published>
   <updated>2015-12-05 20:53:44 +0000</updated>
   <author>
     <name>Miguel Cunha</name>
-    <uri>http://nextcommit.github.io</uri>
+    <uri>https://nextcommit.github.io</uri>
     <email>miguelfcunha@gmail.com</email>
   </author>
   <content type="html">
@@ -434,7 +434,7 @@ Este panorama parece contra-intuitivo, principalmente quando a &lt;a href=&quot;
 &lt;p&gt;Vêmo-nos no próximo &lt;em&gt;commit&lt;/em&gt;!&lt;/p&gt;
 
 
-    &lt;p&gt;&lt;a href=&quot;http://nextcommit.github.io/blog/ola-mundo/&quot;&gt;Olá Mundo&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;http://nextcommit.github.io&quot;&gt;Next Commit&lt;/a&gt; on  5 dezembro 2015.&lt;/p&gt;
+    &lt;p&gt;&lt;a href=&quot;https://nextcommit.github.io/blog/ola-mundo/&quot;&gt;Olá Mundo&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;https://nextcommit.github.io&quot;&gt;Next Commit&lt;/a&gt; on  5 dezembro 2015.&lt;/p&gt;
 
   </content>
 </entry>
