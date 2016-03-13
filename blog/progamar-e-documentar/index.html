@@ -1,0 +1,320 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Programar & Documentar &#8211; Next Commit</title>
+<meta name="description" content="Boas práticas de programação são, também, boas práticas de documentação">
+<meta name="keywords" content="documentação, c++, c++11">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Programar & Documentar">
+<meta name="twitter:description" content="Boas práticas de programação são, também, boas práticas de documentação">
+<meta name="twitter:site" content="@promgamer">
+<meta name="twitter:creator" content="@promgamer">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://nextcommit.github.io/images/documentacao.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="pt-PT">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Programar & Documentar">
+<meta property="og:description" content="Boas práticas de programação são, também, boas práticas de documentação">
+<meta property="og:url" content="https://nextcommit.github.io/blog/progamar-e-documentar/">
+<meta property="og:site_name" content="Next Commit">
+
+
+
+
+
+<link rel="canonical" href="https://nextcommit.github.io/blog/progamar-e-documentar/">
+<link href="https://nextcommit.github.io/feed.xml" type="application/atom+xml" rel="alternate" title="Next Commit Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="https://nextcommit.github.io/assets/css/main.css">
+<!-- Webfonts -->
+<script src="https://use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+  <script src="https://nextcommit.github.io/assets/js/vendor/html5shiv.min.js"></script>
+  <script src="https://nextcommit.github.io/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="https://nextcommit.github.io/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+
+<!-- MathJax -->
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+<!-- Icons -->
+<link rel="apple-touch-icon" sizes="57x57" href="https://nextcommit.github.io/images/icons/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="https://nextcommit.github.io/images/icons/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="https://nextcommit.github.io/images/icons/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="https://nextcommit.github.io/images/icons/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="https://nextcommit.github.io/images/icons/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="https://nextcommit.github.io/images/icons/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="https://nextcommit.github.io/images/icons/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="https://nextcommit.github.io/images/icons/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://nextcommit.github.io/images/icons/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="https://nextcommit.github.io/images/icons/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://nextcommit.github.io/images/icons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="https://nextcommit.github.io/images/icons/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://nextcommit.github.io/images/icons/favicon-16x16.png">
+
+</head>
+
+<body id="post">
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+      
+		    
+		    <li><a href="https://nextcommit.github.io/" >Início</a></li>
+		  
+		    
+		    <li><a href="https://nextcommit.github.io/indice" >Índice</a></li>
+		  
+		    
+		    <li><a href="https://nextcommit.github.io/arquivo" >Arquivo</a></li>
+		  
+		    
+		    <li><a href="https://nextcommit.github.io/sobre" >Sobre</a></li>
+		  
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<header class="masthead">
+	
+		<div class="wrap">
+			<a href="https://nextcommit.github.io/" class="site-logo" rel="home" title="Next Commit"><img src="https://nextcommit.github.io/images/logo.png" width="200" height="200" alt="Next Commit logo" class="animated fadeInDown"></a>
+		</div>
+	
+</header><!-- /.masthead -->
+
+
+<div class="js-menu-screen menu-screen"></div>
+
+
+<div id="main" role="main">
+  <article class="hentry">
+    <div class="feature-img"><img src="https://nextcommit.github.io/images/documentacao.png" class="entry-feature-image" alt="Programar & Documentar" ></div>
+    <div class="entry-wrapper">
+      <header class="entry-header">
+        <ul class="entry-tags">
+          <i class="fa fa-tags"></i><li><a href="https://nextcommit.github.io/indice/#documentação" title="Assunto documentação">documentação</a></li><li><a href="https://nextcommit.github.io/indice/#c++" title="Assunto c++">c++</a></li><li><a href="https://nextcommit.github.io/indice/#c++11" title="Assunto c++11">c++11</a></li>
+        </ul>
+        
+          <h1 class="entry-title post-title">Programar & Documentar </h1>
+        
+      </header>
+      <footer class="entry-meta">
+        
+        
+          <img src="https://nextcommit.github.io/images/miguel.jpg" class="bio-photo" alt="Miguel Cunha bio photo"></a>
+        
+        <span class="author vcard">por <a href="mailto:miguelfcunha@gmail.com"><span class="fn">Miguel Cunha</span></a></span>
+        <span>
+        <a href="https://twitter.com/promgamer" title="Next Commit on Twitter" target="_blank"><i class="fa fa-twitter-square fa-2x"></i></a>
+        <a href="https://linkedin.com/in/miguelpoeira" title="Miguel Cunha on LinkedIn" target="_blank"><i class="fa fa-linkedin-square fa-2x"></i></a>
+        <a href="http://stackoverflow.com/users/2267779/miguel-cunha" title="Miguel Cunha on StackExchange" target="_blank"><i class="fa fa-stack-exchange fa-2x"></i></a>
+        <a href="https://github.com/promgamer" title="Miguel Cunha on Github" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>
+        </span>
+        <span class="entry-date date published"><time datetime="2016-03-13"><i class="fa fa-calendar-o"></i> 13 março 2016</time></span>
+        
+        <span class="entry-comments"><i class="fa fa-comment-o"></i> <a href="#disqus_thread">Comentar</a></span>
+        
+      </footer>
+      <div class="entry-content">
+        <p>No âmbito da minha dissertação tenho trabalhado com uma biblioteca <em>open source</em> que, infelizmente, está mal documentada.
+E eu sou grande apologista de projetos <em>open source</em>, mas deixemos isso para um outro <em>commit</em>.</p>
+
+<p>Tal como as metodologias <em>agile</em> nos ensinaram, existe sempre um <em>trade-off</em> entre <em>working software</em> e
+<em>documented software</em>. Ainda assim, há cuidados básicos que devemos ter para deixar o código tão legível e claro
+quanto possível. Neste <em>commit</em> foquemo-nos nas assinaturas das funções.</p>
+
+<p>Imaginemos a função <code>pause</code>, que coloca a <em>thread</em> onde é executada em pausa. Se essa função estiver definida como</p>
+
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="kt">void</span> <span class="n">pause</span><span class="p">(</span><span class="kt">int</span> <span class="n">timeToPause</span><span class="p">);</span></code></pre></figure>
+
+<p>existirão, naturalmente, dúvidas sobre qual a unidade de tempo a ser passada como argumento. Segundos? Milisegundos?
+Minutos?</p>
+
+<p>Apesar de já ser mais aceitável termos algo como <code>void pause(int timeToPauseInSeconds);</code>, porque não declará-la como</p>
+
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="kt">void</span> <span class="n">pause</span><span class="p">(</span><span class="n">Time</span> <span class="n">timeToPause</span><span class="p">);</span></code></pre></figure>
+
+<p>ou com os tipos <code>std::chrono::duration</code><sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup> introduzidos no C++11, que pretendem terminar com esta ambiguidade:</p>
+
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="kt">void</span> <span class="n">pause</span><span class="p">(</span><span class="n">milliseconds</span> <span class="n">timeToPause</span><span class="p">);</span></code></pre></figure>
+
+<p>Agora imaginemos que queremos aumetar a granularidade das unidades, de forma a conseguir pausar ao nível do nanosegundo.
+Neste caso, passaríamos a ter</p>
+
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="kt">void</span> <span class="n">pause</span><span class="p">(</span><span class="n">nanoseconds</span> <span class="n">timeToPause</span><span class="p">);</span></code></pre></figure>
+
+<p>Agora imaginem que precisamos de outra função para parar ao nível do microsegundo… Ok, acho que já entenderam onde quero
+chegar. Obviamente podemos escrever esta função de uma forma mais genérica</p>
+
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span>
+<span class="kt">void</span> <span class="n">pause</span><span class="p">(</span><span class="k">const</span> <span class="n">T</span><span class="o">&amp;</span> <span class="n">timeToPause</span><span class="p">)</span>
+<span class="p">{</span>
+   <span class="n">std</span><span class="o">::</span><span class="n">this_thread</span><span class="o">::</span><span class="n">sleep</span><span class="p">(</span><span class="n">timeToPause</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="n">action</span><span class="p">()</span>
+<span class="p">{</span>
+   <span class="c1">// ... outras ações...
+</span>   <span class="n">pause</span><span class="p">(</span><span class="mi">30</span><span class="p">);</span> <span class="c1">// mau: não sabemos as unidades
+</span>   <span class="n">pause</span><span class="p">(</span><span class="n">milliseconds</span><span class="p">(</span><span class="mi">30</span><span class="p">));</span> <span class="c1">// bom
+</span>   <span class="n">pause</span><span class="p">(</span><span class="mi">30</span><span class="n">ms</span><span class="p">);</span> <span class="c1">// bom: possível a partir do C++14
+</span><span class="p">}</span></code></pre></figure>
+
+<p>que, já agora, utiliza um template da biblioteca de suporte a <em><a href="http://en.cppreference.com/w/cpp/thread">threads</a></em>
+também introduzida no C++11. Esta combinação permite interoperabilidade com o tipo de granularidade de tempo que deserjarmos.</p>
+
+<p>Reparem como introduzi outra alteração no código que ainda não discutimos. Decidi passar o valor por referência e, como
+tal, utilizei a <em>keyword</em> <code>const</code> como garantia de que o valor não irá ser alterado. Isto não só me dá segurança de que
+irei obter um erro em <em>compile-time</em> se a regra for violada, como também serve de boa documentação. De que forma? Sigam
+o raciocínio com um novo exemplo.</p>
+
+<p>Imaginemos a função <code>countToTen</code>, que recebe um inteiro por referência e conta, a partir desse valor, até 10:</p>
+
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="kt">void</span> <span class="n">countToTen</span><span class="p">(</span><span class="kt">int</span> <span class="o">&amp;</span><span class="n">number</span><span class="p">);</span></code></pre></figure>
+
+<p>Sem vermos a documentação (se existir), ou o código, não temos garantia nenhuma de que o valor de <code>number</code> se mantém
+inalterado, como na implementação que se segue</p>
+
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="kt">void</span> <span class="nf">countToTen</span><span class="p">(</span><span class="kt">int</span> <span class="o">&amp;</span><span class="n">number</span><span class="p">)</span>
+<span class="p">{</span>
+   <span class="k">while</span><span class="p">(</span><span class="n">number</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">)</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="o">++</span><span class="n">number</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Assim como também podemos ter uma implementação que não muda o valor da variável</p>
+
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="kt">void</span> <span class="nf">countToTen</span><span class="p">(</span><span class="kt">int</span> <span class="o">&amp;</span><span class="n">number</span><span class="p">)</span>
+<span class="p">{</span>
+   <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">number</span><span class="p">;</span>
+   <span class="k">while</span><span class="p">(</span><span class="n">n</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">)</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="o">++</span><span class="n">n</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Independentemente da implementação, a simples inclusão da <em>keyword</em> <code>const</code> não só melhora a qualidade e robustez do
+código, como também dá garantias a futuros utilizadores da vossa função que o valor variável que passam como argumento
+não irá ser alterado. Assim, em operações que necessitem de receber um valor por referência, a
+<em>keyword</em> <code>const</code> é vossa amiga!</p>
+
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="kt">void</span> <span class="n">countToTen</span><span class="p">(</span><span class="k">const</span> <span class="kt">int</span> <span class="o">&amp;</span><span class="n">number</span><span class="p">);</span></code></pre></figure>
+
+<p>E sim, eu sei que a questão, neste caso, fica resolvida se passarmos por valor, mas imaginemos que o gasto computacional
+para copiar um inteiro é relevante o suficiente para passarmos apenas uma referência.</p>
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>http://en.cppreference.com/w/cpp/chrono <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+        
+          <div id="disqus_thread"></div><!-- /#disqus_thread -->
+          
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'nextcommit'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'https://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+        
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo" class="entry-wrapper">
+    
+
+<span>&copy; 2016 Next Commit.</span>
+<!-- <div class="social-icons">
+	<a href="https://twitter.com/promgamer" title="Next Commit on Twitter" target="_blank"><i class="fa fa-twitter-square fa-2x"></i></a>
+	
+	
+	
+	
+	
+	
+	<a href="https://github.com/promgamer" title="Next Commit on Github" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>
+	
+  
+	
+  <a href="https://nextcommit.github.io/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a>
+</div> --> <!-- /.social-icons -->
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script type="text/javascript">
+  var BASE_URL = 'https://nextcommit.github.io';
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="https://nextcommit.github.io/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="https://nextcommit.github.io/assets/js/scripts.min.js"></script>
+
+
+<!-- Asynchronous Google Analytics snippet -->
+<script>
+  var _gaq = _gaq || [];
+  var pluginUrl =
+ 'https://www.google-analytics.com/plugins/ga/inpage_linkid.js';
+  _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+  _gaq.push(['_setAccount', 'UA-71051399-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = 'https://stats.g.doubleclick.net/dc.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+</body>
+</html>
