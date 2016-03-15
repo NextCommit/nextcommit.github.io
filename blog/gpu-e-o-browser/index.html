@@ -1,0 +1,279 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>GPU e o Browser &#8211; Next Commit</title>
+<meta name="description" content="Render e aceleração por hardware">
+<meta name="keywords" content="desempenho, web, GPU, CSS, browser, front-end">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="GPU e o Browser">
+<meta name="twitter:description" content="Render e aceleração por hardware">
+<meta name="twitter:site" content="@promgamer">
+
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://nextcommit.github.io/images/logo.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="pt-PT">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GPU e o Browser">
+<meta property="og:description" content="Render e aceleração por hardware">
+<meta property="og:url" content="https://nextcommit.github.io/blog/gpu-e-o-browser/">
+<meta property="og:site_name" content="Next Commit">
+
+
+
+
+
+<link rel="canonical" href="https://nextcommit.github.io/blog/gpu-e-o-browser/">
+<link href="https://nextcommit.github.io/feed.xml" type="application/atom+xml" rel="alternate" title="Next Commit Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="https://nextcommit.github.io/assets/css/main.css">
+<!-- Webfonts -->
+<script src="https://use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+  <script src="https://nextcommit.github.io/assets/js/vendor/html5shiv.min.js"></script>
+  <script src="https://nextcommit.github.io/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="https://nextcommit.github.io/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+
+<!-- MathJax -->
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+<!-- Icons -->
+<link rel="apple-touch-icon" sizes="57x57" href="https://nextcommit.github.io/images/icons/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="https://nextcommit.github.io/images/icons/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="https://nextcommit.github.io/images/icons/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="https://nextcommit.github.io/images/icons/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="https://nextcommit.github.io/images/icons/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="https://nextcommit.github.io/images/icons/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="https://nextcommit.github.io/images/icons/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="https://nextcommit.github.io/images/icons/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://nextcommit.github.io/images/icons/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="https://nextcommit.github.io/images/icons/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://nextcommit.github.io/images/icons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="https://nextcommit.github.io/images/icons/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://nextcommit.github.io/images/icons/favicon-16x16.png">
+
+</head>
+
+<body id="post">
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+      
+		    
+		    <li><a href="https://nextcommit.github.io/" >Início</a></li>
+		  
+		    
+		    <li><a href="https://nextcommit.github.io/indice" >Índice</a></li>
+		  
+		    
+		    <li><a href="https://nextcommit.github.io/arquivo" >Arquivo</a></li>
+		  
+		    
+		    <li><a href="https://nextcommit.github.io/sobre" >Sobre</a></li>
+		  
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<header class="masthead">
+	<div class="wrap">
+
+      
+  		<a href="https://nextcommit.github.io/" class="site-logo" rel="home" title="Next Commit"><img src="https://nextcommit.github.io/images/logo.png" width="200" height="200" alt="Next Commit logo" class="animated fadeInDown"></a>
+      
+    <h1 class="site-title animated fadeIn"><a href="https://nextcommit.github.io/">Next Commit</a></h1>
+    <!--<h2 class="site-description animated fadeIn" itemprop="description">Descrição aqui</h2> -->
+	</div>
+</header><!-- /.masthead -->
+
+<div class="js-menu-screen menu-screen"></div>
+
+
+<div id="main" role="main">
+  <article class="hentry">
+    
+    <div class="entry-wrapper">
+      <header class="entry-header">
+        <ul class="entry-tags">
+          <i class="fa fa-tags"></i><li><a href="https://nextcommit.github.io/indice/#desempenho" title="Assunto desempenho">desempenho</a></li><li><a href="https://nextcommit.github.io/indice/#web" title="Assunto web">web</a></li><li><a href="https://nextcommit.github.io/indice/#GPU" title="Assunto GPU">GPU</a></li><li><a href="https://nextcommit.github.io/indice/#CSS" title="Assunto CSS">CSS</a></li><li><a href="https://nextcommit.github.io/indice/#browser" title="Assunto browser">browser</a></li><li><a href="https://nextcommit.github.io/indice/#front-end" title="Assunto front-end">front-end</a></li>
+        </ul>
+        
+          <h1 class="entry-title post-title">GPU e o Browser </h1>
+        
+      </header>
+      <footer class="entry-meta">
+        
+        
+          <img src="https://www.gravatar.com/avatar/af7c5974dd0600be354e14f045463a0e?s=128&d=identicon&r=PG" class="bio-photo" alt="Gabriel Candal bio photo"></a>
+        
+        <span class="author vcard">por <a href="mailto:gabrielcandal@gmail.com"><span class="fn">Gabriel Candal</span></a></span>
+        <span>
+        
+        <a href="https://linkedin.com/in/gcandal" title="Gabriel Candal on LinkedIn" target="_blank"><i class="fa fa-linkedin-square fa-2x"></i></a>
+        <a href="http://stackexchange.com/users/1282930/gcandal" title="Gabriel Candal on StackExchange" target="_blank"><i class="fa fa-stack-exchange fa-2x"></i></a>
+        <a href="https://github.com/gcandal" title="Gabriel Candal on Github" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>
+        </span>
+        <span class="entry-date date published"><time datetime="2016-03-15"><i class="fa fa-calendar-o"></i> 15 março 2016</time></span>
+        
+        <span class="entry-comments"><i class="fa fa-comment-o"></i> <a href="#disqus_thread">Comentar</a></span>
+        
+      </footer>
+      <div class="entry-content">
+        <p>Nós, developers, temos tendência a ficar obececados (e bem) com a performance do software que escrevemos. O problema é quando essa obcessão é mal direcionada e nos preocupamos mais com as ferramentas que usamos do que com tudo o resto.</p>
+
+<p>Um bom exemplo disto é o desenvolvimento front-end para a web. Quem é que nunca ouviu <em>“Hey vocês ainda não usam React? É muito mais rápido! Usa uma cena chamada DOM virtual que é muito mais rápido!”</em> seguido de <em>“Oh isso é old news, nós já estamos a migrar para Mercury, que nos benchmarks é 5x mais rápido que isso…“</em>?</p>
+
+<p>Estas histórias multiplicam-se por muitas áreas, não é exclusivo da web. Outro exemplo clássico é sacrificar a clareza do código em prol da performance:</p>
+
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="kt">int</span> <span class="n">element</span><span class="p">;</span>
+<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">index</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">index</span> <span class="o">&lt;</span> <span class="n">something</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">element</span> <span class="o">=</span> <span class="n">stuff</span><span class="p">[</span><span class="n">index</span><span class="p">];</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Em vez de:</p>
+
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">index</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">index</span> <span class="o">&lt;</span> <span class="n">something</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kt">int</span> <span class="n">element</span> <span class="o">=</span> <span class="n">stuff</span><span class="p">[</span><span class="n">index</span><span class="p">];</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Mesmo que o segundo caso seja mais conciso, menos propício a erros (a variável element está limitada no scope ao estritamente necessário) e tenha exatamente o mesmo desempenho na esmagadora maioria dos casos, porque os compiladores são desenvolvidos o suficiente para otimizar casos tão triviais.</p>
+
+<p>Podia continuar a dar exemplos, mas já chega de desabafar. O que queria mostrar hoje é uma técnica extremamente simples mas que pode ter um impacto enorme na performance de um cliente numa página web.</p>
+
+<p>Sem querer entrar em muito detalhe sobre o ciclo de render de um browser (ou seja, como reage a alterações no DOM, podem ler mais sobre isso <a href="https://developers.google.com/web/fundamentals/performance/rendering/#the-pixel-pipeline">aqui</a>), o importante é saber que os browsers constroem (recorrendo à DOM Tree e à CSS Tree) uma coisa chamada Render Tree, que contém Render Objects que por sua vez estão organizados em RenderLayers que são desenhados sobre Graphical Layers (<a href="https://www.chromium.org/developers/design-documents/gpu-accelerated-compositing-in-chrome">detalhes</a>).</p>
+
+<p><img src="https://lh5.googleusercontent.com/eLlgjXLQbW-c2JWxfK0VxXbmV2-D90ub4dXYMblpHdyVyM_6a12JdfQKiokPrTcB-2UOn284A3teHK4P0e9Xlmm5uSxA7utj6Pggf7T-J7uxwc8iBPopZ7vtcCRYGvtteQ" alt="Render Tree" /></p>
+
+<p>Confuso? Não é muito relevante, disto tudo só interessa retirar que podemos aumentar a performance evitando que uma porção grande da página tenha que ser re-desenhada (é esta a lógica da nova onde de frameworks front-end que usam o render engine do React ou o virtual-dom). O ideal, em termos de velocidade, era dar a cada Render Object o seu próprio Graphics/Composite Layer, mas isso não é feito por razões de poupança de VRAM (memória da placa gráfica).</p>
+
+<iframe width="100%" height="300" src="//jsfiddle.net/Ltn0a263/1/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<p>Podemos ver tudo isto a acontecer <a href="https://jsfiddle.net/Ltn0a263/1/"><strong>neste exemplo</strong></a>. Antes de usarem, tenham cuidado com o número de imagens que usam (podem modificar no Javascript), porque vos pode bloquear a tab. Para verem o que se está a passar devem também ligar o contador de FPS do brower e fazer com que mostre as várias layers (<a href="https://developer.chrome.com/devtools/docs/rendering-settings">como fazer isso</a>). Depois:</p>
+
+<ol>
+  <li>Carregar no ícone para começar a animação. Nada fluído, certo?</li>
+  <li>Descomentem o <code>transform</code> em <code>image</code> e carreguem em ‘Run’. Vêm que apareceu um quadrado à volta do ícone? Isso é um Graphical Layer novo. Notem que o uso da memória da GPU também disparou, isto é porque todas as texturas são carregadas para lá, em vez de ficarem na RAM para serem usadas pelo CPU. Experimentem carregar no ícone e vejam como está muito mais fluído, com FPSs muito superiores.</li>
+  <li>Voltem a comentar o que descomentaram, e desta vez descomentem as animações em <code>.image.animated</code>. Vêm que o novo layer só aparece quando carregam no ícone, enquanto com o método anterior estava sempre lá? A razão para isso é que, com transformações 2D, esse layer só é criado on-the-fly.</li>
+</ol>
+
+<p>Há outro tipo de operações que forçam a criaçam deste layer à parte:</p>
+
+<ul>
+  <li>Elementos <code>&lt;video&gt;</code> e <code>&lt;canvas&gt;</code></li>
+  <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/filter">Filtros CSS</a></li>
+  <li>Elementos que sobrepõe (via <code>z-index</code>) a algum que esteja num composite layer próprio</li>
+  <li>Transformações 3D</li>
+  <li><a href="https://www.chromium.org/developers/design-documents/gpu-accelerated-compositing-in-chrome">etc</a></li>
+</ul>
+
+<p>No fundo, é um trade-off entre velocidade e memória. Outro problema que pode surgir é com o <a href="http://keithclark.co.uk/articles/gpu-text-rendering-in-webkit/">aspeto do tipo de letra</a>, já que a GPU e o CPU não o fazem da mesma forma. Um truque engraçado para forçar a que um elemento seja renderizado na GPU é acrescentar-lhe, como fizemos no exemplo, algo como <code>transform: translateZ(0)</code>.</p>
+
+        
+          <div id="disqus_thread"></div><!-- /#disqus_thread -->
+          
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'nextcommit'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'https://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+        
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo" class="entry-wrapper">
+    
+
+<span>&copy; 2016 Next Commit.</span>
+<!-- <div class="social-icons">
+	<a href="https://twitter.com/promgamer" title="Next Commit on Twitter" target="_blank"><i class="fa fa-twitter-square fa-2x"></i></a>
+	
+	
+	
+	
+	
+	
+	<a href="https://github.com/promgamer" title="Next Commit on Github" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>
+	
+  
+	
+  <a href="https://nextcommit.github.io/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a>
+</div> --> <!-- /.social-icons -->
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script type="text/javascript">
+  var BASE_URL = 'https://nextcommit.github.io';
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="https://nextcommit.github.io/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="https://nextcommit.github.io/assets/js/scripts.min.js"></script>
+
+
+<!-- Asynchronous Google Analytics snippet -->
+<script>
+  var _gaq = _gaq || [];
+  var pluginUrl =
+ 'https://www.google-analytics.com/plugins/ga/inpage_linkid.js';
+  _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+  _gaq.push(['_setAccount', 'UA-71051399-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = 'https://stats.g.doubleclick.net/dc.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+</body>
+</html>

@@ -4,7 +4,7 @@
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="https://nextcommit.github.io/feed.xml" />
 <link rel="alternate" type="text/html" href="https://nextcommit.github.io" />
-<updated>2016-03-13T14:47:41+01:00</updated>
+<updated>2016-03-15T14:51:29+01:00</updated>
 <id>https://nextcommit.github.io/</id>
 <author>
   <name>Next Commit</name>
@@ -14,11 +14,78 @@
 
 
 <entry>
+  <title type="html"><![CDATA[GPU e o Browser]]></title>
+  <link rel="alternate" type="text/html" href="https://nextcommit.github.io/blog/gpu-e-o-browser/" />
+  <id>https://nextcommit.github.io/blog/gpu-e-o-browser</id>
+  <published>2016-03-15 00:00:00 +0100</published>
+  <updated>2016-03-15 00:00:00 +0100</updated>
+  <author>
+    <name>Gabriel Candal</name>
+    <uri>https://nextcommit.github.io</uri>
+    <email>gabrielcandal@gmail.com</email>
+  </author>
+  <content type="html">
+    &lt;p&gt;Nós, developers, temos tendência a ficar obececados (e bem) com a performance do software que escrevemos. O problema é quando essa obcessão é mal direcionada e nos preocupamos mais com as ferramentas que usamos do que com tudo o resto.&lt;/p&gt;
+
+&lt;p&gt;Um bom exemplo disto é o desenvolvimento front-end para a web. Quem é que nunca ouviu &lt;em&gt;“Hey vocês ainda não usam React? É muito mais rápido! Usa uma cena chamada DOM virtual que é muito mais rápido!”&lt;/em&gt; seguido de &lt;em&gt;“Oh isso é old news, nós já estamos a migrar para Mercury, que nos benchmarks é 5x mais rápido que isso…“&lt;/em&gt;?&lt;/p&gt;
+
+&lt;p&gt;Estas histórias multiplicam-se por muitas áreas, não é exclusivo da web. Outro exemplo clássico é sacrificar a clareza do código em prol da performance:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c&quot; data-lang=&quot;c&quot;&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;index&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;index&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;something&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;element&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stuff&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Em vez de:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c&quot; data-lang=&quot;c&quot;&gt;&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;index&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;index&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;something&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;element&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stuff&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Mesmo que o segundo caso seja mais conciso, menos propício a erros (a variável element está limitada no scope ao estritamente necessário) e tenha exatamente o mesmo desempenho na esmagadora maioria dos casos, porque os compiladores são desenvolvidos o suficiente para otimizar casos tão triviais.&lt;/p&gt;
+
+&lt;p&gt;Podia continuar a dar exemplos, mas já chega de desabafar. O que queria mostrar hoje é uma técnica extremamente simples mas que pode ter um impacto enorme na performance de um cliente numa página web.&lt;/p&gt;
+
+&lt;p&gt;Sem querer entrar em muito detalhe sobre o ciclo de render de um browser (ou seja, como reage a alterações no DOM, podem ler mais sobre isso &lt;a href=&quot;https://developers.google.com/web/fundamentals/performance/rendering/#the-pixel-pipeline&quot;&gt;aqui&lt;/a&gt;), o importante é saber que os browsers constroem (recorrendo à DOM Tree e à CSS Tree) uma coisa chamada Render Tree, que contém Render Objects que por sua vez estão organizados em RenderLayers que são desenhados sobre Graphical Layers (&lt;a href=&quot;https://www.chromium.org/developers/design-documents/gpu-accelerated-compositing-in-chrome&quot;&gt;detalhes&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://lh5.googleusercontent.com/eLlgjXLQbW-c2JWxfK0VxXbmV2-D90ub4dXYMblpHdyVyM_6a12JdfQKiokPrTcB-2UOn284A3teHK4P0e9Xlmm5uSxA7utj6Pggf7T-J7uxwc8iBPopZ7vtcCRYGvtteQ&quot; alt=&quot;Render Tree&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Confuso? Não é muito relevante, disto tudo só interessa retirar que podemos aumentar a performance evitando que uma porção grande da página tenha que ser re-desenhada (é esta a lógica da nova onde de frameworks front-end que usam o render engine do React ou o virtual-dom). O ideal, em termos de velocidade, era dar a cada Render Object o seu próprio Graphics/Composite Layer, mas isso não é feito por razões de poupança de VRAM (memória da placa gráfica).&lt;/p&gt;
+
+&lt;iframe width=&quot;100%&quot; height=&quot;300&quot; src=&quot;//jsfiddle.net/Ltn0a263/1/embedded/&quot; allowfullscreen=&quot;allowfullscreen&quot; frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;
+
+&lt;p&gt;Podemos ver tudo isto a acontecer &lt;a href=&quot;https://jsfiddle.net/Ltn0a263/1/&quot;&gt;&lt;strong&gt;neste exemplo&lt;/strong&gt;&lt;/a&gt;. Antes de usarem, tenham cuidado com o número de imagens que usam (podem modificar no Javascript), porque vos pode bloquear a tab. Para verem o que se está a passar devem também ligar o contador de FPS do brower e fazer com que mostre as várias layers (&lt;a href=&quot;https://developer.chrome.com/devtools/docs/rendering-settings&quot;&gt;como fazer isso&lt;/a&gt;). Depois:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Carregar no ícone para começar a animação. Nada fluído, certo?&lt;/li&gt;
+  &lt;li&gt;Descomentem o &lt;code&gt;transform&lt;/code&gt; em &lt;code&gt;image&lt;/code&gt; e carreguem em ‘Run’. Vêm que apareceu um quadrado à volta do ícone? Isso é um Graphical Layer novo. Notem que o uso da memória da GPU também disparou, isto é porque todas as texturas são carregadas para lá, em vez de ficarem na RAM para serem usadas pelo CPU. Experimentem carregar no ícone e vejam como está muito mais fluído, com FPSs muito superiores.&lt;/li&gt;
+  &lt;li&gt;Voltem a comentar o que descomentaram, e desta vez descomentem as animações em &lt;code&gt;.image.animated&lt;/code&gt;. Vêm que o novo layer só aparece quando carregam no ícone, enquanto com o método anterior estava sempre lá? A razão para isso é que, com transformações 2D, esse layer só é criado on-the-fly.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Há outro tipo de operações que forçam a criaçam deste layer à parte:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Elementos &lt;code&gt;&amp;lt;video&amp;gt;&lt;/code&gt; e &lt;code&gt;&amp;lt;canvas&amp;gt;&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/CSS/filter&quot;&gt;Filtros CSS&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Elementos que sobrepõe (via &lt;code&gt;z-index&lt;/code&gt;) a algum que esteja num composite layer próprio&lt;/li&gt;
+  &lt;li&gt;Transformações 3D&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.chromium.org/developers/design-documents/gpu-accelerated-compositing-in-chrome&quot;&gt;etc&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;No fundo, é um trade-off entre velocidade e memória. Outro problema que pode surgir é com o &lt;a href=&quot;http://keithclark.co.uk/articles/gpu-text-rendering-in-webkit/&quot;&gt;aspeto do tipo de letra&lt;/a&gt;, já que a GPU e o CPU não o fazem da mesma forma. Um truque engraçado para forçar a que um elemento seja renderizado na GPU é acrescentar-lhe, como fizemos no exemplo, algo como &lt;code&gt;transform: translateZ(0)&lt;/code&gt;.&lt;/p&gt;
+
+    &lt;p&gt;&lt;a href=&quot;https://nextcommit.github.io/blog/gpu-e-o-browser/&quot;&gt;GPU e o Browser&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;https://nextcommit.github.io&quot;&gt;Next Commit&lt;/a&gt; on 15 março 2016.&lt;/p&gt;
+
+  </content>
+</entry>
+
+
+<entry>
   <title type="html"><![CDATA[Programar & Documentar]]></title>
   <link rel="alternate" type="text/html" href="https://nextcommit.github.io/blog/progamar-e-documentar/" />
   <id>https://nextcommit.github.io/blog/progamar-e-documentar</id>
-  <published>2016-03-13 00:54:00 +0000</published>
-  <updated>2016-03-13 00:54:00 +0000</updated>
+  <published>2016-03-13 21:54:00 +0100</published>
+  <updated>2016-03-13 21:54:00 +0100</updated>
   <author>
     <name>Miguel Cunha</name>
     <uri>https://nextcommit.github.io</uri>
