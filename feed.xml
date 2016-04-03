@@ -4,7 +4,7 @@
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="https://nextcommit.github.io/feed.xml" />
 <link rel="alternate" type="text/html" href="https://nextcommit.github.io" />
-<updated>2016-03-15T14:51:29+01:00</updated>
+<updated>2016-04-03T02:16:38+01:00</updated>
 <id>https://nextcommit.github.io/</id>
 <author>
   <name>Next Commit</name>
@@ -262,7 +262,7 @@ para copiar um inteiro é relevante o suficiente para passarmos apenas uma refer
 
 &lt;p&gt;&lt;img src=&quot;https://www.doppnet.com/gfx/2013-11-09-automation-meme.jpg&quot; alt=&quot;automate all the things&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;Em termos de Software Engineering propriamente dito, este conceito está na origem do movimento de DevOps, que tenta aplicar esta coisas ao ciclo de desenvolvimento de software até chegar a um ponto de continuous deployment, em que cada entrada de código nova no repositório faz com que uma série de scripts de automação (testes, análise estática, deployment, …) sejam executados. Podem perguntar mais sobre isto ao &lt;a href=&quot;http://carlosmtx.github.io&quot;&gt;Carlos Teixeira&lt;/a&gt;, que está a fazer uma tese em “Towards DevOps Practices and Patterns from the Portuguese Startup Scene”.&lt;/p&gt;
+&lt;p&gt;Em termos de Software Engineering propriamente dito, este conceito está na origem do movimento de DevOps, que tenta aplicar esta coisas ao ciclo de desenvolvimento de software até chegar a um ponto de continuous deployment, em que cada entrada de código nova no repositório faz com que uma série de scripts de automação (testes, análise estática, deployment, …) sejam executados. Podem perguntar mais sobre isto ao &lt;a href=&quot;http://cmcmteixeira.github.io/&quot;&gt;Carlos Teixeira&lt;/a&gt;, que está a fazer uma tese em “Towards DevOps Practices and Patterns from the Portuguese Startup Scene”.&lt;/p&gt;
 
 &lt;div class=&quot;footnotes&quot;&gt;
   &lt;ol&gt;
@@ -422,7 +422,6 @@ bem o teu trabalho.&lt;/p&gt;
 
 &lt;p&gt;&lt;em&gt;P.S.: Se marcas uma reunião para discutirmos um documento, por favor, tira 30 minutos antes para realmente leres a
 porra do documento!&lt;/em&gt;&lt;/p&gt;
-
 
     &lt;p&gt;&lt;a href=&quot;https://nextcommit.github.io/blog/diz-me-como-geres-e-dir-te-ei-quem-es/&quot;&gt;Diz-me Como Geres e Dir-te-ei Quem És&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;https://nextcommit.github.io&quot;&gt;Next Commit&lt;/a&gt; on 27 fevereiro 2016.&lt;/p&gt;
 
