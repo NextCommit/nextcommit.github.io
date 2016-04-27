@@ -4,13 +4,69 @@
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="https://nextcommit.github.io/feed.xml" />
 <link rel="alternate" type="text/html" href="https://nextcommit.github.io" />
-<updated>2016-04-12T00:22:08+01:00</updated>
+<updated>2016-04-27T18:01:46+01:00</updated>
 <id>https://nextcommit.github.io/</id>
 <author>
   <name>Next Commit</name>
   <uri>https://nextcommit.github.io/</uri>
   <email>miguelfcunha@gmail.com</email>
 </author>
+
+
+<entry>
+  <title type="html"><![CDATA[Remover a Sombra]]></title>
+  <link rel="alternate" type="text/html" href="https://nextcommit.github.io/blog/remover-a-sombra/" />
+  <id>https://nextcommit.github.io/blog/remover-a-sombra</id>
+  <published>2016-04-27 00:00:08 +0100</published>
+  <updated>2016-04-27 00:00:08 +0100</updated>
+  <author>
+    <name>Miguel Cunha</name>
+    <uri>https://nextcommit.github.io</uri>
+    <email>miguelfcunha@gmail.com</email>
+  </author>
+  <content type="html">
+    &lt;blockquote&gt;
+  &lt;p&gt;Este é o primeiro post sobre padrões de scrum (sim, leram bem). O Gabriel ainda me tentou impedir, mas o
+commit já estava feito…&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Imaginemos uma equipa de &lt;em&gt;scrum&lt;/em&gt;. Essa equipa depende largamente do “João”. O “João” faz três vezes mais trabalho 
+que qualquer outro membro da equipa, é um membro respeitado e a gestão confia na sua experiência e &lt;em&gt;know-how&lt;/em&gt; para 
+cumprir os objetivos. O “João” é, resumindo, o herói da equipa.&lt;/p&gt;
+
+&lt;p&gt;Infelizmente, a equipa depende deste herói que, para cumprir os objetivos nos tempos estipulados, não tem tempo 
+(ou paciência) para servir de mentor aos outros membros, não os ajudando a evoluir e a melhorar. A equipa &lt;strong&gt;vive 
+na sombra do herói&lt;/strong&gt;. Isto significa que, na verdade, apesar da equipa estar a cumprir os objetivos, esta não está 
+a aproveitar o seu potencial, porque a sua dependência no herói não dá espaço aos outros membros para “crescerem”.&lt;/p&gt;
+
+&lt;p&gt;Assim, o &lt;em&gt;ScrumMaster&lt;/em&gt; deve &lt;strong&gt;remover o herói da equipa&lt;/strong&gt; para que o resto tenha a luz necessária para florescer.&lt;/p&gt;
+
+&lt;p&gt;Sim, exatamente. Pode parecer contra-intuitivo, mas o padrão &lt;a href=&quot;https://sites.google.com/a/scrumplop.org/published-patterns/product-organization-pattern-language/development-team/remove-the-shade&quot;&gt;&lt;em&gt;“Remove the Shade”&lt;/em&gt;&lt;/a&gt; 
+existe mesmo.&lt;/p&gt;
+
+&lt;p&gt;Obviamente esta não é uma decisão fácil, dado que:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Pode ser difícil convencer a gestão a remover o melhor elemento da equipa (“&lt;em&gt;em equipa que ganha, não se mexe&lt;/em&gt;”). Principalmente em alturas críticas.&lt;/li&gt;
+  &lt;li&gt;O herói pode-se sentir injustiçado por não ver o seu trabalho reconhecido.&lt;/li&gt;
+  &lt;li&gt;O herói pode ter a sensação que está a ser “despromovido”.&lt;/li&gt;
+  &lt;li&gt;As equipas de &lt;em&gt;scrum&lt;/em&gt; devem-se manter estáveis de forma a manter a &lt;a href=&quot;https://sites.google.com/a/scrumplop.org/published-patterns/product-organization-pattern-language/development-team/stable-teams&quot;&gt;privisibilidade do seu trabalho&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Uma falha de interpretação, ou falta de confiança, por parte do &lt;em&gt;ScrumMaster&lt;/em&gt; na decisão tomada (e a baixa produtividade num período inicial), 
+pode levar a que, facilmente, esta decisão seja revertida, voltando-se ao problema inicial.&lt;/p&gt;
+
+&lt;p&gt;Esta decisão deve ser consciente por parte do &lt;em&gt;ScrumMaster&lt;/em&gt;, dado que, durante um período inicial, a produtividade da equipa irá descer, enquanto 
+esta “aprende” a enfrentar a tempestade. Tudo isto significa que o &lt;em&gt;ScrumMaster&lt;/em&gt; deve ter os &lt;em&gt;soft-skills&lt;/em&gt; necessários para lidar com os vários conflitos que podem 
+emergir desta situação. Pode, talvez, ser a altura para intensificar a sua “veia” de &lt;a href=&quot;https://sites.google.com/a/scrumplop.org/published-patterns/product-organization-pattern-language/scrummaster/cheerleader&quot;&gt;&lt;em&gt;cheerleader&lt;/em&gt;&lt;/a&gt; de forma 
+a manter, quer o herói, quer a restante equipa, motivados. Resumindo: o &lt;em&gt;ScrumMaster&lt;/em&gt; deve ser o &lt;a href=&quot;https://sites.google.com/a/scrumplop.org/published-patterns/product-organization-pattern-language/scrummaster/catalyst&quot;&gt;catalizador&lt;/a&gt; 
+que permite à equipa superar esta nova fase.&lt;/p&gt;
+
+
+    &lt;p&gt;&lt;a href=&quot;https://nextcommit.github.io/blog/remover-a-sombra/&quot;&gt;Remover a Sombra&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;https://nextcommit.github.io&quot;&gt;Next Commit&lt;/a&gt; on 27 abril 2016.&lt;/p&gt;
+
+  </content>
+</entry>
 
 
 <entry>
