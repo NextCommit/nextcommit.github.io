@@ -4,13 +4,71 @@
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="https://nextcommit.github.io/feed.xml" />
 <link rel="alternate" type="text/html" href="https://nextcommit.github.io" />
-<updated>2016-04-27T18:09:45+01:00</updated>
+<updated>2016-07-20T00:05:37+01:00</updated>
 <id>https://nextcommit.github.io/</id>
 <author>
   <name>Next Commit</name>
   <uri>https://nextcommit.github.io/</uri>
   <email>miguelfcunha@gmail.com</email>
 </author>
+
+
+<entry>
+  <title type="html"><![CDATA[Gestão de Expetativas]]></title>
+  <link rel="alternate" type="text/html" href="https://nextcommit.github.io/blog/gestao-de-expetativas/" />
+  <id>https://nextcommit.github.io/blog/gestao-de-expetativas</id>
+  <published>2016-07-19 04:20:02 +0100</published>
+  <updated>2016-07-19 04:20:02 +0100</updated>
+  <author>
+    <name>Miguel Cunha</name>
+    <uri>https://nextcommit.github.io</uri>
+    <email>miguelfcunha@gmail.com</email>
+  </author>
+  <content type="html">
+    &lt;p&gt;Faz tempo tive algumas conversas bastante interessantes acerca do mercado de trabalho e de como funcionam os “processos de
+recrutamento”. Nos próximos parágrafos vou reproduzir alguns pontos mais interessantes e que geraram alguma discussão.&lt;/p&gt;
+
+&lt;p&gt;Todos nós conhecemos os processos de recrutamento para uma empresa estabelecida no mercado, de média/grande dimensão:
+inicialmente somos postos à prova numa (ou mais) entrevistas comportamentais, onde o candidato e a empresa têm oportunidade
+de se conhecerem melhor.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Primeira discórdia:&lt;/strong&gt; “&lt;em&gt;para essas entrevistas não me costumo preparar porque… eu sou eu, eu sei quem sou&lt;/em&gt;”.&lt;/p&gt;
+
+&lt;p&gt;Discordei. Fazer uma simples pesquisa, no &lt;em&gt;website&lt;/em&gt; da empresa, para absorver a informação que eles têm disponível é
+uma ideia bastante eficaz, principalmente por duas razões: primeiro porque gosto de compreender o que a empresa faz, em que
+mercado opera e se o que fazem me interessa particularmente; segundo (e mais importante) porque transforma o típico
+“bombardeamento” de perguntas para uma conversa entre duas pessoas. Ter um conhecimento
+relativamente sólido da informação que a empresa tem no seu &lt;em&gt;website&lt;/em&gt; (em que mercados opera, que tecnologias usa, os
+produtos/serviços que vende e respetivos nomes, entre outros) dá-nos o poder de “tomar as rédeas da conversa”.&lt;/p&gt;
+
+&lt;p&gt;Esta pesquisa prévia traz, como vantagem imediata, a capacidade de dialogar, ao invés de nos limitarmos a responder a questões. E isto,
+na minha opinião, não só é positivo na medida em que o entrevistador fica com uma imagem nossa positiva, como também nos
+permite filtrar todo o ruído a que somos expostos (a utilização de palavras cuidadas, apelativas, “charmosas”) e focarmo-nos
+naquilo que realmente é essencial.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Segundo ponto de discussão:&lt;/strong&gt; “&lt;em&gt;a empresa X até é interessante, mas eu não compreendo nada do negócio deles e, portanto,
+nunca vou conseguir subir na carreira&lt;/em&gt;”.&lt;/p&gt;
+
+&lt;p&gt;Não podia discordar mais. Sim, tenho perfeita noção que “subir” na carreira
+normalmente implica menos trabalho técnico e mais trabalho de gestão, mas não gosto de considerar isso uma fatalidade
+da ascensão e reconhecimento profissional. Existem, certamente, pessoas que ficarão contentes por a progressão na
+carreira implicar um salto da zona técnica para uma área de gestão, mas isso não significa que por se continuar numa
+área técnica não seja possível existir progressão na carreira. E mais: não tenho dúvidas que em qualquer uma das duas
+opções, seja necessário compreender sempre a área de negócio, a tendência de mercado, etc. Portanto, de qualquer uma das
+formas, a necessidade de conhecimento da área de negócio é inevitável.&lt;/p&gt;
+
+&lt;p&gt;Imaginemos que queremos seguir uma vertente técnica. Ao sermos “promovidos” para um nível de gestão, como nos sentiríamos?
+Seria uma promoção? Ou uma despromoção? Sentir-me-ia confortável em transitar para uma posição que não desejo, só porque
+é considerada a “normal ascenssão de carreira”?&lt;/p&gt;
+
+&lt;p&gt;No final de contas, acredito (e espero daqui a uns anos confirmar isto) que existe progressão quer na vertente técnica,
+quer na vertente de gestão, permitindo-nos, a cada um de nós, focar-se naquilo que realmente gosta de fazer. Basta gerir
+as nossas expectativas.&lt;/p&gt;
+
+    &lt;p&gt;&lt;a href=&quot;https://nextcommit.github.io/blog/gestao-de-expetativas/&quot;&gt;Gestão de Expetativas&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;https://nextcommit.github.io&quot;&gt;Next Commit&lt;/a&gt; on 19 julho 2016.&lt;/p&gt;
+
+  </content>
+</entry>
 
 
 <entry>
