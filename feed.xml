@@ -2,26 +2,145 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
 <title type="text">Next Commit</title>
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
-<link rel="self" type="application/atom+xml" href="https://nextcommit.github.io/feed.xml" />
-<link rel="alternate" type="text/html" href="https://nextcommit.github.io" />
-<updated>2016-07-20T00:05:37+01:00</updated>
-<id>https://nextcommit.github.io/</id>
+<link rel="self" type="application/atom+xml" href="http://localhost:4000/feed.xml" />
+<link rel="alternate" type="text/html" href="http://localhost:4000" />
+<updated>2016-09-05T18:56:18+01:00</updated>
+<id>http://localhost:4000/</id>
 <author>
   <name>Next Commit</name>
-  <uri>https://nextcommit.github.io/</uri>
+  <uri>http://localhost:4000/</uri>
   <email>miguelfcunha@gmail.com</email>
 </author>
 
 
 <entry>
+  <title type="html"><![CDATA[Acelerar I/O]]></title>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/blog/acelerar-io/" />
+  <id>http://localhost:4000/blog/acelerar-io</id>
+  <published>2016-09-04 00:00:00 +0100</published>
+  <updated>2016-09-04 00:00:00 +0100</updated>
+  <author>
+    <name>Gabriel Candal</name>
+    <uri>http://localhost:4000</uri>
+    <email>gabrielcandal@gmail.com</email>
+  </author>
+  <content type="html">
+    &lt;p&gt;O título deste post é enganador, porque devia ser apenas “Acelerar O”, já que
+vou apenas escrever sobre como há uns tempos, junto com um colega, tentamos
+melhorar a velocidade de escrita de um programa em C++. Peço já desculpa em
+adiantamento por qualquer erro ou falta de pormenor na narrativa, mas tudo isto
+já foi há uns tempos.&lt;/p&gt;
+
+&lt;p&gt;A ideia da coisa era simples: converter um formato binário para XML e vice-versa, sendo que
+os ficheiros em XML utilizavam de 2 a 8x o tamanho do binário original (o que,
+quando se tem binários na ordem dos GBs, é chato). Um dos requisitos era que
+um binário de 1GB demorasse no máximo 30s a converter para XML (o que necessita
+de um throughput de ~130MB/s, que é uma meta realista para um bom HDD).&lt;/p&gt;
+
+&lt;p&gt;Lá desenvolvemos o bixo e fizemos as primeiras medições depois de configurar as
+as otimizações do compilador (que era o SunStudio, já agora) … estava a demorar 90s,
+o triplo do que era suposto. Depois do profiling devido, descobrimos que o problema
+estava numa função bastante simples que fazia a conversão dos vários tipos de
+atributos do XML para string.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c&quot; data-lang=&quot;c&quot;&gt;&lt;span class=&quot;n&quot;&gt;template&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;to_string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;attr_value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;stringstream&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ss&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;ss&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;n&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;str&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ss&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+
+  &lt;span class=&quot;p&quot;&gt;(...&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;some&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;business&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;logic&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;...)&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;O primeiro passo foi evitar a construção de uma stringstream sempre que a função
+era invocada.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c&quot; data-lang=&quot;c&quot;&gt;&lt;span class=&quot;n&quot;&gt;template&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;to_string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;attr_value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stringstream&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ss&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;ss&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;ss&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;n&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;str&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ss&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+
+  &lt;span class=&quot;p&quot;&gt;(...&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;some&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;business&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;logic&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;...)&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;70s, melhor mas ainda mais do dobro do esperado. Entretanto percebemos que os
+templates davam uma machada grande na performance, e por isso começamos por
+tentar &lt;em&gt;template specialization&lt;/em&gt; para os casos mais comuns:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c&quot; data-lang=&quot;c&quot;&gt;&lt;span class=&quot;n&quot;&gt;template&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;to_string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;float&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;attr_value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;sprintf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;buf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;%g&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\0&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sValue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+  &lt;span class=&quot;p&quot;&gt;(...&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;some&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;business&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;logic&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;...)&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;buf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;template&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;to_string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;attr_value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stringstream&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ss&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;ss&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;ss&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;n&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;str&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ss&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+
+  &lt;span class=&quot;p&quot;&gt;(...&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;some&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;business&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;logic&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;...)&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Pouco mudou: 65s. Deixamos de usar templates e stringstreams para as conversões
+e passamos a ter uma função especializada para cada tipo de dados e além disso
+passamos as funções para inline, mesmo assim não baixou dos 60s.&lt;/p&gt;
+
+&lt;p&gt;A última coisa a fazer, e que levou a um speedup de 2x, foi em vez de escrever cada string individualmente usar user-level buffering, o que é só um nome engraçado
+que se dá a quando o programa espera até ter uma certa quantidade de dados para
+os escrever para o file descriptor.&lt;/p&gt;
+
+&lt;p&gt;Havendo várias formas de o fazer, decidimos implementar um buffer circular, que
+é adequado em situações que queremos ter um comportamento FIFO. Num buffer
+circular temos uma região de memória reservada, de capacidade fixa, e vamos
+adicionando elementos (que podem ser de tamanho variável), sendo que os
+elementos mais recentes podem apagar os antigos (momento no qual se faz a escrita para o ficheiro).&lt;/p&gt;
+
+&lt;p&gt;Se tivermos um buffer vazio e inserirmos os elementos &lt;code&gt;1 2 3&lt;/code&gt;, o resultado é:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Circular_buffer_-_XX123XX_with_pointers.svg/250px-Circular_buffer_-_XX123XX_with_pointers.svg.png&quot; alt=&quot;buffer&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;E se continuarmos e inserirmos &lt;code&gt;4 5 6 7 8 9 A B C&lt;/code&gt; ficamos com:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Circular_buffer_-_6789AB5_with_pointers.svg/250px-Circular_buffer_-_6789AB5_with_pointers.svg.png&quot; alt=&quot;buffer&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Sendo que fazemos o dump do conteúdo para o ficheiro antes de inserir o &lt;code&gt;8&lt;/code&gt; que
+substitui o &lt;code&gt;1&lt;/code&gt;. O objetivo de usar este tipo de escrita em batch é aumentar o
+throughput, já que reduzimos o número total de operações de escrita, evitando ao máximo o overhead de cada chamada ao sistema. Outra micro-otimização que fizemos
+foi usar uma região de memória para o buffer alocada contiguamente, ou seja,
+em que os bytes estão seguidos na memória; se esta região tiver um tamanho que seja
+múltiplo do tamanho das páginas do sistema que estamos a usar, isso permite que
+haja DMA (direct memory access), o que permite ao hardware ler (e escrever) da
+memória sem ter que recorrer ao CPU.&lt;/p&gt;
+
+&lt;p&gt;Depois de tudo isto: 38.5MB/s, o que dá cerca de 26s para o 1GB, yey!&lt;/p&gt;
+
+    &lt;p&gt;&lt;a href=&quot;http://localhost:4000/blog/acelerar-io/&quot;&gt;Acelerar I/O&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;http://localhost:4000&quot;&gt;Next Commit&lt;/a&gt; on  4 setemrbo 2016.&lt;/p&gt;
+
+  </content>
+</entry>
+
+
+<entry>
   <title type="html"><![CDATA[Gestão de Expetativas]]></title>
-  <link rel="alternate" type="text/html" href="https://nextcommit.github.io/blog/gestao-de-expetativas/" />
-  <id>https://nextcommit.github.io/blog/gestao-de-expetativas</id>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/blog/gestao-de-expetativas/" />
+  <id>http://localhost:4000/blog/gestao-de-expetativas</id>
   <published>2016-07-19 04:20:02 +0100</published>
   <updated>2016-07-19 04:20:02 +0100</updated>
   <author>
     <name>Miguel Cunha</name>
-    <uri>https://nextcommit.github.io</uri>
+    <uri>http://localhost:4000</uri>
     <email>miguelfcunha@gmail.com</email>
   </author>
   <content type="html">
@@ -65,7 +184,7 @@ Seria uma promoção? Ou uma despromoção? Sentir-me-ia confortável em transit
 quer na vertente de gestão, permitindo-nos, a cada um de nós, focar-se naquilo que realmente gosta de fazer. Basta gerir
 as nossas expectativas.&lt;/p&gt;
 
-    &lt;p&gt;&lt;a href=&quot;https://nextcommit.github.io/blog/gestao-de-expetativas/&quot;&gt;Gestão de Expetativas&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;https://nextcommit.github.io&quot;&gt;Next Commit&lt;/a&gt; on 19 julho 2016.&lt;/p&gt;
+    &lt;p&gt;&lt;a href=&quot;http://localhost:4000/blog/gestao-de-expetativas/&quot;&gt;Gestão de Expetativas&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;http://localhost:4000&quot;&gt;Next Commit&lt;/a&gt; on 19 julho 2016.&lt;/p&gt;
 
   </content>
 </entry>
@@ -73,13 +192,13 @@ as nossas expectativas.&lt;/p&gt;
 
 <entry>
   <title type="html"><![CDATA[Remover a Sombra]]></title>
-  <link rel="alternate" type="text/html" href="https://nextcommit.github.io/blog/remover-a-sombra/" />
-  <id>https://nextcommit.github.io/blog/remover-a-sombra</id>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/blog/remover-a-sombra/" />
+  <id>http://localhost:4000/blog/remover-a-sombra</id>
   <published>2016-04-27 00:00:08 +0100</published>
   <updated>2016-04-27 00:00:08 +0100</updated>
   <author>
     <name>Miguel Cunha</name>
-    <uri>https://nextcommit.github.io</uri>
+    <uri>http://localhost:4000</uri>
     <email>miguelfcunha@gmail.com</email>
   </author>
   <content type="html">
@@ -121,7 +240,7 @@ a manter, quer o herói, quer a restante equipa, motivados. Resumindo: o &lt;em&
 que permite à equipa superar esta nova fase.&lt;/p&gt;
 
 
-    &lt;p&gt;&lt;a href=&quot;https://nextcommit.github.io/blog/remover-a-sombra/&quot;&gt;Remover a Sombra&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;https://nextcommit.github.io&quot;&gt;Next Commit&lt;/a&gt; on 27 abril 2016.&lt;/p&gt;
+    &lt;p&gt;&lt;a href=&quot;http://localhost:4000/blog/remover-a-sombra/&quot;&gt;Remover a Sombra&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;http://localhost:4000&quot;&gt;Next Commit&lt;/a&gt; on 27 abril 2016.&lt;/p&gt;
 
   </content>
 </entry>
@@ -129,13 +248,13 @@ que permite à equipa superar esta nova fase.&lt;/p&gt;
 
 <entry>
   <title type="html"><![CDATA[GPU e o Browser]]></title>
-  <link rel="alternate" type="text/html" href="https://nextcommit.github.io/blog/gpu-e-o-browser/" />
-  <id>https://nextcommit.github.io/blog/gpu-e-o-browser</id>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/blog/gpu-e-o-browser/" />
+  <id>http://localhost:4000/blog/gpu-e-o-browser</id>
   <published>2016-03-15 00:00:00 +0100</published>
   <updated>2016-03-15 00:00:00 +0100</updated>
   <author>
     <name>Gabriel Candal</name>
-    <uri>https://nextcommit.github.io</uri>
+    <uri>http://localhost:4000</uri>
     <email>gabrielcandal@gmail.com</email>
   </author>
   <content type="html">
@@ -188,7 +307,7 @@ que permite à equipa superar esta nova fase.&lt;/p&gt;
 
 &lt;p&gt;No fundo, é um trade-off entre velocidade e memória. Outro problema que pode surgir é com o &lt;a href=&quot;http://keithclark.co.uk/articles/gpu-text-rendering-in-webkit/&quot;&gt;aspeto do tipo de letra&lt;/a&gt;, já que a GPU e o CPU não o fazem da mesma forma. Um truque engraçado para forçar a que um elemento seja renderizado na GPU é acrescentar-lhe, como fizemos no exemplo, algo como &lt;code&gt;transform: translateZ(0)&lt;/code&gt;.&lt;/p&gt;
 
-    &lt;p&gt;&lt;a href=&quot;https://nextcommit.github.io/blog/gpu-e-o-browser/&quot;&gt;GPU e o Browser&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;https://nextcommit.github.io&quot;&gt;Next Commit&lt;/a&gt; on 15 março 2016.&lt;/p&gt;
+    &lt;p&gt;&lt;a href=&quot;http://localhost:4000/blog/gpu-e-o-browser/&quot;&gt;GPU e o Browser&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;http://localhost:4000&quot;&gt;Next Commit&lt;/a&gt; on 15 março 2016.&lt;/p&gt;
 
   </content>
 </entry>
@@ -196,13 +315,13 @@ que permite à equipa superar esta nova fase.&lt;/p&gt;
 
 <entry>
   <title type="html"><![CDATA[Programar & Documentar]]></title>
-  <link rel="alternate" type="text/html" href="https://nextcommit.github.io/blog/progamar-e-documentar/" />
-  <id>https://nextcommit.github.io/blog/progamar-e-documentar</id>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/blog/progamar-e-documentar/" />
+  <id>http://localhost:4000/blog/progamar-e-documentar</id>
   <published>2016-03-13 21:54:00 +0100</published>
   <updated>2016-03-13 21:54:00 +0100</updated>
   <author>
     <name>Miguel Cunha</name>
-    <uri>https://nextcommit.github.io</uri>
+    <uri>http://localhost:4000</uri>
     <email>miguelfcunha@gmail.com</email>
   </author>
   <content type="html">
@@ -298,7 +417,7 @@ para copiar um inteiro é relevante o suficiente para passarmos apenas uma refer
   &lt;/ol&gt;
 &lt;/div&gt;
 
-    &lt;p&gt;&lt;a href=&quot;https://nextcommit.github.io/blog/progamar-e-documentar/&quot;&gt;Programar &amp; Documentar&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;https://nextcommit.github.io&quot;&gt;Next Commit&lt;/a&gt; on 13 março 2016.&lt;/p&gt;
+    &lt;p&gt;&lt;a href=&quot;http://localhost:4000/blog/progamar-e-documentar/&quot;&gt;Programar &amp; Documentar&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;http://localhost:4000&quot;&gt;Next Commit&lt;/a&gt; on 13 março 2016.&lt;/p&gt;
 
   </content>
 </entry>
@@ -306,13 +425,13 @@ para copiar um inteiro é relevante o suficiente para passarmos apenas uma refer
 
 <entry>
   <title type="html"><![CDATA[Automação 1]]></title>
-  <link rel="alternate" type="text/html" href="https://nextcommit.github.io/blog/python-e-automacao-1/" />
-  <id>https://nextcommit.github.io/blog/python-e-automacao-1</id>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/blog/python-e-automacao-1/" />
+  <id>http://localhost:4000/blog/python-e-automacao-1</id>
   <published>2016-03-10 00:00:00 +0000</published>
   <updated>2016-03-10 00:00:00 +0000</updated>
   <author>
     <name>Gabriel Candal</name>
-    <uri>https://nextcommit.github.io</uri>
+    <uri>http://localhost:4000</uri>
     <email>gabrielcandal@gmail.com</email>
   </author>
   <content type="html">
@@ -389,7 +508,7 @@ para copiar um inteiro é relevante o suficiente para passarmos apenas uma refer
   &lt;/ol&gt;
 &lt;/div&gt;
 
-    &lt;p&gt;&lt;a href=&quot;https://nextcommit.github.io/blog/python-e-automacao-1/&quot;&gt;Automação 1&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;https://nextcommit.github.io&quot;&gt;Next Commit&lt;/a&gt; on 10 março 2016.&lt;/p&gt;
+    &lt;p&gt;&lt;a href=&quot;http://localhost:4000/blog/python-e-automacao-1/&quot;&gt;Automação 1&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;http://localhost:4000&quot;&gt;Next Commit&lt;/a&gt; on 10 março 2016.&lt;/p&gt;
 
   </content>
 </entry>
@@ -397,13 +516,13 @@ para copiar um inteiro é relevante o suficiente para passarmos apenas uma refer
 
 <entry>
   <title type="html"><![CDATA[git checkout -b gcandal]]></title>
-  <link rel="alternate" type="text/html" href="https://nextcommit.github.io/blog/git-checkout-gcandal/" />
-  <id>https://nextcommit.github.io/blog/git-checkout-gcandal</id>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/blog/git-checkout-gcandal/" />
+  <id>http://localhost:4000/blog/git-checkout-gcandal</id>
   <published>2016-03-06 00:00:00 +0000</published>
   <updated>2016-03-06 00:00:00 +0000</updated>
   <author>
     <name>Gabriel Candal</name>
-    <uri>https://nextcommit.github.io</uri>
+    <uri>http://localhost:4000</uri>
     <email>gabrielcandal@gmail.com</email>
   </author>
   <content type="html">
@@ -465,7 +584,7 @@ usar os dentes. O próximo post será sobre como temos adotado filosofia na &lt;
 e como fizemos.&lt;/p&gt;
 
 
-    &lt;p&gt;&lt;a href=&quot;https://nextcommit.github.io/blog/git-checkout-gcandal/&quot;&gt;git checkout -b gcandal&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;https://nextcommit.github.io&quot;&gt;Next Commit&lt;/a&gt; on  6 março 2016.&lt;/p&gt;
+    &lt;p&gt;&lt;a href=&quot;http://localhost:4000/blog/git-checkout-gcandal/&quot;&gt;git checkout -b gcandal&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;http://localhost:4000&quot;&gt;Next Commit&lt;/a&gt; on  6 março 2016.&lt;/p&gt;
 
   </content>
 </entry>
@@ -473,13 +592,13 @@ e como fizemos.&lt;/p&gt;
 
 <entry>
   <title type="html"><![CDATA[Diz-me Como Geres e Dir-te-ei Quem És]]></title>
-  <link rel="alternate" type="text/html" href="https://nextcommit.github.io/blog/diz-me-como-geres-e-dir-te-ei-quem-es/" />
-  <id>https://nextcommit.github.io/blog/diz-me-como-geres-e-dir-te-ei-quem-es</id>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/blog/diz-me-como-geres-e-dir-te-ei-quem-es/" />
+  <id>http://localhost:4000/blog/diz-me-como-geres-e-dir-te-ei-quem-es</id>
   <published>2016-02-27 16:00:48 +0000</published>
   <updated>2016-02-27 16:00:48 +0000</updated>
   <author>
     <name>Miguel Cunha</name>
-    <uri>https://nextcommit.github.io</uri>
+    <uri>http://localhost:4000</uri>
     <email>miguelfcunha@gmail.com</email>
   </author>
   <content type="html">
@@ -537,7 +656,7 @@ bem o teu trabalho.&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;P.S.: Se marcas uma reunião para discutirmos um documento, por favor, tira 30 minutos antes para realmente leres a
 porra do documento!&lt;/em&gt;&lt;/p&gt;
 
-    &lt;p&gt;&lt;a href=&quot;https://nextcommit.github.io/blog/diz-me-como-geres-e-dir-te-ei-quem-es/&quot;&gt;Diz-me Como Geres e Dir-te-ei Quem És&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;https://nextcommit.github.io&quot;&gt;Next Commit&lt;/a&gt; on 27 fevereiro 2016.&lt;/p&gt;
+    &lt;p&gt;&lt;a href=&quot;http://localhost:4000/blog/diz-me-como-geres-e-dir-te-ei-quem-es/&quot;&gt;Diz-me Como Geres e Dir-te-ei Quem És&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;http://localhost:4000&quot;&gt;Next Commit&lt;/a&gt; on 27 fevereiro 2016.&lt;/p&gt;
 
   </content>
 </entry>
@@ -545,13 +664,13 @@ porra do documento!&lt;/em&gt;&lt;/p&gt;
 
 <entry>
   <title type="html"><![CDATA[Os 5 Mandamentos Dos Projetos Académicos]]></title>
-  <link rel="alternate" type="text/html" href="https://nextcommit.github.io/blog/os-5-mandamentos-dos-projetos-academicos/" />
-  <id>https://nextcommit.github.io/blog/os-5-mandamentos-dos-projetos-academicos</id>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/blog/os-5-mandamentos-dos-projetos-academicos/" />
+  <id>http://localhost:4000/blog/os-5-mandamentos-dos-projetos-academicos</id>
   <published>2016-01-09 00:09:43 +0000</published>
   <updated>2016-01-09 00:09:43 +0000</updated>
   <author>
     <name>Miguel Cunha</name>
-    <uri>https://nextcommit.github.io</uri>
+    <uri>http://localhost:4000</uri>
     <email>miguelfcunha@gmail.com</email>
   </author>
   <content type="html">
@@ -633,7 +752,7 @@ Mais vale dar &lt;code&gt;ctrl+z&lt;/code&gt; até funcionar de novo.&lt;/p&gt;
 expansão deve ser lenta e gradual, possivelmente infinita. Quando a data de entrega se aproxima, de tão pequeno e condensado
 que o projeto se encontra, dá-se o &lt;em&gt;Big Bang&lt;/em&gt;, a grande explosão, numa corrida contra-relógio para se evitar o &lt;em&gt;Big Crush&lt;/em&gt;.&lt;/p&gt;
 
-    &lt;p&gt;&lt;a href=&quot;https://nextcommit.github.io/blog/os-5-mandamentos-dos-projetos-academicos/&quot;&gt;Os 5 Mandamentos Dos Projetos Académicos&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;https://nextcommit.github.io&quot;&gt;Next Commit&lt;/a&gt; on  9 janeiro 2016.&lt;/p&gt;
+    &lt;p&gt;&lt;a href=&quot;http://localhost:4000/blog/os-5-mandamentos-dos-projetos-academicos/&quot;&gt;Os 5 Mandamentos Dos Projetos Académicos&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;http://localhost:4000&quot;&gt;Next Commit&lt;/a&gt; on  9 janeiro 2016.&lt;/p&gt;
 
   </content>
 </entry>
@@ -641,13 +760,13 @@ que o projeto se encontra, dá-se o &lt;em&gt;Big Bang&lt;/em&gt;, a grande expl
 
 <entry>
   <title type="html"><![CDATA[Pensar Grande, Construir Pequeno]]></title>
-  <link rel="alternate" type="text/html" href="https://nextcommit.github.io/blog/pensar-grande-construir-pequeno/" />
-  <id>https://nextcommit.github.io/blog/pensar-grande-construir-pequeno</id>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/blog/pensar-grande-construir-pequeno/" />
+  <id>http://localhost:4000/blog/pensar-grande-construir-pequeno</id>
   <published>2015-12-28 16:50:21 +0000</published>
   <updated>2015-12-28 16:50:21 +0000</updated>
   <author>
     <name>Miguel Cunha</name>
-    <uri>https://nextcommit.github.io</uri>
+    <uri>http://localhost:4000</uri>
     <email>miguelfcunha@gmail.com</email>
   </author>
   <content type="html">
@@ -777,7 +896,7 @@ inevitavelmente, a meio. Mas também é importante não ter datas tão restritiv
 a máxima “&lt;em&gt;done when it’s done&lt;/em&gt;”.&lt;/p&gt;
 
 
-    &lt;p&gt;&lt;a href=&quot;https://nextcommit.github.io/blog/pensar-grande-construir-pequeno/&quot;&gt;Pensar Grande, Construir Pequeno&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;https://nextcommit.github.io&quot;&gt;Next Commit&lt;/a&gt; on 28 dezembro 2015.&lt;/p&gt;
+    &lt;p&gt;&lt;a href=&quot;http://localhost:4000/blog/pensar-grande-construir-pequeno/&quot;&gt;Pensar Grande, Construir Pequeno&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;http://localhost:4000&quot;&gt;Next Commit&lt;/a&gt; on 28 dezembro 2015.&lt;/p&gt;
 
   </content>
 </entry>
@@ -785,13 +904,13 @@ a máxima “&lt;em&gt;done when it’s done&lt;/em&gt;”.&lt;/p&gt;
 
 <entry>
   <title type="html"><![CDATA[Olá Mundo]]></title>
-  <link rel="alternate" type="text/html" href="https://nextcommit.github.io/blog/ola-mundo/" />
-  <id>https://nextcommit.github.io/blog/ola-mundo</id>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/blog/ola-mundo/" />
+  <id>http://localhost:4000/blog/ola-mundo</id>
   <published>2015-12-05 20:53:44 +0000</published>
   <updated>2015-12-05 20:53:44 +0000</updated>
   <author>
     <name>Miguel Cunha</name>
-    <uri>https://nextcommit.github.io</uri>
+    <uri>http://localhost:4000</uri>
     <email>miguelfcunha@gmail.com</email>
   </author>
   <content type="html">
@@ -815,7 +934,7 @@ Este panorama parece contra-intuitivo, principalmente quando a &lt;a href=&quot;
 &lt;p&gt;Vêmo-nos no próximo &lt;em&gt;commit&lt;/em&gt;!&lt;/p&gt;
 
 
-    &lt;p&gt;&lt;a href=&quot;https://nextcommit.github.io/blog/ola-mundo/&quot;&gt;Olá Mundo&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;https://nextcommit.github.io&quot;&gt;Next Commit&lt;/a&gt; on  5 dezembro 2015.&lt;/p&gt;
+    &lt;p&gt;&lt;a href=&quot;http://localhost:4000/blog/ola-mundo/&quot;&gt;Olá Mundo&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;http://localhost:4000&quot;&gt;Next Commit&lt;/a&gt; on  5 dezembro 2015.&lt;/p&gt;
 
   </content>
 </entry>

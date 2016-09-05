@@ -1,0 +1,357 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Acelerar I/O &#8211; Next Commit</title>
+<meta name="description" content="User-level circular buffering">
+<meta name="keywords" content="c, c++, low-level, otimização">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Acelerar I/O">
+<meta name="twitter:description" content="User-level circular buffering">
+<meta name="twitter:site" content="@promgamer">
+
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://localhost:4000/images/logo.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="pt-PT">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Acelerar I/O">
+<meta property="og:description" content="User-level circular buffering">
+<meta property="og:url" content="http://localhost:4000/blog/acelerar-io/">
+<meta property="og:site_name" content="Next Commit">
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/blog/acelerar-io/">
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Next Commit Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.css">
+<!-- Webfonts -->
+<script src="https://use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+  <script src="http://localhost:4000/assets/js/vendor/html5shiv.min.js"></script>
+  <script src="http://localhost:4000/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="http://localhost:4000/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+
+<!-- MathJax -->
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+<!-- Icons -->
+<link rel="apple-touch-icon" sizes="57x57" href="http://localhost:4000/images/icons/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="http://localhost:4000/images/icons/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="http://localhost:4000/images/icons/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="http://localhost:4000/images/icons/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="http://localhost:4000/images/icons/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="http://localhost:4000/images/icons/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="http://localhost:4000/images/icons/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="http://localhost:4000/images/icons/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="http://localhost:4000/images/icons/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="http://localhost:4000/images/icons/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:4000/images/icons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="http://localhost:4000/images/icons/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:4000/images/icons/favicon-16x16.png">
+
+</head>
+
+<body id="post">
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+      
+		    
+		    <li><a href="http://localhost:4000/" >Início</a></li>
+		  
+		    
+		    <li><a href="http://localhost:4000/indice" >Índice</a></li>
+		  
+		    
+		    <li><a href="http://localhost:4000/arquivo" >Arquivo</a></li>
+		  
+		    
+		    <li><a href="http://localhost:4000/sobre" >Sobre</a></li>
+		  
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<header class="masthead">
+	<div class="wrap">
+
+      
+  		<a href="http://localhost:4000/" class="site-logo" rel="home" title="Next Commit"><img src="http://localhost:4000/images/logo.png" width="200" height="200" alt="Next Commit logo" class="animated fadeInDown"></a>
+      
+    <h1 class="site-title animated fadeIn"><a href="http://localhost:4000/">Next Commit</a></h1>
+    <!--<h2 class="site-description animated fadeIn" itemprop="description">Descrição aqui</h2> -->
+	</div>
+</header><!-- /.masthead -->
+
+<div class="js-menu-screen menu-screen"></div>
+
+
+<div id="main" role="main">
+  <article class="hentry">
+    
+    <div class="entry-wrapper">
+      <header class="entry-header">
+        <ul class="entry-tags">
+          <i class="fa fa-tags"></i><li><a href="http://localhost:4000/indice/#c" title="Assunto c">c</a></li><li><a href="http://localhost:4000/indice/#c++" title="Assunto c++">c++</a></li><li><a href="http://localhost:4000/indice/#low-level" title="Assunto low-level">low-level</a></li><li><a href="http://localhost:4000/indice/#otimização" title="Assunto otimização">otimização</a></li>
+        </ul>
+        
+          <h1 class="entry-title post-title">Acelerar I/O </h1>
+        
+      </header>
+      <footer class="entry-meta">
+        
+        
+          <img src="https://www.gravatar.com/avatar/af7c5974dd0600be354e14f045463a0e?s=128&d=identicon&r=PG" class="bio-photo" alt="Gabriel Candal bio photo"></a>
+        
+        <span class="author vcard">por <a href="mailto:gabrielcandal@gmail.com"><span class="fn">Gabriel Candal</span></a></span>
+        <span>
+        
+        <a href="https://linkedin.com/in/gcandal" title="Gabriel Candal on LinkedIn" target="_blank"><i class="fa fa-linkedin-square fa-2x"></i></a>
+        <a href="http://stackexchange.com/users/1282930/gcandal" title="Gabriel Candal on StackExchange" target="_blank"><i class="fa fa-stack-exchange fa-2x"></i></a>
+        <a href="https://github.com/gcandal" title="Gabriel Candal on Github" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>
+        </span>
+        <span class="entry-date date published"><time datetime="2016-09-04"><i class="fa fa-calendar-o"></i>  4 setemrbo 2016</time></span>
+        
+        <span class="entry-comments"><i class="fa fa-comment-o"></i> <a href="#disqus_thread">Comentar</a></span>
+        
+      </footer>
+      <div class="entry-content">
+        <p>O título deste post é enganador, porque devia ser apenas “Acelerar O”, já que
+vou apenas escrever sobre como há uns tempos, junto com um colega, tentamos
+melhorar a velocidade de escrita de um programa em C++. Peço já desculpa em
+adiantamento por qualquer erro ou falta de pormenor na narrativa, mas tudo isto
+já foi há uns tempos.</p>
+
+<p>A ideia da coisa era simples: converter um formato binário para XML e vice-versa, sendo que
+os ficheiros em XML utilizavam de 2 a 8x o tamanho do binário original (o que,
+quando se tem binários na ordem dos GBs, é chato). Um dos requisitos era que
+um binário de 1GB demorasse no máximo 30s a converter para XML (o que necessita
+de um throughput de ~130MB/s, que é uma meta realista para um bom HDD).</p>
+
+<p>Lá desenvolvemos o bixo e fizemos as primeiras medições depois de configurar as
+as otimizações do compilador (que era o SunStudio, já agora) … estava a demorar 90s,
+o triplo do que era suposto. Depois do profiling devido, descobrimos que o problema
+estava numa função bastante simples que fazia a conversão dos vários tipos de
+atributos do XML para string.</p>
+
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="n">template</span><span class="o">&lt;</span><span class="n">class</span> <span class="n">T</span><span class="o">&gt;</span> <span class="n">string</span> <span class="n">to_string</span><span class="p">(</span><span class="n">T</span> <span class="n">attr_value</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">stringstream</span> <span class="n">ss</span><span class="p">;</span>
+  <span class="n">ss</span> <span class="o">&lt;&lt;</span> <span class="n">T</span><span class="p">;</span>
+
+  <span class="n">string</span> <span class="n">str</span> <span class="o">=</span> <span class="n">ss</span><span class="p">.</span><span class="n">str</span><span class="p">();</span>
+
+  <span class="p">(...</span> <span class="n">some</span> <span class="n">business</span> <span class="n">logic</span> <span class="p">...)</span>
+
+  <span class="k">return</span> <span class="n">res</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>O primeiro passo foi evitar a construção de uma stringstream sempre que a função
+era invocada.</p>
+
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="n">template</span><span class="o">&lt;</span><span class="n">class</span> <span class="n">T</span><span class="o">&gt;</span> <span class="n">string</span> <span class="n">to_string</span><span class="p">(</span><span class="n">T</span> <span class="n">attr_value</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">static</span> <span class="n">stringstream</span> <span class="n">ss</span><span class="p">;</span>
+  <span class="n">ss</span><span class="p">.</span><span class="n">str</span><span class="p">(</span><span class="s">""</span><span class="p">);</span>
+  <span class="n">ss</span> <span class="o">&lt;&lt;</span> <span class="n">T</span><span class="p">;</span>
+
+  <span class="n">string</span> <span class="n">str</span> <span class="o">=</span> <span class="n">ss</span><span class="p">.</span><span class="n">str</span><span class="p">();</span>
+
+  <span class="p">(...</span> <span class="n">some</span> <span class="n">business</span> <span class="n">logic</span> <span class="p">...)</span>
+
+  <span class="k">return</span> <span class="n">res</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>70s, melhor mas ainda mais do dobro do esperado. Entretanto percebemos que os
+templates davam uma machada grande na performance, e por isso começamos por
+tentar <em>template specialization</em> para os casos mais comuns:</p>
+
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="n">template</span><span class="o">&lt;&gt;</span> <span class="n">string</span> <span class="n">to_string</span><span class="p">(</span><span class="k">const</span> <span class="kt">float</span> <span class="o">&amp;</span> <span class="n">attr_value</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">sprintf</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="s">"%g</span><span class="se">\0</span><span class="s">"</span><span class="p">,</span> <span class="n">sValue</span><span class="p">);</span>
+
+  <span class="p">(...</span> <span class="n">some</span> <span class="n">business</span> <span class="n">logic</span> <span class="p">...)</span>
+
+  <span class="k">return</span> <span class="n">buf</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">template</span><span class="o">&lt;</span><span class="n">class</span> <span class="n">T</span><span class="o">&gt;</span> <span class="n">string</span> <span class="n">to_string</span><span class="p">(</span><span class="n">T</span> <span class="n">attr_value</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">static</span> <span class="n">stringstream</span> <span class="n">ss</span><span class="p">;</span>
+  <span class="n">ss</span><span class="p">.</span><span class="n">str</span><span class="p">(</span><span class="s">""</span><span class="p">);</span>
+  <span class="n">ss</span> <span class="o">&lt;&lt;</span> <span class="n">T</span><span class="p">;</span>
+
+  <span class="n">string</span> <span class="n">str</span> <span class="o">=</span> <span class="n">ss</span><span class="p">.</span><span class="n">str</span><span class="p">();</span>
+
+  <span class="p">(...</span> <span class="n">some</span> <span class="n">business</span> <span class="n">logic</span> <span class="p">...)</span>
+
+  <span class="k">return</span> <span class="n">res</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Pouco mudou: 65s. Deixamos de usar templates e stringstreams para as conversões
+e passamos a ter uma função especializada para cada tipo de dados e além disso
+passamos as funções para inline, mesmo assim não baixou dos 60s.</p>
+
+<p>A última coisa a fazer, e que levou a um speedup de 2x, foi em vez de escrever cada string individualmente usar user-level buffering, o que é só um nome engraçado
+que se dá a quando o programa espera até ter uma certa quantidade de dados para
+os escrever para o file descriptor.</p>
+
+<p>Havendo várias formas de o fazer, decidimos implementar um buffer circular, que
+é adequado em situações que queremos ter um comportamento FIFO. Num buffer
+circular temos uma região de memória reservada, de capacidade fixa, e vamos
+adicionando elementos (que podem ser de tamanho variável), sendo que os
+elementos mais recentes podem apagar os antigos (momento no qual se faz a escrita para o ficheiro).</p>
+
+<p>Se tivermos um buffer vazio e inserirmos os elementos <code>1 2 3</code>, o resultado é:</p>
+
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Circular_buffer_-_XX123XX_with_pointers.svg/250px-Circular_buffer_-_XX123XX_with_pointers.svg.png" alt="buffer" /></p>
+
+<p>E se continuarmos e inserirmos <code>4 5 6 7 8 9 A B C</code> ficamos com:</p>
+
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Circular_buffer_-_6789AB5_with_pointers.svg/250px-Circular_buffer_-_6789AB5_with_pointers.svg.png" alt="buffer" /></p>
+
+<p>Sendo que fazemos o dump do conteúdo para o ficheiro antes de inserir o <code>8</code> que
+substitui o <code>1</code>. O objetivo de usar este tipo de escrita em batch é aumentar o
+throughput, já que reduzimos o número total de operações de escrita, evitando ao máximo o overhead de cada chamada ao sistema. Outra micro-otimização que fizemos
+foi usar uma região de memória para o buffer alocada contiguamente, ou seja,
+em que os bytes estão seguidos na memória; se esta região tiver um tamanho que seja
+múltiplo do tamanho das páginas do sistema que estamos a usar, isso permite que
+haja DMA (direct memory access), o que permite ao hardware ler (e escrever) da
+memória sem ter que recorrer ao CPU.</p>
+
+<p>Depois de tudo isto: 38.5MB/s, o que dá cerca de 26s para o 1GB, yey!</p>
+
+        <!-- comentarios -->
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+
+    
+    <div id="related_post">
+      <div class="next-article" style="background-image: url('http://localhost:4000/images/documentacao.png');">
+
+        <div class="wrap">
+          <div class="overlay">
+
+          <div class="constrained">
+            <p class="next">Artigo Sugerido: </p>
+            <h3 class="title"><a href="/blog/progamar-e-documentar/" class="next-article-link">Programar & Documentar</a></h3>
+            <p class="subhead">Boas práticas de programação são, também, boas práticas de documentação</p>
+          </div>
+
+        </div>
+        </div>
+      </div>
+    </div>
+    
+
+    
+    <div class="entry-wrapper">
+      <div class="entry-content center-margin">
+        <div id="disqus_thread"></div><!-- /#disqus_thread -->
+        
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'nextcommit'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'https://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+      </div>
+    </div>
+    
+
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo" class="entry-wrapper">
+    
+
+<span>&copy; 2016 Next Commit.</span>
+<!-- <div class="social-icons">
+	<a href="https://twitter.com/promgamer" title="Next Commit on Twitter" target="_blank"><i class="fa fa-twitter-square fa-2x"></i></a>
+	
+	
+	
+	
+	
+	
+	<a href="https://github.com/promgamer" title="Next Commit on Github" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>
+	
+  
+	
+  <a href="http://localhost:4000/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a>
+</div> --> <!-- /.social-icons -->
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script type="text/javascript">
+  var BASE_URL = 'http://localhost:4000';
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://localhost:4000/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://localhost:4000/assets/js/scripts.min.js"></script>
+
+
+<!-- Asynchronous Google Analytics snippet -->
+<script>
+  var _gaq = _gaq || [];
+  var pluginUrl =
+ 'https://www.google-analytics.com/plugins/ga/inpage_linkid.js';
+  _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+  _gaq.push(['_setAccount', 'UA-71051399-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = 'https://stats.g.doubleclick.net/dc.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+</body>
+</html>
