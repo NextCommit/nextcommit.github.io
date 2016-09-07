@@ -4,13 +4,83 @@
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="https://nextcommit.github.io/feed.xml" />
 <link rel="alternate" type="text/html" href="https://nextcommit.github.io" />
-<updated>2016-09-05T19:03:46+01:00</updated>
+<updated>2016-09-07T19:32:39+01:00</updated>
 <id>https://nextcommit.github.io/</id>
 <author>
   <name>Next Commit</name>
   <uri>https://nextcommit.github.io/</uri>
   <email>miguelfcunha@gmail.com</email>
 </author>
+
+
+<entry>
+  <title type="html"><![CDATA[Texto, 文本 ou စာသားမ?]]></title>
+  <link rel="alternate" type="text/html" href="https://nextcommit.github.io/blog/texto/" />
+  <id>https://nextcommit.github.io/blog/texto</id>
+  <published>2016-09-04 00:00:00 +0100</published>
+  <updated>2016-09-04 00:00:00 +0100</updated>
+  <author>
+    <name>Gabriel Candal</name>
+    <uri>https://nextcommit.github.io</uri>
+    <email>gabrielcandal@gmail.com</email>
+  </author>
+  <content type="html">
+    &lt;p&gt;Se há alguma coisa que é simples e causa dores de cabeça mas mesmo assim é
+negligenciada por todos os programadores/&lt;em&gt;software engineers&lt;/em&gt;/&lt;em&gt;javascript ninjas&lt;/em&gt;,
+acho que é a codificação de texto.&lt;/p&gt;
+
+&lt;p&gt;A norma mais comum para a representação e codificação de texto é o Unicode, em
+que cada caratér é representado por um número. O conjunto de caratéres que
+constituem a norma tem mais de 107 000 entradas, que vão desde letras latinas comuns
+(&lt;code&gt;a b c&lt;/code&gt; …) a smiles com pinta (&lt;code&gt;😒&lt;/code&gt;), e cujo objetivo é ser universal e
+suportar todos os alfabetos.&lt;/p&gt;
+
+&lt;p&gt;Uma das formas de representar caratéres Unicode é recorrendo ao UTF-32, UTF-16
+ou UTF-8 (o mais comum). O número de cada um reflete o número mínimo de bits que
+cada caratér usa em cada formato; por exemplo, o UTF-32 define todos como tendo
+4 bytes (32 bits, o que possibilita representar 2^31 possibilidades), o UTF-16
+entre 2 e 4 bytes e o UTF-8 pode ter só 1 byte. Por exemplo, para a letra &lt;code&gt;a&lt;/code&gt;
+(com o código Unicode correspondente ao decimal 65), as representações são:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;UTF-8: &lt;code&gt;0100 0001&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;UTF-16: &lt;code&gt;0000 0000 0100 0001&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;UTF-32: &lt;code&gt;0000 0000 0000 0000 0000 0000 0100 0001&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Tanto o UTF-16 como o UTF-8, para conseguirem representar tantos caratéres como
+o UTF-32, usam bits de continuação. Para caratéres fora do que é possível representar
+com 1 byte (2^7 = 128), como por exemplo o &lt;code&gt;क़&lt;/code&gt; (representado por &lt;code&gt;0x0958&lt;/code&gt;), seguimos as instruções:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Começar pela representação em binário: &lt;code&gt;0000 1001 0101 1000&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Procurar o formato UTF-8 correspondente ao número de bits necessário (varia caso sejam
+precisos 1, 2 ou 4 bytes). Neste caso são necessários 3 bytes, portanto segue o formato:
+&lt;code&gt;1110 xxxx	10xx xxxx	10xx xxxx&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Substituir no formato os bits destinados ao caratér pela sua representação em
+binário. Para um binário imaginário &lt;code&gt;ABCD EFGH IJKL MNOP&lt;/code&gt; seria &lt;code&gt;1110 ABCD
+10EF GHIJ 10KL MNOP&lt;/code&gt;, para o &lt;code&gt;क़&lt;/code&gt; o resultado é: &lt;code&gt;1110 0000 1010 0101 1001 1000&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Mais importante do que saber como são feitas as várias codificações é saber
+as vantagens e desvantagens de cada uma. Como vimos antes, do UTF-8 ao UTF-32 o
+espaço de armazenamento na maior parte dos casos aumenta, sendo só igual para os
+caratéres de ordem mais elevada que realmente necessitem de 4 bytes em UTF-8.
+A vantagem em usar UTF-32 é que, no caso de se estar a fazer um qualquer processamento
+caratér a caratér, pode ser vantajoso ter a garantia que todos têm o mesmo tamanho
+em memória, não sendo necessário qualquer descodificação. Por outro lado, o UTF-8
+mapeia diretamente na representação em ASCII ou latin-1 (ISO 8859-1). Finalmente,
+o UTF-16 oferece um meio-termo entre ambos os casos, o que é vantajoso quando
+o predominante no texto são caratéres que necessetariam de 3 bytes em UTF-8, mas
+apenas de 2 em UTF-16 (que consegue representá-los com menos espaço porque não
+precisa de tantos bits de continuação); apesar de, devido aos caratéres como o
+espaço, dígitos e &lt;em&gt;newline&lt;/em&gt; serem representáveis num só byte em UTF-8, a vantagem
+prática em usar UTF-16 acaba por ser reduzida.&lt;/p&gt;
+
+    &lt;p&gt;&lt;a href=&quot;https://nextcommit.github.io/blog/texto/&quot;&gt;Texto, 文本 ou စာသားမ?&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;https://nextcommit.github.io&quot;&gt;Next Commit&lt;/a&gt; on  4 setemrbo 2016.&lt;/p&gt;
+
+  </content>
+</entry>
 
 
 <entry>
