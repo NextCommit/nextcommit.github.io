@@ -1,0 +1,334 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Problemas do Visual Studio &#8211; Next Commit</title>
+<meta name="description" content="Poderemos chamar o Visual Studio de IDE?">
+<meta name="keywords" content="visual studio, c++, clion, produtividade, software">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Problemas do Visual Studio">
+<meta name="twitter:description" content="Poderemos chamar o Visual Studio de IDE?">
+<meta name="twitter:site" content="@promgamer">
+<meta name="twitter:creator" content="@promgamer">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://nextcommit.github.io/images/VS.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="pt-PT">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Problemas do Visual Studio">
+<meta property="og:description" content="Poderemos chamar o Visual Studio de IDE?">
+<meta property="og:url" content="https://nextcommit.github.io/blog/visual-studio/">
+<meta property="og:site_name" content="Next Commit">
+
+
+
+
+
+<link rel="canonical" href="https://nextcommit.github.io/blog/visual-studio/">
+<link href="https://nextcommit.github.io/feed.xml" type="application/atom+xml" rel="alternate" title="Next Commit Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="https://nextcommit.github.io/assets/css/main.css">
+<!-- Webfonts -->
+<script src="https://use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+  <script src="https://nextcommit.github.io/assets/js/vendor/html5shiv.min.js"></script>
+  <script src="https://nextcommit.github.io/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="https://nextcommit.github.io/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+
+<!-- MathJax -->
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+<!-- Icons -->
+<link rel="apple-touch-icon" sizes="57x57" href="https://nextcommit.github.io/images/icons/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="https://nextcommit.github.io/images/icons/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="https://nextcommit.github.io/images/icons/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="https://nextcommit.github.io/images/icons/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="https://nextcommit.github.io/images/icons/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="https://nextcommit.github.io/images/icons/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="https://nextcommit.github.io/images/icons/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="https://nextcommit.github.io/images/icons/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://nextcommit.github.io/images/icons/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="https://nextcommit.github.io/images/icons/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://nextcommit.github.io/images/icons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="https://nextcommit.github.io/images/icons/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://nextcommit.github.io/images/icons/favicon-16x16.png">
+
+</head>
+
+<body id="post">
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+      
+		    
+		    <li><a href="https://nextcommit.github.io/" >Início</a></li>
+		  
+		    
+		    <li><a href="https://nextcommit.github.io/indice" >Índice</a></li>
+		  
+		    
+		    <li><a href="https://nextcommit.github.io/arquivo" >Arquivo</a></li>
+		  
+		    
+		    <li><a href="https://nextcommit.github.io/sobre" >Sobre</a></li>
+		  
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<header class="masthead">
+	
+		<div class="wrap">
+			<a href="https://nextcommit.github.io/" class="site-logo" rel="home" title="Next Commit"><img src="https://nextcommit.github.io/images/logo.png" width="200" height="200" alt="Next Commit logo" class="animated fadeInDown"></a>
+		</div>
+	
+</header><!-- /.masthead -->
+
+
+<div class="js-menu-screen menu-screen"></div>
+
+
+<div id="main" role="main">
+  <article class="hentry">
+    <div class="feature-img"><img src="https://nextcommit.github.io/images/VS.png" class="entry-feature-image" alt="Problemas do Visual Studio" ></div>
+    <div class="entry-wrapper">
+      <header class="entry-header">
+        <ul class="entry-tags">
+          <i class="fa fa-tags"></i><li><a href="https://nextcommit.github.io/indice/#visual studio" title="Assunto visual studio">visual studio</a></li><li><a href="https://nextcommit.github.io/indice/#c++" title="Assunto c++">c++</a></li><li><a href="https://nextcommit.github.io/indice/#clion" title="Assunto clion">clion</a></li><li><a href="https://nextcommit.github.io/indice/#produtividade" title="Assunto produtividade">produtividade</a></li><li><a href="https://nextcommit.github.io/indice/#software" title="Assunto software">software</a></li>
+        </ul>
+        
+          <h1 class="entry-title post-title">Problemas do Visual Studio </h1>
+        
+      </header>
+      <footer class="entry-meta">
+        
+        
+          <img src="http://scontent-mad1-1.xx.fbcdn.net/hphotos-xpa1/v/t1.0-9/11181849_984802091532539_3862292596095526118_n.jpg?oh=d12a651f7a18fe2d0ad9d4608bd30bef&oe=56B6B1C9" class="bio-photo" alt="Next Commit bio photo"></a>
+        
+        <span class="author vcard">por <a href="mailto:miguelfcunha@gmail.com"><span class="fn">Next Commit</span></a></span>
+        <span>
+        <a href="https://twitter.com/promgamer" title="Next Commit on Twitter" target="_blank"><i class="fa fa-twitter-square fa-2x"></i></a>
+        
+        
+        <a href="https://github.com/promgamer" title="Next Commit on Github" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>
+        </span>
+        <span class="entry-date date published"><time datetime="2016-09-29"><i class="fa fa-calendar-o"></i> 29 setemrbo 2016</time></span>
+        
+        <span class="entry-comments"><i class="fa fa-comment-o"></i> <a href="#disqus_thread">Comentar</a></span>
+        
+      </footer>
+      <div class="entry-content">
+        <p>Recentemente tenho utilizado o Visual Studio como ferramenta de desenvolvimento. Não tinha expectativas elevadas,
+até porque nos últimos 9 meses tinha utilizado o CLion, porém não estava à espera de encontrar, naquilo que chamam
+de “Visual Studio 2015”, um IDE tão incompleto. No texto que se segue tento resumir alguns pontos que me desagradaram e
+que tornaram a minha experiência bastante negativa.</p>
+
+<h2 id="ide-e-visual-studio-so-oximoros">IDE e Visual Studio são oximoros</h2>
+
+<p>Antes de mais, o próprio conceito de IDE (<strong>Integrated Development Environment</strong>) é logo posto em causa. Necessitam
+de fazer uma ligação remota? FTP? Não há. Abrir uma consola? Não há. Abrir outros ficheiros que não sejam <code>.c, .cpp ou .h</code>?
+Também não é boa ideia, já que nem sequer têm <em>syntax highlighting</em>…</p>
+
+<p>Na prática, e ao fim de alguns dias de frustração, vão acabar como eu: um ambiente de trabalho com o Visual Studio,
+Atom (ou, ironia das ironias, Visual Studio Code), meia dúzia de consolas e algumas pastas abertas. Desnecessário, não?</p>
+
+<h2 id="windows-only"><em>Windows Only</em></h2>
+<p>Outro grande problema (e dos grandes) prende-se com o Windows. Para começar, só conseguem correr o Visual Studio no
+Windows, o que obriga a que toda a equipa utilize esse sistema operativo. Mas principalmente porque todo o Visual Studio roda à
+volta do ecossistema Microsoft. Esqueçam a ideia de desenvolver aplicações <em>cross-platform</em> (e nem me falem do
+<a href="https://blogs.msdn.microsoft.com/vcblog/2016/03/30/visual-c-for-linux-development/">Visual C++ for Linux Development</a>
+que <em>crasha</em> o Visual Studio a cada 10 minutos). Aliás, tenho vindo a investigar e desenvolver formas de o conseguir,
+utilizando <em>containers</em> Docker e outras ferramentas (mais sobre isto, talvez, noutro <em>commit</em>).</p>
+
+<p>E acho que nem vale a pena dizer que têm de esquecer gcc, cmake, etc..</p>
+
+<h2 id="intellisense--lento-e-pouco-inteligente">Intellisense é lento e pouco inteligente</h2>
+<p>Qualquer programador dá bastante valor à capacidade do seu IDE de navegar pelo código de forma fácil e intuitiva e ter
+ajudas como <em>code completion</em>. No caso do Visual Studio, estas funcionalidades ficam a cargo do Intellisense (e da
+paciência do programador).</p>
+
+<p>Em primeiro lugar, o Intellisense, por alguma razão, gasta bastante memória RAM (não me perguntem porquê). Em segundo,
+não compreendo porque é que o Intellisense atualizar os seus índices seja algo tão crítico para bloquear por completo
+qualquer ação no Visual Studio durante uns bons segundos.</p>
+
+<p>Dá-me um aperto no coração de cada vez que o Visual Studio me notifica por causa de erros ortográficos (expliquem-me lá
+qual é a lógica de um IDE fazer <em>spell-checking</em>…), mas nem sequer piar quando preciso de verificar os parâmetros que
+a função X recebe.</p>
+
+<p>Análise estática de código? Nenhuma, acertaram!</p>
+
+<h2 id="atalhos-templates-refactoring">Atalhos? Templates? <em>Refactoring</em>?</h2>
+<p>Lembram-se do quão repetitivo e <em>error-prone</em> é escrever um ciclo <code>for</code>? Ou fazer um <code>switch statement</code>? Pois bem, o
+Visual Studio tem algo chamado <em>Visual Studio Snippets</em>, uma versão arcaica daquilo que a JetBrains chama de <em>Live
+Templates</em>.</p>
+
+<p>Podia dar mil e um exemplos de comparação (ora aqui está outra boa ideia para um futuro <em>post</em>). Fiquemo-nos só por dizer
+que, infelizmente, o Visual Studio está a anos-luz da concorrência nesta área (e podem incluir aqui o Intellisense também).</p>
+
+<h2 id="estrutura-dos-projetos-e-nomencleatura">Estrutura dos projetos e Nomencleatura</h2>
+<p>Esta é uma das partes mais controversas e, portanto, espero não me alongar. Para começar, um bocado de contexto: o
+Visual Studio decidiu chamar aquilo que entendemos como um projeto de <strong>Solução</strong>. A solução é única e pode conter mais
+que um projeto (aquilo que normalmente se chama de módulo), podendo cada projeto ter propriedades distintas. É aqui que
+começa a confusão. Propriedades partilhadas por vários projetos, devem ser agrupadas em <code>props</code> (<em>Project Properties</em>) de
+forma a evitar repetição de informação. Porém, não existe o conceito de “<em>Run Configurations</em>”, pelo que as configurações
+que podem fazer <em>compile and run</em> são as que estão de momento ativas (sim, para mudar têm de ir à mão, uma a uma… não
+há como ter configurações pré-definidas).</p>
+
+<p>Mas a confusão não se fica por aqui: já referi que não podem abrir 2 janelas de propriedades de projeto simultaneamente
+(para comparar é necessário estar a alternar entre uma e outra)? E já referi que existem configurações de <em>Release</em> e
+<em>Debug</em> (até aqui tudo OK), e que cada uma se subdivide em x86, x64, ARM, etc? E que, apesar desta explosão combinatória de
+possibilidades e configurações, podem usar o “simpático” “<em>All Configurations</em>? A idea parece boa ao início, mas basta
+terem uma das configurações diferentes, que o Visual Studio vos presenteia com a informação também simpática <code>&lt;different configurations&gt;</code>.
+Muito informativo…</p>
+
+<p>Mas preparem-se… Deixei a “bomba” para o fim. Preparados? Aqui vai: o projeto do Visual Studio <strong>não tem qualquer relação</strong>
+com o sistema de pastas. Isto significa que a organização de pastas que têm no vosso projeto (ou solução no Visual Studio) não tem qualquer relação
+com aquilo que vão encontrar dentro do Visual Studio. Podem organizar à vontade o vosso projeto com pastas e subpastas, que nada disso
+se vai refletir dentro do Visual Studio.</p>
+
+<p>E a melhor parte é que se moverem um ficheiro de local no <em>filesystem</em>, o Visual Studio perde-lhe a referência e vão ter
+que remover o ficheiro do Visual Studio e voltar a adicionar. E criar um ficheiro? Se o fazem dentro do Visual Studio (para
+não o ter que importar para lá mais tarde), o Visual Studio cria-o na <em>root</em> do projeto (porque não há qualquer associação
+com as pastas do <em>filesystem</em>, lembram-se?). E se depois quisermos mover o recém-criado ficheiro para uma pasta? Voltamos ao
+primeiro caso… Agora imaginem isto para projetos com centenas/milhares de ficheiros.</p>
+
+<p>Para colmatar esta falha (ou design propositado), o Visual Studio tem a noção de pastas virtuais (isto é, fazem o mesmo que
+pastas, mas não existem no <em>filesystem</em>), mas chama-lhe, carinhosamente, de filtros. Podem sempre, claro, replicar a
+estrutura de pastas do <em>filesystem</em> no Visual Studio, mas é repetir trabalho sem necessidade…</p>
+
+<p>E fico-me por aqui. E pelo <strong>CLion</strong>.</p>
+
+        <!-- comentarios -->
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+
+    
+    <div id="related_post">
+      <div class="next-article" style="background-image: url('https://nextcommit.github.io/images/academico.png');">
+
+        <div class="wrap">
+          <div class="overlay">
+
+          <div class="constrained">
+            <p class="next">Artigo Sugerido: </p>
+            <h3 class="title"><a href="/blog/os-5-mandamentos-dos-projetos-academicos/" class="next-article-link">Os 5 Mandamentos Dos Projetos Académicos</a></h3>
+            <p class="subhead">Como um projeto académico é e... não devia ser</p>
+          </div>
+
+        </div>
+        </div>
+      </div>
+    </div>
+    
+
+    
+    <div class="entry-wrapper">
+      <div class="entry-content center-margin">
+        <div id="disqus_thread"></div><!-- /#disqus_thread -->
+        
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'nextcommit'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'https://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+      </div>
+    </div>
+    
+
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo" class="entry-wrapper">
+    
+
+<span>&copy; 2016 Next Commit.</span>
+<!-- <div class="social-icons">
+	<a href="https://twitter.com/promgamer" title="Next Commit on Twitter" target="_blank"><i class="fa fa-twitter-square fa-2x"></i></a>
+	
+	
+	
+	
+	
+	
+	<a href="https://github.com/promgamer" title="Next Commit on Github" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>
+	
+  
+	
+  <a href="https://nextcommit.github.io/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a>
+</div> --> <!-- /.social-icons -->
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script type="text/javascript">
+  var BASE_URL = 'https://nextcommit.github.io';
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="https://nextcommit.github.io/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="https://nextcommit.github.io/assets/js/scripts.min.js"></script>
+
+
+<!-- Asynchronous Google Analytics snippet -->
+<script>
+  var _gaq = _gaq || [];
+  var pluginUrl =
+ 'https://www.google-analytics.com/plugins/ga/inpage_linkid.js';
+  _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+  _gaq.push(['_setAccount', 'UA-71051399-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = 'https://stats.g.doubleclick.net/dc.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+</body>
+</html>

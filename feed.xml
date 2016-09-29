@@ -4,13 +4,111 @@
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="https://nextcommit.github.io/feed.xml" />
 <link rel="alternate" type="text/html" href="https://nextcommit.github.io" />
-<updated>2016-09-07T19:32:39+01:00</updated>
+<updated>2016-09-29T01:06:50+01:00</updated>
 <id>https://nextcommit.github.io/</id>
 <author>
   <name>Next Commit</name>
   <uri>https://nextcommit.github.io/</uri>
   <email>miguelfcunha@gmail.com</email>
 </author>
+
+
+<entry>
+  <title type="html"><![CDATA[Problemas do Visual Studio]]></title>
+  <link rel="alternate" type="text/html" href="https://nextcommit.github.io/blog/visual-studio/" />
+  <id>https://nextcommit.github.io/blog/visual-studio</id>
+  <published>2016-09-29 00:43:05 +0100</published>
+  <updated>2016-09-29 00:43:05 +0100</updated>
+  <author>
+    <name>Next Commit</name>
+    <uri>https://nextcommit.github.io</uri>
+    <email>miguelfcunha@gmail.com</email>
+  </author>
+  <content type="html">
+    &lt;p&gt;Recentemente tenho utilizado o Visual Studio como ferramenta de desenvolvimento. Não tinha expectativas elevadas,
+até porque nos últimos 9 meses tinha utilizado o CLion, porém não estava à espera de encontrar, naquilo que chamam
+de “Visual Studio 2015”, um IDE tão incompleto. No texto que se segue tento resumir alguns pontos que me desagradaram e
+que tornaram a minha experiência bastante negativa.&lt;/p&gt;
+
+&lt;h2 id=&quot;ide-e-visual-studio-so-oximoros&quot;&gt;IDE e Visual Studio são oximoros&lt;/h2&gt;
+
+&lt;p&gt;Antes de mais, o próprio conceito de IDE (&lt;strong&gt;Integrated Development Environment&lt;/strong&gt;) é logo posto em causa. Necessitam
+de fazer uma ligação remota? FTP? Não há. Abrir uma consola? Não há. Abrir outros ficheiros que não sejam &lt;code&gt;.c, .cpp ou .h&lt;/code&gt;?
+Também não é boa ideia, já que nem sequer têm &lt;em&gt;syntax highlighting&lt;/em&gt;…&lt;/p&gt;
+
+&lt;p&gt;Na prática, e ao fim de alguns dias de frustração, vão acabar como eu: um ambiente de trabalho com o Visual Studio,
+Atom (ou, ironia das ironias, Visual Studio Code), meia dúzia de consolas e algumas pastas abertas. Desnecessário, não?&lt;/p&gt;
+
+&lt;h2 id=&quot;windows-only&quot;&gt;&lt;em&gt;Windows Only&lt;/em&gt;&lt;/h2&gt;
+&lt;p&gt;Outro grande problema (e dos grandes) prende-se com o Windows. Para começar, só conseguem correr o Visual Studio no
+Windows, o que obriga a que toda a equipa utilize esse sistema operativo. Mas principalmente porque todo o Visual Studio roda à
+volta do ecossistema Microsoft. Esqueçam a ideia de desenvolver aplicações &lt;em&gt;cross-platform&lt;/em&gt; (e nem me falem do
+&lt;a href=&quot;https://blogs.msdn.microsoft.com/vcblog/2016/03/30/visual-c-for-linux-development/&quot;&gt;Visual C++ for Linux Development&lt;/a&gt;
+que &lt;em&gt;crasha&lt;/em&gt; o Visual Studio a cada 10 minutos). Aliás, tenho vindo a investigar e desenvolver formas de o conseguir,
+utilizando &lt;em&gt;containers&lt;/em&gt; Docker e outras ferramentas (mais sobre isto, talvez, noutro &lt;em&gt;commit&lt;/em&gt;).&lt;/p&gt;
+
+&lt;p&gt;E acho que nem vale a pena dizer que têm de esquecer gcc, cmake, etc..&lt;/p&gt;
+
+&lt;h2 id=&quot;intellisense--lento-e-pouco-inteligente&quot;&gt;Intellisense é lento e pouco inteligente&lt;/h2&gt;
+&lt;p&gt;Qualquer programador dá bastante valor à capacidade do seu IDE de navegar pelo código de forma fácil e intuitiva e ter
+ajudas como &lt;em&gt;code completion&lt;/em&gt;. No caso do Visual Studio, estas funcionalidades ficam a cargo do Intellisense (e da
+paciência do programador).&lt;/p&gt;
+
+&lt;p&gt;Em primeiro lugar, o Intellisense, por alguma razão, gasta bastante memória RAM (não me perguntem porquê). Em segundo,
+não compreendo porque é que o Intellisense atualizar os seus índices seja algo tão crítico para bloquear por completo
+qualquer ação no Visual Studio durante uns bons segundos.&lt;/p&gt;
+
+&lt;p&gt;Dá-me um aperto no coração de cada vez que o Visual Studio me notifica por causa de erros ortográficos (expliquem-me lá
+qual é a lógica de um IDE fazer &lt;em&gt;spell-checking&lt;/em&gt;…), mas nem sequer piar quando preciso de verificar os parâmetros que
+a função X recebe.&lt;/p&gt;
+
+&lt;p&gt;Análise estática de código? Nenhuma, acertaram!&lt;/p&gt;
+
+&lt;h2 id=&quot;atalhos-templates-refactoring&quot;&gt;Atalhos? Templates? &lt;em&gt;Refactoring&lt;/em&gt;?&lt;/h2&gt;
+&lt;p&gt;Lembram-se do quão repetitivo e &lt;em&gt;error-prone&lt;/em&gt; é escrever um ciclo &lt;code&gt;for&lt;/code&gt;? Ou fazer um &lt;code&gt;switch statement&lt;/code&gt;? Pois bem, o
+Visual Studio tem algo chamado &lt;em&gt;Visual Studio Snippets&lt;/em&gt;, uma versão arcaica daquilo que a JetBrains chama de &lt;em&gt;Live
+Templates&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;Podia dar mil e um exemplos de comparação (ora aqui está outra boa ideia para um futuro &lt;em&gt;post&lt;/em&gt;). Fiquemo-nos só por dizer
+que, infelizmente, o Visual Studio está a anos-luz da concorrência nesta área (e podem incluir aqui o Intellisense também).&lt;/p&gt;
+
+&lt;h2 id=&quot;estrutura-dos-projetos-e-nomencleatura&quot;&gt;Estrutura dos projetos e Nomencleatura&lt;/h2&gt;
+&lt;p&gt;Esta é uma das partes mais controversas e, portanto, espero não me alongar. Para começar, um bocado de contexto: o
+Visual Studio decidiu chamar aquilo que entendemos como um projeto de &lt;strong&gt;Solução&lt;/strong&gt;. A solução é única e pode conter mais
+que um projeto (aquilo que normalmente se chama de módulo), podendo cada projeto ter propriedades distintas. É aqui que
+começa a confusão. Propriedades partilhadas por vários projetos, devem ser agrupadas em &lt;code&gt;props&lt;/code&gt; (&lt;em&gt;Project Properties&lt;/em&gt;) de
+forma a evitar repetição de informação. Porém, não existe o conceito de “&lt;em&gt;Run Configurations&lt;/em&gt;”, pelo que as configurações
+que podem fazer &lt;em&gt;compile and run&lt;/em&gt; são as que estão de momento ativas (sim, para mudar têm de ir à mão, uma a uma… não
+há como ter configurações pré-definidas).&lt;/p&gt;
+
+&lt;p&gt;Mas a confusão não se fica por aqui: já referi que não podem abrir 2 janelas de propriedades de projeto simultaneamente
+(para comparar é necessário estar a alternar entre uma e outra)? E já referi que existem configurações de &lt;em&gt;Release&lt;/em&gt; e
+&lt;em&gt;Debug&lt;/em&gt; (até aqui tudo OK), e que cada uma se subdivide em x86, x64, ARM, etc? E que, apesar desta explosão combinatória de
+possibilidades e configurações, podem usar o “simpático” “&lt;em&gt;All Configurations&lt;/em&gt;? A idea parece boa ao início, mas basta
+terem uma das configurações diferentes, que o Visual Studio vos presenteia com a informação também simpática &lt;code&gt;&amp;lt;different configurations&amp;gt;&lt;/code&gt;.
+Muito informativo…&lt;/p&gt;
+
+&lt;p&gt;Mas preparem-se… Deixei a “bomba” para o fim. Preparados? Aqui vai: o projeto do Visual Studio &lt;strong&gt;não tem qualquer relação&lt;/strong&gt;
+com o sistema de pastas. Isto significa que a organização de pastas que têm no vosso projeto (ou solução no Visual Studio) não tem qualquer relação
+com aquilo que vão encontrar dentro do Visual Studio. Podem organizar à vontade o vosso projeto com pastas e subpastas, que nada disso
+se vai refletir dentro do Visual Studio.&lt;/p&gt;
+
+&lt;p&gt;E a melhor parte é que se moverem um ficheiro de local no &lt;em&gt;filesystem&lt;/em&gt;, o Visual Studio perde-lhe a referência e vão ter
+que remover o ficheiro do Visual Studio e voltar a adicionar. E criar um ficheiro? Se o fazem dentro do Visual Studio (para
+não o ter que importar para lá mais tarde), o Visual Studio cria-o na &lt;em&gt;root&lt;/em&gt; do projeto (porque não há qualquer associação
+com as pastas do &lt;em&gt;filesystem&lt;/em&gt;, lembram-se?). E se depois quisermos mover o recém-criado ficheiro para uma pasta? Voltamos ao
+primeiro caso… Agora imaginem isto para projetos com centenas/milhares de ficheiros.&lt;/p&gt;
+
+&lt;p&gt;Para colmatar esta falha (ou design propositado), o Visual Studio tem a noção de pastas virtuais (isto é, fazem o mesmo que
+pastas, mas não existem no &lt;em&gt;filesystem&lt;/em&gt;), mas chama-lhe, carinhosamente, de filtros. Podem sempre, claro, replicar a
+estrutura de pastas do &lt;em&gt;filesystem&lt;/em&gt; no Visual Studio, mas é repetir trabalho sem necessidade…&lt;/p&gt;
+
+&lt;p&gt;E fico-me por aqui. E pelo &lt;strong&gt;CLion&lt;/strong&gt;.&lt;/p&gt;
+
+    &lt;p&gt;&lt;a href=&quot;https://nextcommit.github.io/blog/visual-studio/&quot;&gt;Problemas do Visual Studio&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;https://nextcommit.github.io&quot;&gt;Next Commit&lt;/a&gt; on 29 setemrbo 2016.&lt;/p&gt;
+
+  </content>
+</entry>
 
 
 <entry>
