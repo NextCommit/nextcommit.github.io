@@ -4,13 +4,71 @@
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="https://nextcommit.github.io/feed.xml" />
 <link rel="alternate" type="text/html" href="https://nextcommit.github.io" />
-<updated>2016-09-29T01:09:55+01:00</updated>
+<updated>2016-11-01T11:59:59+01:00</updated>
 <id>https://nextcommit.github.io/</id>
 <author>
   <name>Next Commit</name>
   <uri>https://nextcommit.github.io/</uri>
   <email>miguelfcunha@gmail.com</email>
 </author>
+
+
+<entry>
+  <title type="html"><![CDATA[WebAssembly]]></title>
+  <link rel="alternate" type="text/html" href="https://nextcommit.github.io/blog/webassembly/" />
+  <id>https://nextcommit.github.io/blog/webassembly</id>
+  <published>2016-11-01 00:00:00 +0100</published>
+  <updated>2016-11-01 00:00:00 +0100</updated>
+  <author>
+    <name>Gabriel Candal</name>
+    <uri>https://nextcommit.github.io</uri>
+    <email>gabrielcandal@gmail.com</email>
+  </author>
+  <content type="html">
+    &lt;p&gt;Depois de iniciativas como o &lt;em&gt;&lt;a href=&quot;http://asmjs.org/&quot;&gt;asm.js&lt;/a&gt;&lt;/em&gt;, em que o objetivo é trazer a &lt;em&gt;performance&lt;/em&gt;
+de aplicações desktop (que tipicamente usam linguagens compiladas &lt;em&gt;ahead-of-time&lt;/em&gt;, como C/C++) para
+o &lt;em&gt;browser&lt;/em&gt;, começou um esforço conjunto entre a Google, Mozilla, Microsoft, Apple e o W3C para 
+definir um &lt;em&gt;standard&lt;/em&gt; de &lt;em&gt;“Assembly para a web”&lt;/em&gt;, ou seja, &lt;em&gt;bytecode&lt;/em&gt; que todos os &lt;em&gt;browsers&lt;/em&gt;
+soubessem interpretar.&lt;/p&gt;
+
+&lt;p&gt;Hoje foi feito um anúncio conjunto entre equipas do &lt;a href=&quot;http://v8project.blogspot.pt/2016/10/webassembly-browser-preview.html&quot;&gt;Chrome (V8)&lt;/a&gt;,
+&lt;a href=&quot;https://hacks.mozilla.org/2016/10/webassembly-browser-preview/&quot;&gt;Firefox (SpiderMonkey)&lt;/a&gt;
+e &lt;a href=&quot;https://blogs.windows.com/msedgedev/2016/10/31/webassembly-browser-preview/#PbkIl6BO6aMYUtfF.97&quot;&gt;Edge (Chakra)&lt;/a&gt; de que
+o &lt;em&gt;WebAssembly&lt;/em&gt; chegou à fase de &lt;em&gt;browser preview&lt;/em&gt;, ou seja, é agora possível experimentar &lt;a href=&quot;http://webassembly.org/demo/&quot;&gt;uma demo&lt;/a&gt; em
+todos os &lt;em&gt;browsers&lt;/em&gt; excepto no Safari (se bem que para o Edge é preciso usar a &lt;em&gt;build&lt;/em&gt; de &lt;em&gt;development&lt;/em&gt;).&lt;/p&gt;
+
+&lt;p&gt;Isto são boas notícias porque, quanto mais não seja, é impressionante ver um jogo feito em Unity a
+correr com tanta fluidez num &lt;em&gt;browser&lt;/em&gt; (que é algo que foi inicialmente pensado para mostrar texto
+e, quanto muito, algumas imagens).&lt;/p&gt;
+
+&lt;p&gt;No entanto, para mim a melhor notícia de todas é que FINALMENTE todo o desenvolvimento &lt;em&gt;web&lt;/em&gt;
+deixará de estar preso a uma só linguagem de programação. Atualmente todas as linguagens que
+queiram ser usadas para desenvolvimento &lt;em&gt;web&lt;/em&gt; têm inevitavelmente que ser compiladas para
+JavaScript (como Elm ou ClojureScript), o que introduz complexidade para quem desenvolve
+linguagen, já que é obrigado a desenvolver a compilação texto-para-texto só para acabar
+por ter uma linguagem alvo que para ser executada tem que haver &lt;em&gt;parsing&lt;/em&gt; do texto!&lt;/p&gt;
+
+&lt;p&gt;Fora a questão de evitar o &lt;em&gt;parsing&lt;/em&gt;, que para programas grandes em dispositivos móveis
+pode demorar até 40s, usar &lt;em&gt;bytecode&lt;/em&gt; em vez de JavaScript tem outras vantagens como
+a facilidade em adicionar novas &lt;em&gt;features&lt;/em&gt; (incluindo melhores &lt;em&gt;profilers&lt;/em&gt;, &lt;em&gt;debuggers&lt;/em&gt;,
+excepções de custo zero ou manipulação direta de memória, dentro de uma &lt;em&gt;sandbox&lt;/em&gt;, &lt;em&gt;à la&lt;/em&gt; C/C++)
+e integrar perfeitamente com a &lt;em&gt;toolchain&lt;/em&gt; de LLVM, o que permite que várias outras linguagens
+compilem para WebAssembly facilmente, tendo “apenas” que desenvolver um novo &lt;em&gt;backend&lt;/em&gt; para o compilador.&lt;/p&gt;
+
+&lt;p&gt;Outra grande esperança que WebAssembly traz e que merece um parágrafo por si só é a
+possibilidade de programar com &lt;em&gt;POSIX threads&lt;/em&gt;. Até à data &lt;em&gt;multithreading&lt;/em&gt; no &lt;em&gt;browser&lt;/em&gt; é feito via &lt;em&gt;WebWorkers&lt;/em&gt;,
+o que é limitado pela forma como se passa informação (mensagens em vez de memória partilhada)
+e pelo tipo de &lt;em&gt;threads&lt;/em&gt; que usa (&lt;em&gt;OS threads&lt;/em&gt; em vez de &lt;em&gt;coroutines/fibers/lightweight threads/green threads&lt;/em&gt;).&lt;/p&gt;
+
+&lt;p&gt;De qualquer forma, JavaScript tão cedo não vai deixar de ser um cidadão de primeira classe
+na &lt;em&gt;stack&lt;/em&gt; da &lt;em&gt;web&lt;/em&gt; e por isso está previsto existir suporte para chamadas síncronas entre
+JavaScript e WebAssembly, o que permite uma migração progressiva, ou então apenas usar o novo
+standard em secções do programa em que o desempenho seja crítico.&lt;/p&gt;
+
+    &lt;p&gt;&lt;a href=&quot;https://nextcommit.github.io/blog/webassembly/&quot;&gt;WebAssembly&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;https://nextcommit.github.io&quot;&gt;Next Commit&lt;/a&gt; on  1 novembro 2016.&lt;/p&gt;
+
+  </content>
+</entry>
 
 
 <entry>
