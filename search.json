@@ -2,6 +2,21 @@
 
   
     {
+      "title"			: "Vamos Falar De Feedback",
+      "link"			: "https://nextcommit.github.io/blog/vamos-falar-de-feedback/",
+      "excerpt"		: "<p>Há uns meses atrás li o “<em><a href="https://www.amazon.co.uk/dp/0262525674/ref=cm_sw_r_tw_dp_x_GQcCybVDZBX89">Design of Everyday Things</a></em>”,
+do Don Norman, e um dos aspetos que mais captou a minha atenção foi o <strong>feedback</strong>. E à medida que fui lendo sobre a
+importância do feedback e refletindo sobre como geralmente o menosprezámos, achei importante escrever um pouco sobre este
+assunto.</p>
+
+",
+      "date"      : " 8 janeiro 2017",
+      "content"   : "<p>Há uns meses atrás li o “<em><a href=\"https://www.amazon.co.uk/dp/0262525674/ref=cm_sw_r_tw_dp_x_GQcCybVDZBX89\">Design of Everyday Things</a></em>”,\ndo Don Norman, e um dos aspetos que mais captou a minha atenção foi o <strong>feedback</strong>. E à medida que fui lendo sobre a\nimportância do feedback e refletindo sobre como geralmente o menosprezámos, achei importante escrever um pouco sobre este\nassunto.</p>\n\n<p>O <strong>feedback</strong> prende-se com a ação de devolver informação ao utilizador de um sistema sobre o seu estado, se\ndeterminada ação foi efetuada e qual o resultado dessa mesma ação. Seja num sistema de <em>software</em>, num objeto do dia-a-dia,\nnuma relação humana ou numa situação profissional, o feedback é bastante importante.</p>\n\n<p>Vejamos um exemplo. Recentemente estive a compilar num <em>tutorial</em> uma série de passos que permitem a um novo <em>developer</em>\nconfigurar o seu ambiente de trabalho/desenvolvimento. Apesar de parecer um trabalho trivial, é uma tarefa que se revela bem mais complexa\ndo que aquilo que inicialmente se espera: escrever, passo-a-passo e de forma compreensível, uma série de ações implica\num conhecimento relativamente bom do ambiente de desenvolvimento, das diferentes configurações e, enfim, da sua finalidade\ne casos de uso. E por reconhecermos esta tarefa como trivial, acabamos por cair no típico erro de omitir alguns\npassos que possam <em>parecer</em> desnecessários (ou demasiado óbvios).</p>\n\n<p>Num caso como este, a necessidade de feedback é gritante. Apesar de ser capaz de validar o <em>tutorial</em> sem qualquer tipo\nde feedback, outro utilizador ser capaz de configurar o ambiente de desenvolvimento com base no meu <em>tutorial</em> não revela\na sua eficácia. E só através de feedback por parte do utilizador é que serei capaz de o melhorar.</p>\n\n<p>O feedback é uma faca de dois gumes: é importante como ferramente para um melhoramento contínuo (de uma pessoa, produto\nou processo) mas, na forma e tempo errados, pode ser entendido como um ataque pessoal. E é pela facilidade que assim é\nentendido, que, normalmente, nos abstemos de fornecer qualquer tipo de feedback. E isso é mau.</p>\n\n<p>Dar feedback é um processo complicado, principalmente quando existe conflito de interesses, falta de abertura ou ineficiência\nna comunicação. Tipicamente, tal como Don Norman descreve, o <em>bom</em> feedback (aquele que é útil) é:</p>\n\n<ul>\n  <li><strong>Descritivo</strong>: deve ter como base uma descrição imparcial, sem juízo de valores.</li>\n  <li><strong>Específico</strong>: objetivo e <em>straight to the point</em>, sob pena de ser ignorado.</li>\n  <li><strong>Direcionado</strong>: para um receptor em específico, sem “mensagens escondidas” ou segundas interpretações, de forma a não ser mal interpretado.</li>\n  <li><strong>Solicitado</strong>: de forma a que se criar a cultura de ser algo bem recebido, positivo.</li>\n  <li><strong>Oportuno</strong>: para não se deixar para amanhã o que se pode fazer hoje…</li>\n</ul>\n\n<p>E para terminar deixo a questão: Quem deve tomar iniciativa no processo de feedback? O criador ou o utilizador final?\nO gestor ou o colaborador?</p>\n"
+    }
+  
+
+  
+    ,{
       "title"			: "Errar E Aprender",
       "link"			: "https://nextcommit.github.io/blog/errar-e-aprender/",
       "excerpt"		: "O que aprendi nos últimos meses",

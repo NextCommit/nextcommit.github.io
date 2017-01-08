@@ -4,13 +4,69 @@
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="https://nextcommit.github.io/feed.xml" />
 <link rel="alternate" type="text/html" href="https://nextcommit.github.io" />
-<updated>2017-01-01T21:52:55+00:00</updated>
+<updated>2017-01-08T20:50:25+00:00</updated>
 <id>https://nextcommit.github.io/</id>
 <author>
   <name>Next Commit</name>
   <uri>https://nextcommit.github.io/</uri>
   <email>miguelfcunha@gmail.com</email>
 </author>
+
+
+<entry>
+  <title type="html"><![CDATA[Vamos Falar De Feedback]]></title>
+  <link rel="alternate" type="text/html" href="https://nextcommit.github.io/blog/vamos-falar-de-feedback/" />
+  <id>https://nextcommit.github.io/blog/vamos-falar-de-feedback</id>
+  <published>2017-01-08 00:50:16 +0000</published>
+  <updated>2017-01-08 00:50:16 +0000</updated>
+  <author>
+    <name>Miguel Cunha</name>
+    <uri>https://nextcommit.github.io</uri>
+    <email>miguelfcunha@gmail.com</email>
+  </author>
+  <content type="html">
+    &lt;p&gt;Há uns meses atrás li o “&lt;em&gt;&lt;a href=&quot;https://www.amazon.co.uk/dp/0262525674/ref=cm_sw_r_tw_dp_x_GQcCybVDZBX89&quot;&gt;Design of Everyday Things&lt;/a&gt;&lt;/em&gt;”,
+do Don Norman, e um dos aspetos que mais captou a minha atenção foi o &lt;strong&gt;feedback&lt;/strong&gt;. E à medida que fui lendo sobre a
+importância do feedback e refletindo sobre como geralmente o menosprezámos, achei importante escrever um pouco sobre este
+assunto.&lt;/p&gt;
+
+&lt;p&gt;O &lt;strong&gt;feedback&lt;/strong&gt; prende-se com a ação de devolver informação ao utilizador de um sistema sobre o seu estado, se
+determinada ação foi efetuada e qual o resultado dessa mesma ação. Seja num sistema de &lt;em&gt;software&lt;/em&gt;, num objeto do dia-a-dia,
+numa relação humana ou numa situação profissional, o feedback é bastante importante.&lt;/p&gt;
+
+&lt;p&gt;Vejamos um exemplo. Recentemente estive a compilar num &lt;em&gt;tutorial&lt;/em&gt; uma série de passos que permitem a um novo &lt;em&gt;developer&lt;/em&gt;
+configurar o seu ambiente de trabalho/desenvolvimento. Apesar de parecer um trabalho trivial, é uma tarefa que se revela bem mais complexa
+do que aquilo que inicialmente se espera: escrever, passo-a-passo e de forma compreensível, uma série de ações implica
+um conhecimento relativamente bom do ambiente de desenvolvimento, das diferentes configurações e, enfim, da sua finalidade
+e casos de uso. E por reconhecermos esta tarefa como trivial, acabamos por cair no típico erro de omitir alguns
+passos que possam &lt;em&gt;parecer&lt;/em&gt; desnecessários (ou demasiado óbvios).&lt;/p&gt;
+
+&lt;p&gt;Num caso como este, a necessidade de feedback é gritante. Apesar de ser capaz de validar o &lt;em&gt;tutorial&lt;/em&gt; sem qualquer tipo
+de feedback, outro utilizador ser capaz de configurar o ambiente de desenvolvimento com base no meu &lt;em&gt;tutorial&lt;/em&gt; não revela
+a sua eficácia. E só através de feedback por parte do utilizador é que serei capaz de o melhorar.&lt;/p&gt;
+
+&lt;p&gt;O feedback é uma faca de dois gumes: é importante como ferramente para um melhoramento contínuo (de uma pessoa, produto
+ou processo) mas, na forma e tempo errados, pode ser entendido como um ataque pessoal. E é pela facilidade que assim é
+entendido, que, normalmente, nos abstemos de fornecer qualquer tipo de feedback. E isso é mau.&lt;/p&gt;
+
+&lt;p&gt;Dar feedback é um processo complicado, principalmente quando existe conflito de interesses, falta de abertura ou ineficiência
+na comunicação. Tipicamente, tal como Don Norman descreve, o &lt;em&gt;bom&lt;/em&gt; feedback (aquele que é útil) é:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Descritivo&lt;/strong&gt;: deve ter como base uma descrição imparcial, sem juízo de valores.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Específico&lt;/strong&gt;: objetivo e &lt;em&gt;straight to the point&lt;/em&gt;, sob pena de ser ignorado.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Direcionado&lt;/strong&gt;: para um receptor em específico, sem “mensagens escondidas” ou segundas interpretações, de forma a não ser mal interpretado.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Solicitado&lt;/strong&gt;: de forma a que se criar a cultura de ser algo bem recebido, positivo.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Oportuno&lt;/strong&gt;: para não se deixar para amanhã o que se pode fazer hoje…&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;E para terminar deixo a questão: Quem deve tomar iniciativa no processo de feedback? O criador ou o utilizador final?
+O gestor ou o colaborador?&lt;/p&gt;
+
+    &lt;p&gt;&lt;a href=&quot;https://nextcommit.github.io/blog/vamos-falar-de-feedback/&quot;&gt;Vamos Falar De Feedback&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;https://nextcommit.github.io&quot;&gt;Next Commit&lt;/a&gt; on  8 janeiro 2017.&lt;/p&gt;
+
+  </content>
+</entry>
 
 
 <entry>
