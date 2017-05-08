@@ -4,13 +4,104 @@
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="https://nextcommit.github.io/feed.xml" />
 <link rel="alternate" type="text/html" href="https://nextcommit.github.io" />
-<updated>2017-01-08T20:54:26+00:00</updated>
+<updated>2017-05-08T21:38:25+01:00</updated>
 <id>https://nextcommit.github.io/</id>
 <author>
   <name>Next Commit</name>
   <uri>https://nextcommit.github.io/</uri>
   <email>miguelfcunha@gmail.com</email>
 </author>
+
+
+<entry>
+  <title type="html"><![CDATA[Automação 2]]></title>
+  <link rel="alternate" type="text/html" href="https://nextcommit.github.io/blog/python-e-automacao-2/" />
+  <id>https://nextcommit.github.io/blog/python-e-automacao-2</id>
+  <published>2017-05-06 00:00:00 +0100</published>
+  <updated>2017-05-06 00:00:00 +0100</updated>
+  <author>
+    <name>Gabriel Candal</name>
+    <uri>https://nextcommit.github.io</uri>
+    <email>gabrielcandal@gmail.com</email>
+  </author>
+  <content type="html">
+    &lt;p&gt;Antes de começar, espero que tenham ido a Braga ouvir o Miguel a falar sobre &lt;a href=&quot;https://www.meetup.com/pt-BR/bragajs/events/238881334/?eventId=238881334&quot;&gt;o ecosistema de Docker&lt;/a&gt;.
+Se não tiveram essa hipótese, ainda vão a tempo de se redimirem porque ele vai estar no &lt;a href=&quot;https://www.meetup.com/pt-BR/portocodes/events/239323934/&quot;&gt;Porto Codes&lt;/a&gt;, desta
+vez a explicar como se escreve C++ moderno e com um cheirinho a funcional.&lt;/p&gt;
+
+&lt;p&gt;Continuando, já tinha escrito &lt;a href=&quot;/blog/python-e-automacao-1/&quot;&gt;há uns tempos&lt;/a&gt; como “qualquer um” podia
+usar Python para automatizar algumas tarefas do dia-a-dia, mas ficou um segredo por contar: a maior parte
+das tarefas interessantes (ir buscar preços de viagens de avião, melhorar fotografias, sacar legendas para
+uma série, etc) demora tempo, muito tempo…&lt;/p&gt;
+
+&lt;p&gt;Acabei de fazer um teste rápido e ir buscar a página do Skyscanner
+com as viagens Porto -&amp;gt; Lisboa para um dia demorou 0.6s e fazer o parsing to HTML para encontrar a informação
+interessante outros 0.5s, ou seja, ~1s para cada destino. E se eu quisesse ver qual era o destino de férias
+mais barato para passar 3 dias durante Agosto? Estamos a falar de ter que procurar 30 * nº destinos viagens,
+assumindo que estava disposto a ir para qualquer capital europeia isso faria com que tivesse que escolher entre
+900 viagens, o que ia demorar 15 minutos. Quem quer estar 15 minutos à espera de alguma coisa que não seja o
+início de um jogo do Porto? Exato, ninguém.&lt;/p&gt;
+
+&lt;p&gt;Será que podíamos fazer melhor? Claro que sim, e é aí que entram a concorrência e o paralelismo em programação.
+Antes de mais, acho que tem algum interesse perceber a diferença entre estes dois conceitos:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Concorrência&lt;/strong&gt;: a capacidade de um programa de alternar entre fluxos de execução. Isto quer dizer que o processador pode num momento estar a exectuar uma função A e, antes de acabar, executar um bocado de uma função B antes de voltar à A. Num programa “normal” (sequencial) isto nunca acontece, ao fazer:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;n&quot;&gt;imprimir_folha&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;fazer_contas_e_abrir_janela&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;A janela nunca seria aberta antes da folha ser impressa. No entanto, há aqui um desperdício enorme da capacidade do meu computador. Assim que envio o ficheiro para a impressora, não há motivo para ficar à espera que a impressão acabe para começar a abrir a janela.&lt;/p&gt;
+
+&lt;p&gt;Estar à espera de um recurso externo sem ter que praticamente usar o CPU chama-se estar em I/O (de &lt;em&gt;input&lt;/em&gt;/&lt;em&gt;output&lt;/em&gt;) e acontece frequentemente (como por exemplo quando estamos a escrever ou ler de um ficheiro ou a fazer um pedido à rede). Durante este período de I/O estar agarrado ao CPU é um desperdício de recursos porque não o estamos a utilizar, o ideal seria ir fazendo outra coisa útil qualquer enquanto estou em I/O. Neste exemplo isso corresponderia a ir fazendo as contas enquanto ainda se está a imprimir.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Paralelismo&lt;/strong&gt;: em sistemas com vários &lt;em&gt;cores&lt;/em&gt; há também a hipótese de atuar em vários fluxos de execução &lt;em&gt;ao mesmo tempo&lt;/em&gt;. Isto é um tipo especial de concorrência, já que não tenho garantias da sequência do meu programa: um programa pode ser concorrente e não ser paralelo, mas se for paralelo então é concorrente. Olhando para este exemplo:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;n&quot;&gt;fazer_bue_contas&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;fazer_bue_contas&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;fazer_bue_contas&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;fazer_bue_contas&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Facilmente percebemos que não adianta muito ir alternando o fluxo entre as várias funções (concorrência), já que estaríamos a usar o core do CPU atribuído ao nosso programa a 100% em qualquer uma das situações. Não havendo I/O, até é prejudicial ter concorrência, já que há perda de tempo no que se chama &lt;em&gt;mudança de contexto&lt;/em&gt; (tirar um core do CPU de uma função para ceder a outra). Neste caso, a única opção de acelerar o programa seria utilizar &lt;em&gt;mais&lt;/em&gt; cores do CPU.&lt;/p&gt;
+
+&lt;p&gt;Isto é tudo muito bonito, mas como se conseguem estas coisas? Usando várias &lt;em&gt;threads&lt;/em&gt; ou processos, que são muito semelhantes sendo que a diferença é que o processo é uma versão mais pesada da &lt;em&gt;thread&lt;/em&gt; (consome mais recursos e tem uma mudança de contexto mais lenta) já que tem a sua própria região de memória (ou seja, duas &lt;em&gt;threads&lt;/em&gt; podem partilhar variáveis mas dois processos não).&lt;/p&gt;
+
+&lt;p&gt;Em Python tudo isto é super simples (nada de coisas esquisitas tipo &lt;em&gt;pthread_create(&amp;amp;thread, NULL, &amp;amp;funcao, NULL);&lt;/em&gt;):&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;multiprocessing&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;fazer_bue_contas&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;num&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;process100&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;multiprocessing&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Process&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;target&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fazer_bue_contas&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;process200&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;multiprocessing&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Process&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;target&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fazer_bue_contas&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;process100&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;join&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;process200&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;join&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Não fica muito mais complicado do que isto para utilizações que não impliquem estado partilhado, ou seja, onde as funções não têm que comunicar umas com as outras e cada uma representa uma unidade isolada de computação (que é o caso da maior parte das tarefas de automação). O que está a acontecer é que começamos dois processos em que cada um faz cálculos com base num valor e devolve o resultado; como os processos têm zonas de memórias independentes temos também que passar uma variável para poder guardar os resultados. No fim, com o &lt;em&gt;join&lt;/em&gt;, estamos a esperar que os processos terminem.&lt;/p&gt;
+
+&lt;p&gt;Uma questão pertinente é: porque é que decidi usar processos e não &lt;em&gt;threads&lt;/em&gt;? Se são uma versão mais leve deviam ser preferíveis na maior parte dos casos. É verdade, mas a maior parte das implementações de Python (incluindo a mais comum, o &lt;em&gt;CPython&lt;/em&gt;), sofre de um problema chamado GIL (&lt;em&gt;Global Interpreter Lock&lt;/em&gt;), que resumidamente é uma limitação no interpretador que impede que duas &lt;em&gt;threads&lt;/em&gt; executem em simultâneo, o que faz com que seja impossível ter paralelismo (só podemos ter concorrência) ao usar &lt;em&gt;threads&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;Esta conversa toda só para dizer que ir buscar os vôos ao Skyscanner é uma tarefa que passa um tempo considerável em I/O e por isso beneficia IMENSO de usar várias &lt;em&gt;threads&lt;/em&gt;, já que o sistema operativo vai trocando o dono de cada &lt;em&gt;core&lt;/em&gt; do CPU de cada vez que eles estão à espera que a resposta do Skyscanner chegue pela rede. Seria algo como:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;thread&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;threads&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;thread&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;start_new_thread&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get_place_prices&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;region&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,))&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;region&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;norte&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;sul&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;este&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;oeste&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;thread&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;threads&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;thread&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;join&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Feito! Imaginando que 70% do tempo é passado em I/O, em vez de demorarmos 15 minutos podemos passar para 5 minutos, yey \o/. Agora a parte propriamente dita de ir buscar os preços pode ficar para outro post, ou então…&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://nextcommit.github.io/images/proof_to_reader.jpg&quot; alt=&quot;The proof is left as an exercise to the reader&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Outra questão que fica de fora é: qual é o número ideal de &lt;em&gt;threads&lt;/em&gt; que o meu programa deve ter? No exemplo estou a usar 4, mas se uma região tiver muito mais capitais que outra, então posso chegar a um ponto em que só tenho uma &lt;em&gt;thread&lt;/em&gt; a executar e estou basicamente com o mesmo problema inicial em que o programa não está a fazer nada enquanto espera a resposta do site. Por outro lado, não adianta ter o número de &lt;em&gt;threads&lt;/em&gt; igual ao número de capitais porque o computador tem um número limitado de &lt;em&gt;cores&lt;/em&gt; e o ideal é tê-los sempre todos ocupados mas sem perder tempo desnecessário com a mudança de contexto. Mais sobre isto e como chegar a uma solução ótima noutro post :D&lt;/p&gt;
+
+    &lt;p&gt;&lt;a href=&quot;https://nextcommit.github.io/blog/python-e-automacao-2/&quot;&gt;Automação 2&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;https://nextcommit.github.io&quot;&gt;Next Commit&lt;/a&gt; on  6 maio 2017.&lt;/p&gt;
+
+  </content>
+</entry>
 
 
 <entry>
