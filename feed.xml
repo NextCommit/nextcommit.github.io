@@ -2,34 +2,194 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
 <title type="text">Next Commit</title>
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
-<link rel="self" type="application/atom+xml" href="https://nextcommit.github.io/feed.xml" />
-<link rel="alternate" type="text/html" href="https://nextcommit.github.io" />
-<updated>2017-05-08T21:38:25+01:00</updated>
-<id>https://nextcommit.github.io/</id>
+<link rel="self" type="application/atom+xml" href="http://localhost:4000/feed.xml" />
+<link rel="alternate" type="text/html" href="http://localhost:4000" />
+<updated>2017-05-14T13:22:38+01:00</updated>
+<id>http://localhost:4000/</id>
 <author>
   <name>Next Commit</name>
-  <uri>https://nextcommit.github.io/</uri>
+  <uri>http://localhost:4000/</uri>
   <email>miguelfcunha@gmail.com</email>
 </author>
 
 
 <entry>
+  <title type="html"><![CDATA[Containers e Docker]]></title>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/blog/containers-e-docker/" />
+  <id>http://localhost:4000/blog/containers-e-docker</id>
+  <published>2017-05-14 01:50:16 +0100</published>
+  <updated>2017-05-14 01:50:16 +0100</updated>
+  <author>
+    <name>Miguel Cunha</name>
+    <uri>http://localhost:4000</uri>
+    <email>miguelfcunha@gmail.com</email>
+  </author>
+  <content type="html">
+    &lt;blockquote&gt;
+  &lt;p&gt;O texto que se segue é, em verdade, uma espécie de resumo daquilo que apresentei recentemente no &lt;strong&gt;Braga.JS&lt;/strong&gt; Não é um
+“Docker 101”, pois pressupõe que já ouviram falar da tecnologia (mesmo que nunca a tenha usado). Há bastante tópicos que não
+foram abordados e que deixo para outro &lt;em&gt;post&lt;/em&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Fui apresentado ao mundo dos &lt;em&gt;containers&lt;/em&gt; (e, em especial, ao &lt;strong&gt;Docker&lt;/strong&gt;) há cerca de dois anos atrás, na &lt;em&gt;MOG Technologies&lt;/em&gt;.
+Desde então, tenho utilizar todo o seu &lt;strong&gt;ecossistema&lt;/strong&gt; em situações bastante diferentes, com propósitos e objetivos distintos
+(exemplos mais para o fim do &lt;em&gt;post&lt;/em&gt;). Comecemos pelo básico.&lt;/p&gt;
+
+&lt;h1 id=&quot;o-bsico&quot;&gt;O Básico&lt;/h1&gt;
+&lt;p&gt;Aquilo que conhecemos como &lt;strong&gt;Docker&lt;/strong&gt; é, na verdade, o &lt;strong&gt;Docker Engine&lt;/strong&gt;, ou seja, o &lt;em&gt;core&lt;/em&gt; que permite criar imagens e
+correr &lt;em&gt;containers&lt;/em&gt;. Mas aquilo que o Docker oferece, tipicamente chamado de  &lt;strong&gt;Docker Toolbox&lt;/strong&gt; é bem mais completo e interessante.
+Vamos por partes.&lt;/p&gt;
+
+&lt;p&gt;Tipicamente tudo começa no &lt;em&gt;Dockerfile&lt;/em&gt;, um ficheiro de configuração, com uma sintaxe bastante simples e intuitiva, que nos permite
+escrever “receitas”:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-dockerfile&quot; data-lang=&quot;dockerfile&quot;&gt;FROM ubuntu:16.04
+
+RUN apt-get update
+RUN apt-get install -y software-properties-common python
+RUN apt-get install -y nodejs
+
+RUN mkdir /var/www
+
+ADD app.js /var/www/app.js&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Tendo a nossa “receita” definida, utilizamos o comando &lt;em&gt;build&lt;/em&gt; do &lt;strong&gt;Docker Engine&lt;/strong&gt; para construir a imagem resultante. Aqui existem
+várias nuances interessantes. Primeiro, todas as imagens começam de uma imagem base (no caso anterior, estamos a usar um Ubuntu 16.04).
+Depois, cada comando é construído &lt;strong&gt;sequencialmente&lt;/strong&gt;, em camadas &lt;strong&gt;read-only&lt;/strong&gt;. Esta filosofia é bastante importante, pois
+permite tirar partido de mecanismos de “&lt;em&gt;cache&lt;/em&gt;”, fazendo com que se poupe tempo de construção das imagens e espaço em disco.&lt;/p&gt;
+
+&lt;p&gt;Um aparte: isto significa que temos que ser inteligente ao construir o nosso Dockerfile. Ficheiros que mudem constantemente devem
+ser incluídos tão tarde quanto possível no processo de construção da imagem, de forma a que invalide o menor número possível de camadas
+em &lt;em&gt;cache&lt;/em&gt;. Isto significa, tomando o exemplo anterior, que uma alteração no ficheiro &lt;code&gt;app.js&lt;/code&gt; iria implicar apenas a construção da última
+camada!&lt;/p&gt;
+
+&lt;p&gt;Todo este mecanismo permite que as camadas que compõe uma imagem possa ser reaproveitadas pelo &lt;strong&gt;Docker Engine&lt;/strong&gt;. Dado que essas
+camadas são apenas de leitura, isto signfica que quando instanciamos um &lt;em&gt;container&lt;/em&gt;, estamos na verdade, a criar uma pequena
+camada &lt;strong&gt;temporária&lt;/strong&gt; de escrita. Quando o &lt;em&gt;container&lt;/em&gt; é criado, esta camada de &lt;em&gt;RW&lt;/em&gt; é criada e quando ele é destruído, a sua
+camada também o é (a não ser que indiquemos explicitamente que as alterações feitas sejam guardadas). Como cada &lt;em&gt;container&lt;/em&gt; tem a sua
+própria camada de escrita (e todas as mudanças feitas são guardadas nessa camada), isto significa que é possível instanciar
+vários containers sobre a mesma imagem!&lt;/p&gt;
+
+&lt;p&gt;Através do comando &lt;em&gt;run&lt;/em&gt;, conseguimos correr correr &lt;em&gt;containers&lt;/em&gt; Docker. Porém, imaginemos que queremos servir uma &lt;em&gt;API&lt;/em&gt; pública em &lt;em&gt;nodeJS&lt;/em&gt;
+para aceder a uma base de dados &lt;em&gt;mongoDB&lt;/em&gt;. Poderíamos, obviamente, correr o comando &lt;code&gt;docker run&lt;/code&gt; para um dos containers, expôr a
+porta da API pública para o exterior e fazer a ligação entre os dois &lt;em&gt;containers&lt;/em&gt; para que a aplicação em nodeJS consiga aceder à
+base de dados. É aqui que entra o &lt;strong&gt;Docker Compose&lt;/strong&gt;, pois permite-nos, através de um ficheiro bastante simples, realizar operações
+bastante complexas de &lt;em&gt;networking&lt;/em&gt;:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-yaml&quot; data-lang=&quot;yaml&quot;&gt;&lt;span class=&quot;s&quot;&gt;db&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;mongo&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;command&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;--smallfiles&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;--logpath=/dev/null&quot;&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;web&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;build&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;.&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;command&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;node app.js&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;ports&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;80:3000&quot;&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;links&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;db&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Vamos por partes. Estamos a criar dois &lt;em&gt;containers&lt;/em&gt;, o “db” (baseado numa imagem do mongo) e o “web” (construído “na hora” pelo
+Docker Engine). O &lt;em&gt;container&lt;/em&gt; “web” quando é iniciado corre o comando &lt;code&gt;node app.js&lt;/code&gt; e expõe a sua porta interna 3000 (&lt;em&gt;default&lt;/em&gt; do nodeJS)
+para a porta 80 do &lt;em&gt;host&lt;/em&gt; onde está a correr. Por fim, a “magia” do “links”, permite que se crie uma ligação entre os dois &lt;em&gt;containers&lt;/em&gt;.
+Isto significa que não temos forma de aceder diretamente ao container que contém a base de dados, a não ser através da nossa aplicação.&lt;/p&gt;
+
+&lt;p&gt;Imaginemos agora que lançamos a nossa aplicação, começamos a ter bastante visitas e, portanto, queremos escalar a nossa aplicação &lt;em&gt;on-demand&lt;/em&gt;
+com vários containers &lt;em&gt;web&lt;/em&gt;. &lt;em&gt;Voilà&lt;/em&gt; &lt;strong&gt;Docker Swarm&lt;/strong&gt;, um gestor de &lt;em&gt;clusters&lt;/em&gt; integrado com o &lt;strong&gt;Engine&lt;/strong&gt;, que permite, definir
+qual o número mínimo e máximo de cada tipo de &lt;em&gt;containers&lt;/em&gt;, qual deve ser a estratégia em caso de erro/falha, fornecendo
+serviços de &lt;em&gt;service discovery&lt;/em&gt;, &lt;em&gt;load balancing&lt;/em&gt;, entre outros.&lt;/p&gt;
+
+&lt;p&gt;Até agora temos vindo a falar de imagens, de construir imagens com base num modelo de &lt;em&gt;stacking layers&lt;/em&gt;, mas ainda não falamos do
+&lt;strong&gt;Docker Registry&lt;/strong&gt;. O &lt;strong&gt;Docker Registry&lt;/strong&gt; não é mais que um repositório que permite a partilha de imagens de uma forma distribuída
+(pensem-no como um “git para containers”). O maior “repositório” público (e &lt;em&gt;default&lt;/em&gt; do &lt;strong&gt;Engine&lt;/strong&gt;) é o &lt;strong&gt;Docker Hub&lt;/strong&gt;, porém
+qualquer pessoa pode instalar um &lt;strong&gt;Docker Registry&lt;/strong&gt; e usá-lo internamente.&lt;/p&gt;
+
+&lt;h1 id=&quot;o-ecossistema&quot;&gt;O Ecossistema&lt;/h1&gt;
+
+&lt;p&gt;A popularidade do &lt;strong&gt;Docker&lt;/strong&gt; nos últimos anos fez com que a comunidade desenvolvesse não só as ferramentas da &lt;strong&gt;Toolbox&lt;/strong&gt;, como
+também criasse um ecossistema à sua volta. Sejam ferramentas de monitorização como o &lt;a href=&quot;https://github.com/scoutserver/docker-scout&quot;&gt;Scout&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/portainer/portainer&quot;&gt;Portainer&lt;/a&gt;, &lt;a href=&quot;https://prometheus.io/&quot;&gt;Prometheus&lt;/a&gt;, &lt;a href=&quot;https://github.com/weaveworks/scope&quot;&gt;Weave Scope&lt;/a&gt;,
+&lt;a href=&quot;https://www.datadoghq.com/&quot;&gt;Datadog&lt;/a&gt;, &lt;a href=&quot;https://github.com/google/cadvisor&quot;&gt;cAdvisor&lt;/a&gt; da Google; ferramentas de
+orquestração como o &lt;a href=&quot;https://github.com/spotify/helios&quot;&gt;Helios&lt;/a&gt; da Spotify ou o &lt;a href=&quot;http://mesos.apache.org/&quot;&gt;Apache Mesos&lt;/a&gt;;
+soluções mais abrangentes e completas como o &lt;a href=&quot;https://kubernetes.io/&quot;&gt;Kubernetes&lt;/a&gt; ou até mesmo sistemas operativos
+desenhados a pensar nos &lt;em&gt;containers&lt;/em&gt;, como o &lt;a href=&quot;https://coreos.com/&quot;&gt;CoreOS&lt;/a&gt;. A quantidade de projetos (&lt;em&gt;open-source&lt;/em&gt;,
+grátis até ou determinado nível/limite ou pagos) aumenta de dia para dia.&lt;/p&gt;
+
+&lt;p&gt;Para além disso, o número de imagens oficiais no &lt;strong&gt;&lt;a href=&quot;https://hub.docker.com/&quot;&gt;Docker Hub&lt;/a&gt;&lt;/strong&gt; também cresce diariamente, agregando
+imagens de tudo e mais alguma coisa.&lt;/p&gt;
+
+&lt;p&gt;Todo este desenvolvimento e apoio da comunidade significa uma menor necessidade de “reinventar a roda”.&lt;/p&gt;
+
+&lt;h1 id=&quot;casos-de-uso&quot;&gt;Casos de Uso&lt;/h1&gt;
+
+&lt;h2 id=&quot;microservios&quot;&gt;Microserviços&lt;/h2&gt;
+
+&lt;p&gt;A crescente adoção de uma arquitetura apoiada em microserviços é um &lt;em&gt;match&lt;/em&gt; perfeito com o Docker, permitindo &lt;strong&gt;de uma
+forma fácil&lt;/strong&gt; que cada um tenha o seu ambiente específico, escale consoante seja necessário.&lt;/p&gt;
+
+&lt;h2 id=&quot;desenvolver-aplicaes-linux-em-windows&quot;&gt;Desenvolver Aplicações Linux em Windows&lt;/h2&gt;
+
+&lt;p&gt;Com a possibilidade de correr &lt;em&gt;containers&lt;/em&gt; Linux num ambiente Windows, abre-se a possibilidade de desenvolver projectos
+num ambiente Linux a partir de outros sistemas operativos (Windows, por exemplo).&lt;/p&gt;
+
+&lt;h2 id=&quot;manter-aplicaes-self-deployed&quot;&gt;Manter Aplicações &lt;em&gt;Self-deployed&lt;/em&gt;&lt;/h2&gt;
+
+&lt;p&gt;Querem ter um &lt;em&gt;Gitlab&lt;/em&gt; com alguns &lt;em&gt;runners&lt;/em&gt; de CI? Ou um &lt;em&gt;Jenkins&lt;/em&gt;? Ou um &lt;em&gt;Redmine&lt;/em&gt;? Os &lt;em&gt;Docker containers&lt;/em&gt; são o ideal.
+É fácil manter o ambiente isolado, a manutenção é simples e a atualização para novas versões também é trivial.&lt;/p&gt;
+
+&lt;h2 id=&quot;permitir-playgrounds-de-testes-rpidos&quot;&gt;Permitir &lt;em&gt;Playgrounds&lt;/em&gt; de testes rápidos&lt;/h2&gt;
+
+&lt;p&gt;Este é, possivelmente, o caso de uso mais utilizado. Tipicamente arrancar um &lt;em&gt;container&lt;/em&gt; leva meros segundos.
+O mesmo para o desligar. Arrancar vários &lt;em&gt;containers&lt;/em&gt; é um processo rápido e trivial. Constuir um ambiente &lt;em&gt;sandbox&lt;/em&gt;
+com uma aplicação &lt;em&gt;Ruby on Rails&lt;/em&gt;, uma base de dados &lt;em&gt;Postgres&lt;/em&gt; e um &lt;em&gt;Redis&lt;/em&gt; é simples e rápido e facilmente
+partilhável com outras pessoas!&lt;/p&gt;
+
+&lt;p&gt;Querem experimentar a nova versão de &lt;em&gt;nodeJS&lt;/em&gt;? Fácil. Querem experimentar um cenário de testes para a vossa aplicação nas
+condições X?&lt;/p&gt;
+
+&lt;h1 id=&quot;porque-gosto-do-docker&quot;&gt;Porque gosto do Docker&lt;/h1&gt;
+
+&lt;h2 id=&quot;portabilidade&quot;&gt;Portabilidade&lt;/h2&gt;
+
+&lt;p&gt;Apesar de ser um assunto polémico dentro da comunidade, a verdade é que os &lt;em&gt;containers&lt;/em&gt; Docker são bastante portáveis
+entre a maioria dos sistemas operativos. A facilidade com que pegamos numa imagem de um local A e a colocamos num local B,
+exatamente com o mesmo comportamento, é brutal.&lt;/p&gt;
+
+&lt;h2 id=&quot;colaborao&quot;&gt;Colaboração&lt;/h2&gt;
+
+&lt;p&gt;De um ponto de vista integrador, o Docker mostra-se como o &lt;em&gt;“one-size-fits-all solution”&lt;/em&gt;. Uma verdadeira ponte entre &lt;em&gt;developers&lt;/em&gt;
+&lt;em&gt;QA&lt;/em&gt; e &lt;em&gt;DevOps&lt;/em&gt;, permitindo uma variedade de &lt;em&gt;workflows&lt;/em&gt; totalmente flexível e adaptável a vários cenários. A facilidade com que
+é possível partilhar imagens permite trabalhar colaborativamente de uma forma que não era possível com as &lt;em&gt;Virtual Machines&lt;/em&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;previsibilidade--consistncia&quot;&gt;Previsibilidade &amp;amp; Consistência&lt;/h2&gt;
+
+&lt;p&gt;Esta é a minha característica favorita. A segurança que tenho ao fazer uma imagem e saber que vai correr no computador
+dos meus colegas é uma sensação fantástica. Acabou-se o “&lt;em&gt;works for me&lt;/em&gt;” (“&lt;em&gt;funciona no meu PC&lt;/em&gt;”) e o “*ah, não estava a
+dar porque tinha a versão da tecnologia &lt;strong&gt;X&lt;/strong&gt; errada!”.&lt;/p&gt;
+
+&lt;h1 id=&quot;sobre-a-apresentao&quot;&gt;Sobre a apresentação&lt;/h1&gt;
+
+&lt;blockquote class=&quot;twitter-tweet&quot; data-lang=&quot;pt&quot;&gt;&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;Yesterday&amp;#39;s edition of Braga JS was one of the best so far, with talks from &lt;a href=&quot;https://twitter.com/miguelpoeira&quot;&gt;@miguelpoeira&lt;/a&gt; and &lt;a href=&quot;https://twitter.com/naps62&quot;&gt;@naps62&lt;/a&gt;. Stay tuned for more news soon. &lt;a href=&quot;https://t.co/bB8otfUFUH&quot;&gt;pic.twitter.com/bB8otfUFUH&lt;/a&gt;&lt;/p&gt;&amp;mdash; Subvisual (@subvisual) &lt;a href=&quot;https://twitter.com/subvisual/status/852161219226214400&quot;&gt;12 de abril de 2017&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async=&quot;&quot; src=&quot;//platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+
+
+    &lt;p&gt;&lt;a href=&quot;http://localhost:4000/blog/containers-e-docker/&quot;&gt;Containers e Docker&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;http://localhost:4000&quot;&gt;Next Commit&lt;/a&gt; on 14 maio 2017.&lt;/p&gt;
+
+  </content>
+</entry>
+
+
+<entry>
   <title type="html"><![CDATA[Automação 2]]></title>
-  <link rel="alternate" type="text/html" href="https://nextcommit.github.io/blog/python-e-automacao-2/" />
-  <id>https://nextcommit.github.io/blog/python-e-automacao-2</id>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/blog/python-e-automacao-2/" />
+  <id>http://localhost:4000/blog/python-e-automacao-2</id>
   <published>2017-05-06 00:00:00 +0100</published>
   <updated>2017-05-06 00:00:00 +0100</updated>
   <author>
     <name>Gabriel Candal</name>
-    <uri>https://nextcommit.github.io</uri>
+    <uri>http://localhost:4000</uri>
     <email>gabrielcandal@gmail.com</email>
   </author>
   <content type="html">
-    &lt;p&gt;Antes de começar, espero que tenham ido a Braga ouvir o Miguel a falar sobre &lt;a href=&quot;https://www.meetup.com/pt-BR/bragajs/events/238881334/?eventId=238881334&quot;&gt;o ecosistema de Docker&lt;/a&gt;.
-Se não tiveram essa hipótese, ainda vão a tempo de se redimirem porque ele vai estar no &lt;a href=&quot;https://www.meetup.com/pt-BR/portocodes/events/239323934/&quot;&gt;Porto Codes&lt;/a&gt;, desta
-vez a explicar como se escreve C++ moderno e com um cheirinho a funcional.&lt;/p&gt;
-
-&lt;p&gt;Continuando, já tinha escrito &lt;a href=&quot;/blog/python-e-automacao-1/&quot;&gt;há uns tempos&lt;/a&gt; como “qualquer um” podia
+    &lt;p&gt;Já tinha escrito &lt;a href=&quot;/blog/python-e-automacao-1/&quot;&gt;há uns tempos&lt;/a&gt; como “qualquer um” podia
 usar Python para automatizar algumas tarefas do dia-a-dia, mas ficou um segredo por contar: a maior parte
 das tarefas interessantes (ir buscar preços de viagens de avião, melhorar fotografias, sacar legendas para
 uma série, etc) demora tempo, muito tempo…&lt;/p&gt;
@@ -94,11 +254,11 @@ Antes de mais, acho que tem algum interesse perceber a diferença entre estes do
 
 &lt;p&gt;Feito! Imaginando que 70% do tempo é passado em I/O, em vez de demorarmos 15 minutos podemos passar para 5 minutos, yey \o/. Agora a parte propriamente dita de ir buscar os preços pode ficar para outro post, ou então…&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://nextcommit.github.io/images/proof_to_reader.jpg&quot; alt=&quot;The proof is left as an exercise to the reader&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/images/proof_to_reader.jpg&quot; alt=&quot;The proof is left as an exercise to the reader&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Outra questão que fica de fora é: qual é o número ideal de &lt;em&gt;threads&lt;/em&gt; que o meu programa deve ter? No exemplo estou a usar 4, mas se uma região tiver muito mais capitais que outra, então posso chegar a um ponto em que só tenho uma &lt;em&gt;thread&lt;/em&gt; a executar e estou basicamente com o mesmo problema inicial em que o programa não está a fazer nada enquanto espera a resposta do site. Por outro lado, não adianta ter o número de &lt;em&gt;threads&lt;/em&gt; igual ao número de capitais porque o computador tem um número limitado de &lt;em&gt;cores&lt;/em&gt; e o ideal é tê-los sempre todos ocupados mas sem perder tempo desnecessário com a mudança de contexto. Mais sobre isto e como chegar a uma solução ótima noutro post :D&lt;/p&gt;
 
-    &lt;p&gt;&lt;a href=&quot;https://nextcommit.github.io/blog/python-e-automacao-2/&quot;&gt;Automação 2&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;https://nextcommit.github.io&quot;&gt;Next Commit&lt;/a&gt; on  6 maio 2017.&lt;/p&gt;
+    &lt;p&gt;&lt;a href=&quot;http://localhost:4000/blog/python-e-automacao-2/&quot;&gt;Automação 2&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;http://localhost:4000&quot;&gt;Next Commit&lt;/a&gt; on  6 maio 2017.&lt;/p&gt;
 
   </content>
 </entry>
@@ -106,13 +266,13 @@ Antes de mais, acho que tem algum interesse perceber a diferença entre estes do
 
 <entry>
   <title type="html"><![CDATA[Vamos Falar De Feedback]]></title>
-  <link rel="alternate" type="text/html" href="https://nextcommit.github.io/blog/vamos-falar-de-feedback/" />
-  <id>https://nextcommit.github.io/blog/vamos-falar-de-feedback</id>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/blog/vamos-falar-de-feedback/" />
+  <id>http://localhost:4000/blog/vamos-falar-de-feedback</id>
   <published>2017-01-08 00:50:16 +0000</published>
   <updated>2017-01-08 00:50:16 +0000</updated>
   <author>
     <name>Miguel Cunha</name>
-    <uri>https://nextcommit.github.io</uri>
+    <uri>http://localhost:4000</uri>
     <email>miguelfcunha@gmail.com</email>
   </author>
   <content type="html">
@@ -154,7 +314,7 @@ na comunicação. Tipicamente, tal como Don Norman descreve, o &lt;em&gt;bom&lt;
 &lt;p&gt;E para terminar deixo a questão: Quem deve tomar iniciativa no processo de feedback? O criador ou o utilizador final?
 O gestor ou o colaborador?&lt;/p&gt;
 
-    &lt;p&gt;&lt;a href=&quot;https://nextcommit.github.io/blog/vamos-falar-de-feedback/&quot;&gt;Vamos Falar De Feedback&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;https://nextcommit.github.io&quot;&gt;Next Commit&lt;/a&gt; on  8 janeiro 2017.&lt;/p&gt;
+    &lt;p&gt;&lt;a href=&quot;http://localhost:4000/blog/vamos-falar-de-feedback/&quot;&gt;Vamos Falar De Feedback&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;http://localhost:4000&quot;&gt;Next Commit&lt;/a&gt; on  8 janeiro 2017.&lt;/p&gt;
 
   </content>
 </entry>
@@ -162,13 +322,13 @@ O gestor ou o colaborador?&lt;/p&gt;
 
 <entry>
   <title type="html"><![CDATA[Errar E Aprender]]></title>
-  <link rel="alternate" type="text/html" href="https://nextcommit.github.io/blog/errar-e-aprender/" />
-  <id>https://nextcommit.github.io/blog/errar-e-aprender</id>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/blog/errar-e-aprender/" />
+  <id>http://localhost:4000/blog/errar-e-aprender</id>
   <published>2016-11-28 22:51:30 +0000</published>
   <updated>2016-11-28 22:51:30 +0000</updated>
   <author>
     <name>Miguel Cunha</name>
-    <uri>https://nextcommit.github.io</uri>
+    <uri>http://localhost:4000</uri>
     <email>miguelfcunha@gmail.com</email>
   </author>
   <content type="html">
@@ -238,7 +398,7 @@ pessoas que a constituem. Felizmente tive a oportunidade de integrar um ambiente
 
 &lt;p&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=dHxUllyGaT0&quot;&gt;E se o meu patrão me estiver a ouvir…&lt;/a&gt;&lt;/p&gt;
 
-    &lt;p&gt;&lt;a href=&quot;https://nextcommit.github.io/blog/errar-e-aprender/&quot;&gt;Errar E Aprender&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;https://nextcommit.github.io&quot;&gt;Next Commit&lt;/a&gt; on 28 novembro 2016.&lt;/p&gt;
+    &lt;p&gt;&lt;a href=&quot;http://localhost:4000/blog/errar-e-aprender/&quot;&gt;Errar E Aprender&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;http://localhost:4000&quot;&gt;Next Commit&lt;/a&gt; on 28 novembro 2016.&lt;/p&gt;
 
   </content>
 </entry>
@@ -246,13 +406,13 @@ pessoas que a constituem. Felizmente tive a oportunidade de integrar um ambiente
 
 <entry>
   <title type="html"><![CDATA[Glossário]]></title>
-  <link rel="alternate" type="text/html" href="https://nextcommit.github.io/blog/glossario/" />
-  <id>https://nextcommit.github.io/blog/glossario</id>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/blog/glossario/" />
+  <id>http://localhost:4000/blog/glossario</id>
   <published>2016-11-09 00:00:00 +0000</published>
   <updated>2016-11-09 00:00:00 +0000</updated>
   <author>
     <name>Gabriel Candal</name>
-    <uri>https://nextcommit.github.io</uri>
+    <uri>http://localhost:4000</uri>
     <email>gabrielcandal@gmail.com</email>
   </author>
   <content type="html">
@@ -290,7 +450,7 @@ conversas laterais não chegam. Qual é a diferença entre &lt;em&gt;client&lt;/
 &lt;em&gt;promocodes&lt;/em&gt; e &lt;em&gt;gift cards&lt;/em&gt; são a mesma coisa? Tudo isto é fácil de responder com um glossário, e evita-se
 o problema de ter vários nomes para a mesma coisa, ou ainda pior, o mesmo nome para várias coisas.&lt;/p&gt;
 
-    &lt;p&gt;&lt;a href=&quot;https://nextcommit.github.io/blog/glossario/&quot;&gt;Glossário&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;https://nextcommit.github.io&quot;&gt;Next Commit&lt;/a&gt; on  9 novembro 2016.&lt;/p&gt;
+    &lt;p&gt;&lt;a href=&quot;http://localhost:4000/blog/glossario/&quot;&gt;Glossário&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;http://localhost:4000&quot;&gt;Next Commit&lt;/a&gt; on  9 novembro 2016.&lt;/p&gt;
 
   </content>
 </entry>
@@ -298,13 +458,13 @@ o problema de ter vários nomes para a mesma coisa, ou ainda pior, o mesmo nome 
 
 <entry>
   <title type="html"><![CDATA[Adaptação]]></title>
-  <link rel="alternate" type="text/html" href="https://nextcommit.github.io/blog/adaptacao/" />
-  <id>https://nextcommit.github.io/blog/adaptacao</id>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/blog/adaptacao/" />
+  <id>http://localhost:4000/blog/adaptacao</id>
   <published>2016-11-04 00:00:00 +0100</published>
   <updated>2016-11-04 00:00:00 +0100</updated>
   <author>
     <name>Gabriel Candal</name>
-    <uri>https://nextcommit.github.io</uri>
+    <uri>http://localhost:4000</uri>
     <email>gabrielcandal@gmail.com</email>
   </author>
   <content type="html">
@@ -364,7 +524,7 @@ aqueles que contrata, do que propriamente à produtividade no momento t0.&lt;/p&
 formação, mas a variedade de competências e experiências é sempre importante, porque para quem só tem um martelo, tudo
 é um prego.&lt;/p&gt;
 
-    &lt;p&gt;&lt;a href=&quot;https://nextcommit.github.io/blog/adaptacao/&quot;&gt;Adaptação&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;https://nextcommit.github.io&quot;&gt;Next Commit&lt;/a&gt; on  4 novembro 2016.&lt;/p&gt;
+    &lt;p&gt;&lt;a href=&quot;http://localhost:4000/blog/adaptacao/&quot;&gt;Adaptação&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;http://localhost:4000&quot;&gt;Next Commit&lt;/a&gt; on  4 novembro 2016.&lt;/p&gt;
 
   </content>
 </entry>
@@ -372,13 +532,13 @@ formação, mas a variedade de competências e experiências é sempre important
 
 <entry>
   <title type="html"><![CDATA[WebAssembly]]></title>
-  <link rel="alternate" type="text/html" href="https://nextcommit.github.io/blog/webassembly/" />
-  <id>https://nextcommit.github.io/blog/webassembly</id>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/blog/webassembly/" />
+  <id>http://localhost:4000/blog/webassembly</id>
   <published>2016-11-01 00:00:00 +0100</published>
   <updated>2016-11-01 00:00:00 +0100</updated>
   <author>
     <name>Gabriel Candal</name>
-    <uri>https://nextcommit.github.io</uri>
+    <uri>http://localhost:4000</uri>
     <email>gabrielcandal@gmail.com</email>
   </author>
   <content type="html">
@@ -422,7 +582,7 @@ na &lt;em&gt;stack&lt;/em&gt; da &lt;em&gt;web&lt;/em&gt; e por isso está previ
 JavaScript e WebAssembly, o que permite uma migração progressiva, ou então apenas usar o novo
 standard em secções do programa em que o desempenho seja crítico.&lt;/p&gt;
 
-    &lt;p&gt;&lt;a href=&quot;https://nextcommit.github.io/blog/webassembly/&quot;&gt;WebAssembly&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;https://nextcommit.github.io&quot;&gt;Next Commit&lt;/a&gt; on  1 novembro 2016.&lt;/p&gt;
+    &lt;p&gt;&lt;a href=&quot;http://localhost:4000/blog/webassembly/&quot;&gt;WebAssembly&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;http://localhost:4000&quot;&gt;Next Commit&lt;/a&gt; on  1 novembro 2016.&lt;/p&gt;
 
   </content>
 </entry>
@@ -430,13 +590,13 @@ standard em secções do programa em que o desempenho seja crítico.&lt;/p&gt;
 
 <entry>
   <title type="html"><![CDATA[Problemas do Visual Studio]]></title>
-  <link rel="alternate" type="text/html" href="https://nextcommit.github.io/blog/visual-studio/" />
-  <id>https://nextcommit.github.io/blog/visual-studio</id>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/blog/visual-studio/" />
+  <id>http://localhost:4000/blog/visual-studio</id>
   <published>2016-09-29 00:43:05 +0100</published>
   <updated>2016-09-29 00:43:05 +0100</updated>
   <author>
     <name>Miguel Cunha</name>
-    <uri>https://nextcommit.github.io</uri>
+    <uri>http://localhost:4000</uri>
     <email>miguelfcunha@gmail.com</email>
   </author>
   <content type="html">
@@ -520,7 +680,7 @@ estrutura de pastas do &lt;em&gt;filesystem&lt;/em&gt; no Visual Studio, mas é 
 
 &lt;p&gt;E fico-me por aqui. E pelo &lt;strong&gt;CLion&lt;/strong&gt;.&lt;/p&gt;
 
-    &lt;p&gt;&lt;a href=&quot;https://nextcommit.github.io/blog/visual-studio/&quot;&gt;Problemas do Visual Studio&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;https://nextcommit.github.io&quot;&gt;Next Commit&lt;/a&gt; on 29 setembro 2016.&lt;/p&gt;
+    &lt;p&gt;&lt;a href=&quot;http://localhost:4000/blog/visual-studio/&quot;&gt;Problemas do Visual Studio&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;http://localhost:4000&quot;&gt;Next Commit&lt;/a&gt; on 29 setembro 2016.&lt;/p&gt;
 
   </content>
 </entry>
@@ -528,13 +688,13 @@ estrutura de pastas do &lt;em&gt;filesystem&lt;/em&gt; no Visual Studio, mas é 
 
 <entry>
   <title type="html"><![CDATA[Texto, 文本 ou စာသားမ?]]></title>
-  <link rel="alternate" type="text/html" href="https://nextcommit.github.io/blog/texto/" />
-  <id>https://nextcommit.github.io/blog/texto</id>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/blog/texto/" />
+  <id>http://localhost:4000/blog/texto</id>
   <published>2016-09-04 00:00:00 +0100</published>
   <updated>2016-09-04 00:00:00 +0100</updated>
   <author>
     <name>Gabriel Candal</name>
-    <uri>https://nextcommit.github.io</uri>
+    <uri>http://localhost:4000</uri>
     <email>gabrielcandal@gmail.com</email>
   </author>
   <content type="html">
@@ -590,7 +750,7 @@ precisa de tantos bits de continuação); apesar de, devido aos caratéres como 
 espaço, dígitos e &lt;em&gt;newline&lt;/em&gt; serem representáveis num só byte em UTF-8, a vantagem
 prática em usar UTF-16 acaba por ser reduzida.&lt;/p&gt;
 
-    &lt;p&gt;&lt;a href=&quot;https://nextcommit.github.io/blog/texto/&quot;&gt;Texto, 文本 ou စာသားမ?&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;https://nextcommit.github.io&quot;&gt;Next Commit&lt;/a&gt; on  4 setembro 2016.&lt;/p&gt;
+    &lt;p&gt;&lt;a href=&quot;http://localhost:4000/blog/texto/&quot;&gt;Texto, 文本 ou စာသားမ?&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;http://localhost:4000&quot;&gt;Next Commit&lt;/a&gt; on  4 setembro 2016.&lt;/p&gt;
 
   </content>
 </entry>
@@ -598,13 +758,13 @@ prática em usar UTF-16 acaba por ser reduzida.&lt;/p&gt;
 
 <entry>
   <title type="html"><![CDATA[Acelerar I/O]]></title>
-  <link rel="alternate" type="text/html" href="https://nextcommit.github.io/blog/acelerar-io/" />
-  <id>https://nextcommit.github.io/blog/acelerar-io</id>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/blog/acelerar-io/" />
+  <id>http://localhost:4000/blog/acelerar-io</id>
   <published>2016-09-04 00:00:00 +0100</published>
   <updated>2016-09-04 00:00:00 +0100</updated>
   <author>
     <name>Gabriel Candal</name>
-    <uri>https://nextcommit.github.io</uri>
+    <uri>http://localhost:4000</uri>
     <email>gabrielcandal@gmail.com</email>
   </author>
   <content type="html">
@@ -709,7 +869,7 @@ memória sem ter que recorrer ao CPU.&lt;/p&gt;
 
 &lt;p&gt;Depois de tudo isto: 38.5MB/s, o que dá cerca de 26s para o 1GB, yey!&lt;/p&gt;
 
-    &lt;p&gt;&lt;a href=&quot;https://nextcommit.github.io/blog/acelerar-io/&quot;&gt;Acelerar I/O&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;https://nextcommit.github.io&quot;&gt;Next Commit&lt;/a&gt; on  4 setembro 2016.&lt;/p&gt;
+    &lt;p&gt;&lt;a href=&quot;http://localhost:4000/blog/acelerar-io/&quot;&gt;Acelerar I/O&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;http://localhost:4000&quot;&gt;Next Commit&lt;/a&gt; on  4 setembro 2016.&lt;/p&gt;
 
   </content>
 </entry>
@@ -717,13 +877,13 @@ memória sem ter que recorrer ao CPU.&lt;/p&gt;
 
 <entry>
   <title type="html"><![CDATA[Gestão de Expetativas]]></title>
-  <link rel="alternate" type="text/html" href="https://nextcommit.github.io/blog/gestao-de-expetativas/" />
-  <id>https://nextcommit.github.io/blog/gestao-de-expetativas</id>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/blog/gestao-de-expetativas/" />
+  <id>http://localhost:4000/blog/gestao-de-expetativas</id>
   <published>2016-07-19 04:20:02 +0100</published>
   <updated>2016-07-19 04:20:02 +0100</updated>
   <author>
     <name>Miguel Cunha</name>
-    <uri>https://nextcommit.github.io</uri>
+    <uri>http://localhost:4000</uri>
     <email>miguelfcunha@gmail.com</email>
   </author>
   <content type="html">
@@ -767,7 +927,7 @@ Seria uma promoção? Ou uma despromoção? Sentir-me-ia confortável em transit
 quer na vertente de gestão, permitindo-nos, a cada um de nós, focar-se naquilo que realmente gosta de fazer. Basta gerir
 as nossas expectativas.&lt;/p&gt;
 
-    &lt;p&gt;&lt;a href=&quot;https://nextcommit.github.io/blog/gestao-de-expetativas/&quot;&gt;Gestão de Expetativas&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;https://nextcommit.github.io&quot;&gt;Next Commit&lt;/a&gt; on 19 julho 2016.&lt;/p&gt;
+    &lt;p&gt;&lt;a href=&quot;http://localhost:4000/blog/gestao-de-expetativas/&quot;&gt;Gestão de Expetativas&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;http://localhost:4000&quot;&gt;Next Commit&lt;/a&gt; on 19 julho 2016.&lt;/p&gt;
 
   </content>
 </entry>
@@ -775,13 +935,13 @@ as nossas expectativas.&lt;/p&gt;
 
 <entry>
   <title type="html"><![CDATA[Remover a Sombra]]></title>
-  <link rel="alternate" type="text/html" href="https://nextcommit.github.io/blog/remover-a-sombra/" />
-  <id>https://nextcommit.github.io/blog/remover-a-sombra</id>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/blog/remover-a-sombra/" />
+  <id>http://localhost:4000/blog/remover-a-sombra</id>
   <published>2016-04-27 00:00:08 +0100</published>
   <updated>2016-04-27 00:00:08 +0100</updated>
   <author>
     <name>Miguel Cunha</name>
-    <uri>https://nextcommit.github.io</uri>
+    <uri>http://localhost:4000</uri>
     <email>miguelfcunha@gmail.com</email>
   </author>
   <content type="html">
@@ -823,7 +983,7 @@ a manter, quer o herói, quer a restante equipa, motivados. Resumindo: o &lt;em&
 que permite à equipa superar esta nova fase.&lt;/p&gt;
 
 
-    &lt;p&gt;&lt;a href=&quot;https://nextcommit.github.io/blog/remover-a-sombra/&quot;&gt;Remover a Sombra&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;https://nextcommit.github.io&quot;&gt;Next Commit&lt;/a&gt; on 27 abril 2016.&lt;/p&gt;
+    &lt;p&gt;&lt;a href=&quot;http://localhost:4000/blog/remover-a-sombra/&quot;&gt;Remover a Sombra&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;http://localhost:4000&quot;&gt;Next Commit&lt;/a&gt; on 27 abril 2016.&lt;/p&gt;
 
   </content>
 </entry>
@@ -831,13 +991,13 @@ que permite à equipa superar esta nova fase.&lt;/p&gt;
 
 <entry>
   <title type="html"><![CDATA[GPU e o Browser]]></title>
-  <link rel="alternate" type="text/html" href="https://nextcommit.github.io/blog/gpu-e-o-browser/" />
-  <id>https://nextcommit.github.io/blog/gpu-e-o-browser</id>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/blog/gpu-e-o-browser/" />
+  <id>http://localhost:4000/blog/gpu-e-o-browser</id>
   <published>2016-03-15 00:00:00 +0100</published>
   <updated>2016-03-15 00:00:00 +0100</updated>
   <author>
     <name>Gabriel Candal</name>
-    <uri>https://nextcommit.github.io</uri>
+    <uri>http://localhost:4000</uri>
     <email>gabrielcandal@gmail.com</email>
   </author>
   <content type="html">
@@ -890,7 +1050,7 @@ que permite à equipa superar esta nova fase.&lt;/p&gt;
 
 &lt;p&gt;No fundo, é um trade-off entre velocidade e memória. Outro problema que pode surgir é com o &lt;a href=&quot;http://keithclark.co.uk/articles/gpu-text-rendering-in-webkit/&quot;&gt;aspeto do tipo de letra&lt;/a&gt;, já que a GPU e o CPU não o fazem da mesma forma. Um truque engraçado para forçar a que um elemento seja renderizado na GPU é acrescentar-lhe, como fizemos no exemplo, algo como &lt;code&gt;transform: translateZ(0)&lt;/code&gt;.&lt;/p&gt;
 
-    &lt;p&gt;&lt;a href=&quot;https://nextcommit.github.io/blog/gpu-e-o-browser/&quot;&gt;GPU e o Browser&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;https://nextcommit.github.io&quot;&gt;Next Commit&lt;/a&gt; on 15 março 2016.&lt;/p&gt;
+    &lt;p&gt;&lt;a href=&quot;http://localhost:4000/blog/gpu-e-o-browser/&quot;&gt;GPU e o Browser&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;http://localhost:4000&quot;&gt;Next Commit&lt;/a&gt; on 15 março 2016.&lt;/p&gt;
 
   </content>
 </entry>
@@ -898,13 +1058,13 @@ que permite à equipa superar esta nova fase.&lt;/p&gt;
 
 <entry>
   <title type="html"><![CDATA[Programar & Documentar]]></title>
-  <link rel="alternate" type="text/html" href="https://nextcommit.github.io/blog/progamar-e-documentar/" />
-  <id>https://nextcommit.github.io/blog/progamar-e-documentar</id>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/blog/progamar-e-documentar/" />
+  <id>http://localhost:4000/blog/progamar-e-documentar</id>
   <published>2016-03-13 21:54:00 +0100</published>
   <updated>2016-03-13 21:54:00 +0100</updated>
   <author>
     <name>Miguel Cunha</name>
-    <uri>https://nextcommit.github.io</uri>
+    <uri>http://localhost:4000</uri>
     <email>miguelfcunha@gmail.com</email>
   </author>
   <content type="html">
@@ -1000,7 +1160,7 @@ para copiar um inteiro é relevante o suficiente para passarmos apenas uma refer
   &lt;/ol&gt;
 &lt;/div&gt;
 
-    &lt;p&gt;&lt;a href=&quot;https://nextcommit.github.io/blog/progamar-e-documentar/&quot;&gt;Programar &amp; Documentar&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;https://nextcommit.github.io&quot;&gt;Next Commit&lt;/a&gt; on 13 março 2016.&lt;/p&gt;
+    &lt;p&gt;&lt;a href=&quot;http://localhost:4000/blog/progamar-e-documentar/&quot;&gt;Programar &amp; Documentar&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;http://localhost:4000&quot;&gt;Next Commit&lt;/a&gt; on 13 março 2016.&lt;/p&gt;
 
   </content>
 </entry>
@@ -1008,13 +1168,13 @@ para copiar um inteiro é relevante o suficiente para passarmos apenas uma refer
 
 <entry>
   <title type="html"><![CDATA[Automação 1]]></title>
-  <link rel="alternate" type="text/html" href="https://nextcommit.github.io/blog/python-e-automacao-1/" />
-  <id>https://nextcommit.github.io/blog/python-e-automacao-1</id>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/blog/python-e-automacao-1/" />
+  <id>http://localhost:4000/blog/python-e-automacao-1</id>
   <published>2016-03-10 00:00:00 +0000</published>
   <updated>2016-03-10 00:00:00 +0000</updated>
   <author>
     <name>Gabriel Candal</name>
-    <uri>https://nextcommit.github.io</uri>
+    <uri>http://localhost:4000</uri>
     <email>gabrielcandal@gmail.com</email>
   </author>
   <content type="html">
@@ -1091,7 +1251,7 @@ para copiar um inteiro é relevante o suficiente para passarmos apenas uma refer
   &lt;/ol&gt;
 &lt;/div&gt;
 
-    &lt;p&gt;&lt;a href=&quot;https://nextcommit.github.io/blog/python-e-automacao-1/&quot;&gt;Automação 1&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;https://nextcommit.github.io&quot;&gt;Next Commit&lt;/a&gt; on 10 março 2016.&lt;/p&gt;
+    &lt;p&gt;&lt;a href=&quot;http://localhost:4000/blog/python-e-automacao-1/&quot;&gt;Automação 1&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;http://localhost:4000&quot;&gt;Next Commit&lt;/a&gt; on 10 março 2016.&lt;/p&gt;
 
   </content>
 </entry>
@@ -1099,13 +1259,13 @@ para copiar um inteiro é relevante o suficiente para passarmos apenas uma refer
 
 <entry>
   <title type="html"><![CDATA[git checkout -b gcandal]]></title>
-  <link rel="alternate" type="text/html" href="https://nextcommit.github.io/blog/git-checkout-gcandal/" />
-  <id>https://nextcommit.github.io/blog/git-checkout-gcandal</id>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/blog/git-checkout-gcandal/" />
+  <id>http://localhost:4000/blog/git-checkout-gcandal</id>
   <published>2016-03-06 00:00:00 +0000</published>
   <updated>2016-03-06 00:00:00 +0000</updated>
   <author>
     <name>Gabriel Candal</name>
-    <uri>https://nextcommit.github.io</uri>
+    <uri>http://localhost:4000</uri>
     <email>gabrielcandal@gmail.com</email>
   </author>
   <content type="html">
@@ -1167,7 +1327,7 @@ usar os dentes. O próximo post será sobre como temos adotado filosofia na &lt;
 e como fizemos.&lt;/p&gt;
 
 
-    &lt;p&gt;&lt;a href=&quot;https://nextcommit.github.io/blog/git-checkout-gcandal/&quot;&gt;git checkout -b gcandal&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;https://nextcommit.github.io&quot;&gt;Next Commit&lt;/a&gt; on  6 março 2016.&lt;/p&gt;
+    &lt;p&gt;&lt;a href=&quot;http://localhost:4000/blog/git-checkout-gcandal/&quot;&gt;git checkout -b gcandal&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;http://localhost:4000&quot;&gt;Next Commit&lt;/a&gt; on  6 março 2016.&lt;/p&gt;
 
   </content>
 </entry>
@@ -1175,13 +1335,13 @@ e como fizemos.&lt;/p&gt;
 
 <entry>
   <title type="html"><![CDATA[Diz-me Como Geres e Dir-te-ei Quem És]]></title>
-  <link rel="alternate" type="text/html" href="https://nextcommit.github.io/blog/diz-me-como-geres-e-dir-te-ei-quem-es/" />
-  <id>https://nextcommit.github.io/blog/diz-me-como-geres-e-dir-te-ei-quem-es</id>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/blog/diz-me-como-geres-e-dir-te-ei-quem-es/" />
+  <id>http://localhost:4000/blog/diz-me-como-geres-e-dir-te-ei-quem-es</id>
   <published>2016-02-27 16:00:48 +0000</published>
   <updated>2016-02-27 16:00:48 +0000</updated>
   <author>
     <name>Miguel Cunha</name>
-    <uri>https://nextcommit.github.io</uri>
+    <uri>http://localhost:4000</uri>
     <email>miguelfcunha@gmail.com</email>
   </author>
   <content type="html">
@@ -1239,7 +1399,7 @@ bem o teu trabalho.&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;P.S.: Se marcas uma reunião para discutirmos um documento, por favor, tira 30 minutos antes para realmente leres a
 porra do documento!&lt;/em&gt;&lt;/p&gt;
 
-    &lt;p&gt;&lt;a href=&quot;https://nextcommit.github.io/blog/diz-me-como-geres-e-dir-te-ei-quem-es/&quot;&gt;Diz-me Como Geres e Dir-te-ei Quem És&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;https://nextcommit.github.io&quot;&gt;Next Commit&lt;/a&gt; on 27 fevereiro 2016.&lt;/p&gt;
+    &lt;p&gt;&lt;a href=&quot;http://localhost:4000/blog/diz-me-como-geres-e-dir-te-ei-quem-es/&quot;&gt;Diz-me Como Geres e Dir-te-ei Quem És&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;http://localhost:4000&quot;&gt;Next Commit&lt;/a&gt; on 27 fevereiro 2016.&lt;/p&gt;
 
   </content>
 </entry>
@@ -1247,13 +1407,13 @@ porra do documento!&lt;/em&gt;&lt;/p&gt;
 
 <entry>
   <title type="html"><![CDATA[Os 5 Mandamentos Dos Projetos Académicos]]></title>
-  <link rel="alternate" type="text/html" href="https://nextcommit.github.io/blog/os-5-mandamentos-dos-projetos-academicos/" />
-  <id>https://nextcommit.github.io/blog/os-5-mandamentos-dos-projetos-academicos</id>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/blog/os-5-mandamentos-dos-projetos-academicos/" />
+  <id>http://localhost:4000/blog/os-5-mandamentos-dos-projetos-academicos</id>
   <published>2016-01-09 00:09:43 +0000</published>
   <updated>2016-01-09 00:09:43 +0000</updated>
   <author>
     <name>Miguel Cunha</name>
-    <uri>https://nextcommit.github.io</uri>
+    <uri>http://localhost:4000</uri>
     <email>miguelfcunha@gmail.com</email>
   </author>
   <content type="html">
@@ -1335,7 +1495,7 @@ Mais vale dar &lt;code&gt;ctrl+z&lt;/code&gt; até funcionar de novo.&lt;/p&gt;
 expansão deve ser lenta e gradual, possivelmente infinita. Quando a data de entrega se aproxima, de tão pequeno e condensado
 que o projeto se encontra, dá-se o &lt;em&gt;Big Bang&lt;/em&gt;, a grande explosão, numa corrida contra-relógio para se evitar o &lt;em&gt;Big Crush&lt;/em&gt;.&lt;/p&gt;
 
-    &lt;p&gt;&lt;a href=&quot;https://nextcommit.github.io/blog/os-5-mandamentos-dos-projetos-academicos/&quot;&gt;Os 5 Mandamentos Dos Projetos Académicos&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;https://nextcommit.github.io&quot;&gt;Next Commit&lt;/a&gt; on  9 janeiro 2016.&lt;/p&gt;
+    &lt;p&gt;&lt;a href=&quot;http://localhost:4000/blog/os-5-mandamentos-dos-projetos-academicos/&quot;&gt;Os 5 Mandamentos Dos Projetos Académicos&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;http://localhost:4000&quot;&gt;Next Commit&lt;/a&gt; on  9 janeiro 2016.&lt;/p&gt;
 
   </content>
 </entry>
@@ -1343,13 +1503,13 @@ que o projeto se encontra, dá-se o &lt;em&gt;Big Bang&lt;/em&gt;, a grande expl
 
 <entry>
   <title type="html"><![CDATA[Pensar Grande, Construir Pequeno]]></title>
-  <link rel="alternate" type="text/html" href="https://nextcommit.github.io/blog/pensar-grande-construir-pequeno/" />
-  <id>https://nextcommit.github.io/blog/pensar-grande-construir-pequeno</id>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/blog/pensar-grande-construir-pequeno/" />
+  <id>http://localhost:4000/blog/pensar-grande-construir-pequeno</id>
   <published>2015-12-28 16:50:21 +0000</published>
   <updated>2015-12-28 16:50:21 +0000</updated>
   <author>
     <name>Miguel Cunha</name>
-    <uri>https://nextcommit.github.io</uri>
+    <uri>http://localhost:4000</uri>
     <email>miguelfcunha@gmail.com</email>
   </author>
   <content type="html">
@@ -1479,7 +1639,7 @@ inevitavelmente, a meio. Mas também é importante não ter datas tão restritiv
 a máxima “&lt;em&gt;done when it’s done&lt;/em&gt;”.&lt;/p&gt;
 
 
-    &lt;p&gt;&lt;a href=&quot;https://nextcommit.github.io/blog/pensar-grande-construir-pequeno/&quot;&gt;Pensar Grande, Construir Pequeno&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;https://nextcommit.github.io&quot;&gt;Next Commit&lt;/a&gt; on 28 dezembro 2015.&lt;/p&gt;
+    &lt;p&gt;&lt;a href=&quot;http://localhost:4000/blog/pensar-grande-construir-pequeno/&quot;&gt;Pensar Grande, Construir Pequeno&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;http://localhost:4000&quot;&gt;Next Commit&lt;/a&gt; on 28 dezembro 2015.&lt;/p&gt;
 
   </content>
 </entry>
@@ -1487,13 +1647,13 @@ a máxima “&lt;em&gt;done when it’s done&lt;/em&gt;”.&lt;/p&gt;
 
 <entry>
   <title type="html"><![CDATA[Olá Mundo]]></title>
-  <link rel="alternate" type="text/html" href="https://nextcommit.github.io/blog/ola-mundo/" />
-  <id>https://nextcommit.github.io/blog/ola-mundo</id>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/blog/ola-mundo/" />
+  <id>http://localhost:4000/blog/ola-mundo</id>
   <published>2015-12-05 20:53:44 +0000</published>
   <updated>2015-12-05 20:53:44 +0000</updated>
   <author>
     <name>Miguel Cunha</name>
-    <uri>https://nextcommit.github.io</uri>
+    <uri>http://localhost:4000</uri>
     <email>miguelfcunha@gmail.com</email>
   </author>
   <content type="html">
@@ -1517,7 +1677,7 @@ Este panorama parece contra-intuitivo, principalmente quando a &lt;a href=&quot;
 &lt;p&gt;Vêmo-nos no próximo &lt;em&gt;commit&lt;/em&gt;!&lt;/p&gt;
 
 
-    &lt;p&gt;&lt;a href=&quot;https://nextcommit.github.io/blog/ola-mundo/&quot;&gt;Olá Mundo&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;https://nextcommit.github.io&quot;&gt;Next Commit&lt;/a&gt; on  5 dezembro 2015.&lt;/p&gt;
+    &lt;p&gt;&lt;a href=&quot;http://localhost:4000/blog/ola-mundo/&quot;&gt;Olá Mundo&lt;/a&gt; was originally published by Next Commit at &lt;a href=&quot;http://localhost:4000&quot;&gt;Next Commit&lt;/a&gt; on  5 dezembro 2015.&lt;/p&gt;
 
   </content>
 </entry>

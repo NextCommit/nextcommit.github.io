@@ -1,0 +1,400 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Containers e Docker &#8211; Next Commit</title>
+<meta name="description" content="Uma introdução ao mundo do Docker">
+<meta name="keywords" content="containers, docker, CI">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Containers e Docker">
+<meta name="twitter:description" content="Uma introdução ao mundo do Docker">
+<meta name="twitter:site" content="@miguelpoeira">
+<meta name="twitter:creator" content="@miguelpoeira">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://localhost:4000/images/docker.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="pt-PT">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Containers e Docker">
+<meta property="og:description" content="Uma introdução ao mundo do Docker">
+<meta property="og:url" content="http://localhost:4000/blog/containers-e-docker/">
+<meta property="og:site_name" content="Next Commit">
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/blog/containers-e-docker/">
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Next Commit Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.css">
+<!-- Webfonts -->
+<script src="https://use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+  <script src="http://localhost:4000/assets/js/vendor/html5shiv.min.js"></script>
+  <script src="http://localhost:4000/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="http://localhost:4000/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+
+<!-- MathJax -->
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+<!-- Icons -->
+<link rel="apple-touch-icon" sizes="57x57" href="http://localhost:4000/images/icons/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="http://localhost:4000/images/icons/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="http://localhost:4000/images/icons/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="http://localhost:4000/images/icons/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="http://localhost:4000/images/icons/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="http://localhost:4000/images/icons/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="http://localhost:4000/images/icons/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="http://localhost:4000/images/icons/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="http://localhost:4000/images/icons/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="http://localhost:4000/images/icons/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:4000/images/icons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="http://localhost:4000/images/icons/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:4000/images/icons/favicon-16x16.png">
+
+</head>
+
+<body id="post">
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+      
+		    
+		    <li><a href="http://localhost:4000/" >Início</a></li>
+		  
+		    
+		    <li><a href="http://localhost:4000/indice" >Índice</a></li>
+		  
+		    
+		    <li><a href="http://localhost:4000/arquivo" >Arquivo</a></li>
+		  
+		    
+		    <li><a href="http://localhost:4000/sobre" >Sobre</a></li>
+		  
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<header class="masthead">
+	
+		<div class="wrap">
+			<a href="http://localhost:4000/" class="site-logo" rel="home" title="Next Commit"><img src="http://localhost:4000/images/logo.png" width="200" height="200" alt="Next Commit logo" class="animated fadeInDown"></a>
+		</div>
+	
+</header><!-- /.masthead -->
+
+
+<div class="js-menu-screen menu-screen"></div>
+
+
+<div id="main" role="main">
+  <article class="hentry">
+    <div class="feature-img"><img src="http://localhost:4000/images/docker.png" class="entry-feature-image" alt="Containers e Docker" ></div>
+    <div class="entry-wrapper">
+      <header class="entry-header">
+        <ul class="entry-tags">
+          <i class="fa fa-tags"></i><li><a href="http://localhost:4000/indice/#containers" title="Assunto containers">containers</a></li><li><a href="http://localhost:4000/indice/#docker" title="Assunto docker">docker</a></li><li><a href="http://localhost:4000/indice/#CI" title="Assunto CI">CI</a></li>
+        </ul>
+        
+          <h1 class="entry-title post-title">Containers e Docker </h1>
+        
+      </header>
+      <footer class="entry-meta">
+        
+        
+          <img src="http://localhost:4000/images/miguel.jpg" class="bio-photo" alt="Miguel Cunha bio photo"></a>
+        
+        <span class="author vcard">por <a href="mailto:miguelfcunha@gmail.com"><span class="fn">Miguel Cunha</span></a></span>
+        <span>
+        <a href="https://twitter.com/miguelpoeira" title="Next Commit on Twitter" target="_blank"><i class="fa fa-twitter-square fa-2x"></i></a>
+        <a href="https://linkedin.com/in/miguelpoeira" title="Miguel Cunha on LinkedIn" target="_blank"><i class="fa fa-linkedin-square fa-2x"></i></a>
+        <a href="http://stackoverflow.com/users/2267779/miguel-cunha" title="Miguel Cunha on StackExchange" target="_blank"><i class="fa fa-stack-exchange fa-2x"></i></a>
+        <a href="https://github.com/promgamer" title="Miguel Cunha on Github" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>
+        </span>
+        <span class="entry-date date published"><time datetime="2017-05-14"><i class="fa fa-calendar-o"></i> 14 maio 2017</time></span>
+        
+        <span class="entry-comments"><i class="fa fa-comment-o"></i> <a href="#disqus_thread">Comentar</a></span>
+        
+      </footer>
+      <div class="entry-content">
+        <blockquote>
+  <p>O texto que se segue é, em verdade, uma espécie de resumo daquilo que apresentei recentemente no <strong>Braga.JS</strong> Não é um
+“Docker 101”, pois pressupõe que já ouviram falar da tecnologia (mesmo que nunca a tenha usado). Há bastante tópicos que não
+foram abordados e que deixo para outro <em>post</em>.</p>
+</blockquote>
+
+<p>Fui apresentado ao mundo dos <em>containers</em> (e, em especial, ao <strong>Docker</strong>) há cerca de dois anos atrás, na <em>MOG Technologies</em>.
+Desde então, tenho utilizar todo o seu <strong>ecossistema</strong> em situações bastante diferentes, com propósitos e objetivos distintos
+(exemplos mais para o fim do <em>post</em>). Comecemos pelo básico.</p>
+
+<h1 id="o-bsico">O Básico</h1>
+<p>Aquilo que conhecemos como <strong>Docker</strong> é, na verdade, o <strong>Docker Engine</strong>, ou seja, o <em>core</em> que permite criar imagens e
+correr <em>containers</em>. Mas aquilo que o Docker oferece, tipicamente chamado de  <strong>Docker Toolbox</strong> é bem mais completo e interessante.
+Vamos por partes.</p>
+
+<p>Tipicamente tudo começa no <em>Dockerfile</em>, um ficheiro de configuração, com uma sintaxe bastante simples e intuitiva, que nos permite
+escrever “receitas”:</p>
+
+<figure class="highlight"><pre><code class="language-dockerfile" data-lang="dockerfile">FROM ubuntu:16.04
+
+RUN apt-get update
+RUN apt-get install -y software-properties-common python
+RUN apt-get install -y nodejs
+
+RUN mkdir /var/www
+
+ADD app.js /var/www/app.js</code></pre></figure>
+
+<p>Tendo a nossa “receita” definida, utilizamos o comando <em>build</em> do <strong>Docker Engine</strong> para construir a imagem resultante. Aqui existem
+várias nuances interessantes. Primeiro, todas as imagens começam de uma imagem base (no caso anterior, estamos a usar um Ubuntu 16.04).
+Depois, cada comando é construído <strong>sequencialmente</strong>, em camadas <strong>read-only</strong>. Esta filosofia é bastante importante, pois
+permite tirar partido de mecanismos de “<em>cache</em>”, fazendo com que se poupe tempo de construção das imagens e espaço em disco.</p>
+
+<p>Um aparte: isto significa que temos que ser inteligente ao construir o nosso Dockerfile. Ficheiros que mudem constantemente devem
+ser incluídos tão tarde quanto possível no processo de construção da imagem, de forma a que invalide o menor número possível de camadas
+em <em>cache</em>. Isto significa, tomando o exemplo anterior, que uma alteração no ficheiro <code>app.js</code> iria implicar apenas a construção da última
+camada!</p>
+
+<p>Todo este mecanismo permite que as camadas que compõe uma imagem possa ser reaproveitadas pelo <strong>Docker Engine</strong>. Dado que essas
+camadas são apenas de leitura, isto signfica que quando instanciamos um <em>container</em>, estamos na verdade, a criar uma pequena
+camada <strong>temporária</strong> de escrita. Quando o <em>container</em> é criado, esta camada de <em>RW</em> é criada e quando ele é destruído, a sua
+camada também o é (a não ser que indiquemos explicitamente que as alterações feitas sejam guardadas). Como cada <em>container</em> tem a sua
+própria camada de escrita (e todas as mudanças feitas são guardadas nessa camada), isto significa que é possível instanciar
+vários containers sobre a mesma imagem!</p>
+
+<p>Através do comando <em>run</em>, conseguimos correr correr <em>containers</em> Docker. Porém, imaginemos que queremos servir uma <em>API</em> pública em <em>nodeJS</em>
+para aceder a uma base de dados <em>mongoDB</em>. Poderíamos, obviamente, correr o comando <code>docker run</code> para um dos containers, expôr a
+porta da API pública para o exterior e fazer a ligação entre os dois <em>containers</em> para que a aplicação em nodeJS consiga aceder à
+base de dados. É aqui que entra o <strong>Docker Compose</strong>, pois permite-nos, através de um ficheiro bastante simples, realizar operações
+bastante complexas de <em>networking</em>:</p>
+
+<figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="s">db</span><span class="pi">:</span>
+  <span class="s">image</span><span class="pi">:</span> <span class="s">mongo</span>
+  <span class="s">command</span><span class="pi">:</span> <span class="s2">"</span><span class="s">--smallfiles</span><span class="nv"> </span><span class="s">--logpath=/dev/null"</span>
+<span class="s">web</span><span class="pi">:</span>
+  <span class="s">build</span><span class="pi">:</span> <span class="s">.</span>
+  <span class="s">command</span><span class="pi">:</span> <span class="s">node app.js</span>
+  <span class="s">ports</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s2">"</span><span class="s">80:3000"</span>
+  <span class="s">links</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">db</span></code></pre></figure>
+
+<p>Vamos por partes. Estamos a criar dois <em>containers</em>, o “db” (baseado numa imagem do mongo) e o “web” (construído “na hora” pelo
+Docker Engine). O <em>container</em> “web” quando é iniciado corre o comando <code>node app.js</code> e expõe a sua porta interna 3000 (<em>default</em> do nodeJS)
+para a porta 80 do <em>host</em> onde está a correr. Por fim, a “magia” do “links”, permite que se crie uma ligação entre os dois <em>containers</em>.
+Isto significa que não temos forma de aceder diretamente ao container que contém a base de dados, a não ser através da nossa aplicação.</p>
+
+<p>Imaginemos agora que lançamos a nossa aplicação, começamos a ter bastante visitas e, portanto, queremos escalar a nossa aplicação <em>on-demand</em>
+com vários containers <em>web</em>. <em>Voilà</em> <strong>Docker Swarm</strong>, um gestor de <em>clusters</em> integrado com o <strong>Engine</strong>, que permite, definir
+qual o número mínimo e máximo de cada tipo de <em>containers</em>, qual deve ser a estratégia em caso de erro/falha, fornecendo
+serviços de <em>service discovery</em>, <em>load balancing</em>, entre outros.</p>
+
+<p>Até agora temos vindo a falar de imagens, de construir imagens com base num modelo de <em>stacking layers</em>, mas ainda não falamos do
+<strong>Docker Registry</strong>. O <strong>Docker Registry</strong> não é mais que um repositório que permite a partilha de imagens de uma forma distribuída
+(pensem-no como um “git para containers”). O maior “repositório” público (e <em>default</em> do <strong>Engine</strong>) é o <strong>Docker Hub</strong>, porém
+qualquer pessoa pode instalar um <strong>Docker Registry</strong> e usá-lo internamente.</p>
+
+<h1 id="o-ecossistema">O Ecossistema</h1>
+
+<p>A popularidade do <strong>Docker</strong> nos últimos anos fez com que a comunidade desenvolvesse não só as ferramentas da <strong>Toolbox</strong>, como
+também criasse um ecossistema à sua volta. Sejam ferramentas de monitorização como o <a href="https://github.com/scoutserver/docker-scout">Scout</a>,
+<a href="https://github.com/portainer/portainer">Portainer</a>, <a href="https://prometheus.io/">Prometheus</a>, <a href="https://github.com/weaveworks/scope">Weave Scope</a>,
+<a href="https://www.datadoghq.com/">Datadog</a>, <a href="https://github.com/google/cadvisor">cAdvisor</a> da Google; ferramentas de
+orquestração como o <a href="https://github.com/spotify/helios">Helios</a> da Spotify ou o <a href="http://mesos.apache.org/">Apache Mesos</a>;
+soluções mais abrangentes e completas como o <a href="https://kubernetes.io/">Kubernetes</a> ou até mesmo sistemas operativos
+desenhados a pensar nos <em>containers</em>, como o <a href="https://coreos.com/">CoreOS</a>. A quantidade de projetos (<em>open-source</em>,
+grátis até ou determinado nível/limite ou pagos) aumenta de dia para dia.</p>
+
+<p>Para além disso, o número de imagens oficiais no <strong><a href="https://hub.docker.com/">Docker Hub</a></strong> também cresce diariamente, agregando
+imagens de tudo e mais alguma coisa.</p>
+
+<p>Todo este desenvolvimento e apoio da comunidade significa uma menor necessidade de “reinventar a roda”.</p>
+
+<h1 id="casos-de-uso">Casos de Uso</h1>
+
+<h2 id="microservios">Microserviços</h2>
+
+<p>A crescente adoção de uma arquitetura apoiada em microserviços é um <em>match</em> perfeito com o Docker, permitindo <strong>de uma
+forma fácil</strong> que cada um tenha o seu ambiente específico, escale consoante seja necessário.</p>
+
+<h2 id="desenvolver-aplicaes-linux-em-windows">Desenvolver Aplicações Linux em Windows</h2>
+
+<p>Com a possibilidade de correr <em>containers</em> Linux num ambiente Windows, abre-se a possibilidade de desenvolver projectos
+num ambiente Linux a partir de outros sistemas operativos (Windows, por exemplo).</p>
+
+<h2 id="manter-aplicaes-self-deployed">Manter Aplicações <em>Self-deployed</em></h2>
+
+<p>Querem ter um <em>Gitlab</em> com alguns <em>runners</em> de CI? Ou um <em>Jenkins</em>? Ou um <em>Redmine</em>? Os <em>Docker containers</em> são o ideal.
+É fácil manter o ambiente isolado, a manutenção é simples e a atualização para novas versões também é trivial.</p>
+
+<h2 id="permitir-playgrounds-de-testes-rpidos">Permitir <em>Playgrounds</em> de testes rápidos</h2>
+
+<p>Este é, possivelmente, o caso de uso mais utilizado. Tipicamente arrancar um <em>container</em> leva meros segundos.
+O mesmo para o desligar. Arrancar vários <em>containers</em> é um processo rápido e trivial. Constuir um ambiente <em>sandbox</em>
+com uma aplicação <em>Ruby on Rails</em>, uma base de dados <em>Postgres</em> e um <em>Redis</em> é simples e rápido e facilmente
+partilhável com outras pessoas!</p>
+
+<p>Querem experimentar a nova versão de <em>nodeJS</em>? Fácil. Querem experimentar um cenário de testes para a vossa aplicação nas
+condições X?</p>
+
+<h1 id="porque-gosto-do-docker">Porque gosto do Docker</h1>
+
+<h2 id="portabilidade">Portabilidade</h2>
+
+<p>Apesar de ser um assunto polémico dentro da comunidade, a verdade é que os <em>containers</em> Docker são bastante portáveis
+entre a maioria dos sistemas operativos. A facilidade com que pegamos numa imagem de um local A e a colocamos num local B,
+exatamente com o mesmo comportamento, é brutal.</p>
+
+<h2 id="colaborao">Colaboração</h2>
+
+<p>De um ponto de vista integrador, o Docker mostra-se como o <em>“one-size-fits-all solution”</em>. Uma verdadeira ponte entre <em>developers</em>
+<em>QA</em> e <em>DevOps</em>, permitindo uma variedade de <em>workflows</em> totalmente flexível e adaptável a vários cenários. A facilidade com que
+é possível partilhar imagens permite trabalhar colaborativamente de uma forma que não era possível com as <em>Virtual Machines</em>.</p>
+
+<h2 id="previsibilidade--consistncia">Previsibilidade &amp; Consistência</h2>
+
+<p>Esta é a minha característica favorita. A segurança que tenho ao fazer uma imagem e saber que vai correr no computador
+dos meus colegas é uma sensação fantástica. Acabou-se o “<em>works for me</em>” (“<em>funciona no meu PC</em>”) e o “*ah, não estava a
+dar porque tinha a versão da tecnologia <strong>X</strong> errada!”.</p>
+
+<h1 id="sobre-a-apresentao">Sobre a apresentação</h1>
+
+<blockquote class="twitter-tweet" data-lang="pt"><p lang="en" dir="ltr">Yesterday&#39;s edition of Braga JS was one of the best so far, with talks from <a href="https://twitter.com/miguelpoeira">@miguelpoeira</a> and <a href="https://twitter.com/naps62">@naps62</a>. Stay tuned for more news soon. <a href="https://t.co/bB8otfUFUH">pic.twitter.com/bB8otfUFUH</a></p>&mdash; Subvisual (@subvisual) <a href="https://twitter.com/subvisual/status/852161219226214400">12 de abril de 2017</a></blockquote>
+<script async="" src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+        <!-- comentarios -->
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+
+    
+    <div id="related_post">
+      <div class="next-article" style="background-image: url('http://localhost:4000/images/browser.png');">
+
+        <div class="wrap">
+          <div class="overlay">
+
+          <div class="constrained">
+            <p class="next">Artigo Sugerido: </p>
+            <h3 class="title"><a href="/blog/gpu-e-o-browser/" class="next-article-link">GPU e o Browser</a></h3>
+            <p class="subhead">Render e aceleração por hardware</p>
+          </div>
+
+        </div>
+        </div>
+      </div>
+    </div>
+    
+
+    
+    <div class="entry-wrapper">
+      <div class="entry-content center-margin">
+        <div id="disqus_thread"></div><!-- /#disqus_thread -->
+        
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'nextcommit'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'https://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+      </div>
+    </div>
+    
+
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo" class="entry-wrapper">
+    
+
+<span>&copy; 2017 Next Commit.</span>
+<!-- <div class="social-icons">
+	<a href="https://twitter.com/miguelpoeira" title="Next Commit on Twitter" target="_blank"><i class="fa fa-twitter-square fa-2x"></i></a>
+	
+	
+	
+	
+	
+	
+	<a href="https://github.com/promgamer" title="Next Commit on Github" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>
+	
+  
+	
+  <a href="http://localhost:4000/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a>
+</div> --> <!-- /.social-icons -->
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script type="text/javascript">
+  var BASE_URL = 'http://localhost:4000';
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="http://localhost:4000/assets/js/scripts.min.js"></script>
+<script src="http://localhost:4000/assets/js/plugins/infinite_scroll.js"></script>
+
+
+<!-- Asynchronous Google Analytics snippet -->
+<script>
+  var _gaq = _gaq || [];
+  var pluginUrl =
+ 'https://www.google-analytics.com/plugins/ga/inpage_linkid.js';
+  _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+  _gaq.push(['_setAccount', 'UA-71051399-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = 'https://stats.g.doubleclick.net/dc.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+</body>
+</html>
